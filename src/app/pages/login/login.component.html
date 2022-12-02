@@ -1,0 +1,55 @@
+<div class="Contenu-login">
+
+    <form class="contenu-form" [formGroup]="loginForm">
+        <p class="Titre">HiBlog</p>
+
+        <div>
+            <div>
+                <input class="input-Login" placeholder="email" formControlName="email" />
+                <br>
+            </div>
+
+            <div>
+
+            </div>
+
+            <div class="Message-erreur" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.errors">
+                Tapez votre mail sinon...<br>
+                <br>
+            </div>
+
+            <div class="Message-erreur"
+                *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.errors"><br>
+                Le mail n'est pas valide chef !<br>
+                <br>
+            </div>
+
+        </div>
+
+
+        <div>
+            <div>
+                <input class="input-Login" placeholder="mot de passe" formControlName="Motdepasse" /><br>
+            </div>
+            <div class="Message-erreur"
+                *ngIf="loginForm.get('Motdepasse')?.errors && loginForm.get('Motdepasse')?.errors">
+                Tapez votre mot de passe sinon...<br>
+                <br>
+            </div>
+
+            <div class="Message-erreur"
+                *ngIf="loginForm.get('Motdepasse')?.errors?.['Motdepasse'] && loginForm.get('Motdepasse')?.errors"><br>
+                La prochaine faute je te bloque !<br>
+                <br>
+            </div>
+        </div>
+
+        <div>
+            <button type ="submit" (click)="onContinue()">Continuer</button><br><br>
+        </div>
+
+        <div>
+            <button (click)="CreerUncompte()">Créer un compte</button>
+        </div>
+    </form>
+</div>
