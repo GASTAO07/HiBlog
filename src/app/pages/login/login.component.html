@@ -1,19 +1,38 @@
 <div class="Contenu-login">
 
-    <form class="contenu-form" [formGroup]="loginForm">
+    <!-- 2
+    <form class="form-horizontal" #signupForm="ngForm">
+    </form>
+
+        <div class="form-group">
+            <label for="inputemail">email</label>
+            <input type="text" [(ngModel)]="loginmodel.email" placeholder="email">
+        </div>
+
+        <div ngModelGroup="motdepasse">
+            <div class="form-group">
+                <label for="inputmotdepasse">motdepasse</label>
+                <input type="motdepasse" [(ngModel)]="loginmodel.motdepasse" placeholder="motdepasse">
+            </div>
+
+            <button type="submit" (click)="onContinue()" class="btn btn success" [disabled]="!signupForm.form.valid">
+                submit
+            </button> -->
+
+
+
+
+    <!-- 1 -->
+    <!-- <form class="contenu-form" [formGroup]="loginForm">
         <p class="Titre">HiBlog</p>
 
         <div>
             <div>
-                <input class="input-Login" placeholder="email" formControlName="email" />
-                <br>
+               <input class="input-Login" placeholder="email" formControlName="email" />
+                 
             </div>
 
-            <div>
-
-            </div>
-
-            <div class="message-erreur" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.errors">
+             <div class="message-erreur" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.errors">
                 Tapez votre mail sinon...<br>
                 <br>
             </div>
@@ -22,34 +41,49 @@
                 *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.errors"><br>
                 Le mail n'est pas valide chef !<br>
                 <br>
-            </div>
+            </div> 
 
         </div>
 
 
         <div>
             <div>
-                <input class="input-Login" placeholder="mot de passe" formControlName="motdepasse" /><br>
+                <input class="input-Login" placeholder="mot de passe" formControlName="motdepasse" /> 
             </div>
             <div class="message-erreur"
                 *ngIf="loginForm.get('motdepasse')?.errors && loginForm.get('motdepasse')?.errors">
-                Tapez votre mot de passe sinon...<br>
-                <br>
+                Tapez votre mot de passe sinon...
             </div>
 
-            <div class="message-erreur"
-                *ngIf="loginForm.get('motdepasse')?.errors?.['motdepasse'] && loginForm.get('motdepasse')?.errors"><br>
-                La prochaine faute je te bloque !<br>
-                <br>
-            </div>
+             <div class="message-erreur"
+                *ngIf="loginForm.get('motdepasse')?.errors?.['motdepasse'] && loginForm.get('motdepasse')?.errors">
+                La prochaine faute je te bloque !
+
+            </div> 
         </div>
 
         <div>
-            <button type ="submit" (click)="onContinue()">Continuer</button><br><br>
+            <button type="submit" (click)="onContinue()">Continuer</button>
         </div>
 
         <div>
-            <button type ="submit" (click)="CreerUncompte()">Créer un compte</button>
+            <button type="submit" (click)="CreerUncompte()">Créer un compte</button>
         </div>
     </form>
+ -->
+
+    <div class="form-horizontal">
+        <button class="button-success" (click)="onContinue()">
+            Submit
+        </button>
+
+        <div class="form-group">
+            <label for="inputemail">email</label>
+            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" name="email" placeholder="email">
+        
+        </div>
+           {{loginmodel.email}}
+
+    </div>
+
 </div>

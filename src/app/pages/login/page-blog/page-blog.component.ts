@@ -7,7 +7,7 @@ import { Component,OnInit, Input } from '@angular/core';
 })
 export class PageBlogComponent implements OnInit{
 
-  @Input() btnText ! : string
+   btnText : string = 'Enregistrer'; 
 
 constructor(){}
 
