@@ -13,12 +13,12 @@
 
             </div>
 
-            <div class="Message-erreur" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.errors">
+            <div class="message-erreur" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.errors">
                 Tapez votre mail sinon...<br>
                 <br>
             </div>
 
-            <div class="Message-erreur"
+            <div class="message-erreur"
                 *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.errors"><br>
                 Le mail n'est pas valide chef !<br>
                 <br>
@@ -29,16 +29,16 @@
 
         <div>
             <div>
-                <input class="input-Login" placeholder="mot de passe" formControlName="Motdepasse" /><br>
+                <input class="input-Login" placeholder="mot de passe" formControlName="motdepasse" /><br>
             </div>
-            <div class="Message-erreur"
-                *ngIf="loginForm.get('Motdepasse')?.errors && loginForm.get('Motdepasse')?.errors">
+            <div class="message-erreur"
+                *ngIf="loginForm.get('motdepasse')?.errors && loginForm.get('motdepasse')?.errors">
                 Tapez votre mot de passe sinon...<br>
                 <br>
             </div>
 
-            <div class="Message-erreur"
-                *ngIf="loginForm.get('Motdepasse')?.errors?.['Motdepasse'] && loginForm.get('Motdepasse')?.errors"><br>
+            <div class="message-erreur"
+                *ngIf="loginForm.get('motdepasse')?.errors?.['motdepasse'] && loginForm.get('motdepasse')?.errors"><br>
                 La prochaine faute je te bloque !<br>
                 <br>
             </div>
@@ -49,7 +49,7 @@
         </div>
 
         <div>
-            <button (click)="CreerUncompte()">Créer un compte</button>
+            <button type ="submit" (click)="CreerUncompte()">Créer un compte</button>
         </div>
     </form>
 </div>

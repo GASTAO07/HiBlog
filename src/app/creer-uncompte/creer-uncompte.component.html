@@ -1,7 +1,7 @@
-<div class="Contenu-login">
+<div class="contenu-login">
 
     <form class="contenu-form" [formGroup]="compteForm">
-        <p class="Titre">Créer votre compte</p>
+        <p class="titre">Créer votre compte</p>
 
         <div>
             <div>
@@ -9,7 +9,7 @@
                 <br>
             </div>
 
-            <div class="Message-erreur" *ngIf="compteForm.get('nom')?.errors && compteForm.get('nom')?.errors">
+            <div class="message-erreur" *ngIf="compteForm.get('nom')?.errors && compteForm.get('nom')?.errors">
                 Tapez votre nom sinon...<br>
                 <br>
             </div>
@@ -18,11 +18,11 @@
 
         <div>
             <div>
-                <input class="Prenom" placeholder="Prenom" formControlName="Prenom" />
+                <input class="prenom" placeholder="prenom" formControlName="prenom" />
                 <br>
             </div>
 
-            <div class="Message-erreur" *ngIf="compteForm.get('Prenom')?.errors && compteForm.get('Prenom')?.errors">
+            <div class="message-erreur" *ngIf="compteForm.get('prenom')?.errors && compteForm.get('prenom')?.errors">
                 Tapez votre Prenom sinon...<br>
                 <br>
             </div>
@@ -39,12 +39,12 @@
 
             </div>
 
-            <div class="Message-erreur" *ngIf="compteForm.get('email')?.errors && compteForm.get('email')?.errors">
+            <div class="message-erreur" *ngIf="compteForm.get('email')?.errors && compteForm.get('email')?.errors">
                 Tapez votre mail sinon...<br>
                 <br>
             </div>
 
-            <div class="Message-erreur"
+            <div class="message-erreur"
                 *ngIf="compteForm.get('email')?.errors?.['email'] && compteForm.get('email')?.errors"><br>
                 Le mail n'est pas valide chef !<br>
                 <br>
@@ -54,16 +54,16 @@
 
         <div>
             <div>
-                <input class="input-Login" placeholder="mot de passe" formControlName="Motdepasse" /><br>
+                <input class="input-Login" placeholder="mot de passe" formControlName="motdepasse" /><br>
             </div>
-            <div class="Message-erreur"
-                *ngIf="compteForm.get('Motdepasse')?.errors && compteForm.get('Motdepasse')?.errors">
+            <div class="message-erreur"
+                *ngIf="compteForm.get('motdepasse')?.errors && compteForm.get('motdepasse')?.errors">
                 Tapez votre mot de passe sinon...<br>
                 <br>
             </div>
 
-            <div class="Message-erreur"
-                *ngIf="compteForm.get('Motdepasse')?.errors?.['Motdepasse'] && compteForm.get('Motdepasse')?.errors">
+            <div class="message-erreur"
+                *ngIf="compteForm.get('motdepasse')?.errors?.['motdepasse'] && compteForm.get('motdepasse')?.errors">
                 <br>
                 La prochaine faute je te bloque !<br>
                 <br>
