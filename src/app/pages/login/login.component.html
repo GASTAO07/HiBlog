@@ -73,16 +73,23 @@
  -->
 
     <div class="form-horizontal">
-        <button class="button-success" (click)="onContinue()">
-            Submit
-        </button>
 
         <div class="form-group">
-            <label for="inputemail">email</label>
-            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" name="email" placeholder="email">
-        
+            <label for="inputemail">Email : </label>
+            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" name="email" placeholder="Email">
         </div>
-           {{loginmodel.email}}
+
+        <div class="form-group">
+            <label for="inputmotdepasse">Mot de passe : </label>
+            <input type="motdepasse" [(ngModel)]="loginmodel.motdepasse.pwd" name="pwd" placeholder="Mot de passe">
+        </div>
+
+    
+        <button class="button-success" (click)="onContinue()"
+            [disabled]="!(loginmodel.motdepasse.pwd && loginmodel.email)">
+            <!-- <button class="button-success" ng-click="loginmodel.$valid && onContinue()" [disabled]="true">Contin -->
+            Submit
+        </button>
 
     </div>
 
