@@ -1,4 +1,5 @@
 export class LoginModel {
+    [x: string]: any;
     static addEventListener(arg0: string, onContinue: any) {
       throw new Error('Method not implemented.');
     }

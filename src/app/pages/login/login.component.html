@@ -76,21 +76,24 @@
 
         <div class="form-group">
             <label for="inputemail">Email : </label>
-            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" name="email" placeholder="Email">
+            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" onclick="controle()" name="email"
+                placeholder="Email">
         </div>
 
         <div class="form-group">
             <label for="inputmotdepasse">Mot de passe : </label>
-            <input type="motdepasse" [(ngModel)]="loginmodel.motdepasse.pwd" name="pwd" placeholder="Mot de passe">
+            <input type="motdepasse" [(ngModel)]="loginmodel.motdepasse.pwd" onclick="controle()" name="pwd"
+                placeholder="Mot de passe">
         </div>
 
-    
-        <button class="button-success" (click)="onContinue()"
+
+        <!-- <button class="button-success" (click)="onContinue()"
             [disabled]="!(loginmodel.motdepasse.pwd && loginmodel.email)">
-            <!-- <button class="button-success" ng-click="loginmodel.$valid && onContinue()" [disabled]="true">Contin -->
+             <button class="button-success" ng-click="loginmodel.$valid && onContinue()" [disabled]="true">Contin
             Submit
+        </button> -->
+
+        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Button
         </button>
 
-    </div>
-
-</div>
+    </div> 
