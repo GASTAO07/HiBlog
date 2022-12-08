@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { LoginModel } from 'src/app/models/LoginModel';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-login',
@@ -39,14 +40,11 @@ export class LoginComponent implements OnInit {
 
     // this.loginmodel = new LoginModel{}
   }
-
-
   controle(): void {
+    console.log('ici controle()', this.loginmodel.email, this.loginmodel.motdepasse);
     if (!this.loginmodel.motdepasse.pwd || !this.loginmodel.email) {
       this.isDisabled = true;
-    }
-    else (this.loginmodel.motdepasse.pwd && this.loginmodel.email)
-    {
+    } else {
       this.isDisabled = false;
     }
   }
@@ -59,7 +57,7 @@ export class LoginComponent implements OnInit {
   onContinue(): void {
     this.auth.login();
     this.router.navigateByUrl('pageblog');
-    }
+  }
 
   CreerUncompte(): void {
     this.router.navigateByUrl('CreerUncompte');

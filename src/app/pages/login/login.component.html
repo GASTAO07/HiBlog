@@ -1,5 +1,6 @@
 <div class="Contenu-login">
 
+
     <!-- 2
     <form class="form-horizontal" #signupForm="ngForm">
     </form>
@@ -74,19 +75,43 @@
 
     <div class="form-horizontal">
 
+
         <div class="form-group">
             <label for="inputemail">Email : </label>
-            <input type="text" [(ngModel)]="loginmodel.email" id="inputemail" onclick="controle()" name="email"
+
+            <!-- <input type="text" (ngModelChange)="controle()" [(ngModel)]="loginmodel.email" id="inputemail"
+                name="email" placeholder="Email"> -->
+
+            <input type="text" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
                 placeholder="Email">
+
+            <!-- combiner l'évènement de changement du model avec la variable du model. -->
+
+            <!-- <input type="text" (ngModelChange)="loginmodel.email = $event" [ngModel]="loginmodel.email" id="inputemail" name="email"
+                placeholder="Email"> -->
+            <!-- 
+            <input type="text" (input)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
+                placeholder="Email"> -->
         </div>
 
         <div class="form-group">
             <label for="inputmotdepasse">Mot de passe : </label>
-            <input type="motdepasse" [(ngModel)]="loginmodel.motdepasse.pwd" onclick="controle()" name="pwd"
-                placeholder="Mot de passe">
+<!-- 
+            Le (change)="changeFn($) » se déclenche après que la valeur liée à [(ngModel)] a changé
+            (ngModelChange)="modelChangeFn($event) » se déclenche avant que la valeur liée à [(ngModel)] n’ait changé. -->
+             
+            <!-- <input type="text" (ngModelChange)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse" name="pwd"
+                placeholder="Mot de passe"> -->
+
+            <input type="text" (change)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
+                name="pwd" placeholder="Mot de passe">
+
+            <!-- <input type="text" (ngModelChange)="loginmodel.motdepasse.pwd = $event" [ngModel]="loginmodel.motdepasse.pwd"
+                name="pwd" placeholder="Mot de passe"> -->
+            <!-- 
+            <input type="motdepasse" (input)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd"
+                click="controle()" name="pwd" placeholder="Mot de passe"> -->
         </div>
-
-
         <!-- <button class="button-success" (click)="onContinue()"
             [disabled]="!(loginmodel.motdepasse.pwd && loginmodel.email)">
              <button class="button-success" ng-click="loginmodel.$valid && onContinue()" [disabled]="true">Contin
@@ -96,4 +121,4 @@
         <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Button
         </button>
 
-    </div> 
+    </div>
