@@ -82,9 +82,16 @@
             <!-- <input type="text" (ngModelChange)="controle()" [(ngModel)]="loginmodel.email" id="inputemail"
                 name="email" placeholder="Email"> -->
 
-            <input type="text" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
-                placeholder="Email">
+            <input type="email" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
+                placeholder="Email"
+                pattern=".+@capgemini\.com" required
+                size="30"
+               />
 
+                <!-- ngModel pattern="[a-zA-Z ]*" required
+                title="inserez un mail" -->
+                <!-- faire appel à un evenement  -->
+            
             <!-- combiner l'évènement de changement du model avec la variable du model. -->
 
             <!-- <input type="text" (ngModelChange)="loginmodel.email = $event" [ngModel]="loginmodel.email" id="inputemail" name="email"
@@ -103,7 +110,7 @@
             <!-- <input type="text" (ngModelChange)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse" name="pwd"
                 placeholder="Mot de passe"> -->
 
-            <input type="text" (change)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
+            <input type="text"  (change)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
                 name="pwd" placeholder="Mot de passe">
 
             <!-- <input type="text" (ngModelChange)="loginmodel.motdepasse.pwd = $event" [ngModel]="loginmodel.motdepasse.pwd"
@@ -118,7 +125,11 @@
             Submit
         </button> -->
 
-        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Button
+        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer
+        </button>
+        
+
+        <button class="button-success" (click)="CreerUncompte()" >Créer un compte
         </button>
 
     </div>
