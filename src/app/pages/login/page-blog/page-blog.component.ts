@@ -1,4 +1,4 @@
-import { Component,OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-blog',
@@ -7,13 +7,12 @@ import { Component,OnInit, Input } from '@angular/core';
 })
 export class PageBlogComponent implements OnInit{
 
-   btnText : string = 'Enregistrer'; 
+  btnText : string = 'Enregistrer';
 
-constructor(){}
+  constructor() {}
 
-  ngOnInit()
-  {
-    
+  ngOnInit(): void {
+
   }
 
 }

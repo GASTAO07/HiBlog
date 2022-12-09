@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { LoginModel } from 'src/app/models/LoginModel';
-import { __values } from 'tslib';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   loginmodel!: LoginModel;
   isDisabled: boolean = true;
-  loginForm!: FormGroup;
   loginModel: any;
 
 
@@ -34,7 +32,7 @@ export class LoginComponent implements OnInit {
 
     // );
     this.loginmodel = new LoginModel({
-      email: "", motdepasse: { pwd: "" },
+      email: '', motdepasse: { pwd: '' },
       terms: false
     });
 
@@ -50,13 +48,13 @@ export class LoginComponent implements OnInit {
 
     } else {
       this.isDisabled = false;
-      var pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
+      // const pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
     }
   }
 
   submitLogin(): void {
-    debugger; //Pour voire si ça marche
-    var donnesLogin = this.loginForm.getRawValue();
+    // debugger; // Pour voire si ça marche
+    // const donnesLogin = this.loginForm.getRawValue();
   }
 
   onContinue(): void {
@@ -65,21 +63,21 @@ export class LoginComponent implements OnInit {
 
   }
 
-  CreerUncompte(): void {
+  creerUncompte(): void {
     this.router.navigateByUrl('CreerUncompte');
-    sessionStorage.setItem(this.loginmodel.email, this.loginmodel.motdepasse.pwd)
-  
-    getemail() {
-      return sessionStorage.getItem(this.loginmodel.email)
-    }
-  
-    getmotdepasse() {
-      sessionStorage.getItem(this.loginmodel.motdepasse.pwd);
-    }
-  
+    sessionStorage.setItem(this.loginmodel.email, this.loginmodel.motdepasse.pwd);
+
+    // getemail(): void {
+    //   return sessionStorage.getItem(this.loginmodel.email);
+    // }
+
+    // getmotdepasse() {
+    //   sessionStorage.getItem(this.loginmodel.motdepasse.pwd);
+    // }
+
   }
 
-  
+
 
   //   public onSubmit({ value, valid}: { value: LoginModel, valid: boolean }) {
   //     this.loginmodel = value;

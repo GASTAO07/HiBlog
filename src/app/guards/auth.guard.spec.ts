@@ -2,15 +2,15 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthGuard } from './auth.guard';
 
-describe('AuthGuard', () => {
+describe('AuthGuard', (): void => {
   let guard: AuthGuard;
 
-  beforeEach(() => {
+  beforeEach((): void => {
     TestBed.configureTestingModule({});
     guard = TestBed.inject(AuthGuard);
   });
 
-  it('should be created', () => {
+  it('should be created', (): void => {
     expect(guard).toBeTruthy();
   });
 });

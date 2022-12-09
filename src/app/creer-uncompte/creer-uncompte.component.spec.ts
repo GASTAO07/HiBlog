@@ -2,22 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreerUncompteComponent } from './creer-uncompte.component';
 
-describe('CreerUncompteComponent', () => {
+describe('CreerUncompteComponent', (): void => {
   let component: CreerUncompteComponent;
   let fixture: ComponentFixture<CreerUncompteComponent>;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       declarations: [ CreerUncompteComponent ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CreerUncompteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });
