@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from "../pages/login/LoginComponent";
 import { AuthRoutingModule } from './auth-routing.module';
 
 
