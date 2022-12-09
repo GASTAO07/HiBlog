@@ -1,0 +1,179 @@
+// - See https://eslint.org/docs/rules/ for more rules
+
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "overrides": [
+      {
+        "files": ["*.ts"],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "project": ["tsconfig.json", "e2e/tsconfig.json"],
+          "createDefaultProgram": true
+        },
+        "plugins": [
+          "@angular-eslint/eslint-plugin",
+          "@typescript-eslint",
+          "@typescript-eslint/tslint"
+        ],
+        "rules": {
+          "@angular-eslint/component-class-suffix": [                 // Classes decorated with @Component must have suffix “Component” (or custom) in their name
+            "error",
+            {
+              "suffixes": [
+                "Page",
+                "Component"
+              ]
+            }
+          ],
+          "@typescript-eslint/consistent-type-definitions": "error",
+          "@typescript-eslint/explicit-function-return-type": [       // Requires explicit return types on functions and class methods.
+            "error",
+            {
+              "allowExpressions": false,
+              "allowTypedFunctionExpressions": false,
+              "allowHigherOrderFunctions": false,
+              "allowDirectConstAssertionInArrowFunctions": true,
+              "allowConciseArrowFunctionExpressionsStartingWithVoid": true
+            }
+          ],
+          "@typescript-eslint/explicit-member-accessibility": [       // Require explicit visibility declarations for class members
+            "error",
+            {
+              "accessibility": "no-public"                            // - Forbid public accessibility to be specified, because this is the default
+            }
+          ],
+          "@typescript-eslint/member-delimiter-style": [              // Require a specific member delimiter style for interfaces and type literals
+            "error",
+            {
+              "multiline": {
+                "delimiter": "comma",
+                "requireLast": true
+              },
+              "singleline": {
+                "delimiter": "comma",
+                "requireLast": false
+              }
+            }
+          ],
+          "@typescript-eslint/naming-convention": [                   // Enforce naming conventions for everything across a codebase
+            "error",
+            { "selector": "variable", "format": ["camelCase", "UPPER_CASE"] },
+            { "selector": "function", "format": ["camelCase"] },
+            { "selector": "parameter", "format": ["camelCase"] },
+            { "selector": "classMethod", "format": ["camelCase"] },
+            { "selector": "typeMethod", "format": ["camelCase"] },
+            { "selector": "class", "format": ["PascalCase"] },
+            { "selector": "interface", "format": ["PascalCase"] },
+            { "selector": "enum", "format": ["UPPER_CASE"] }
+          ],
+          "@typescript-eslint/no-inferrable-types": [                 // Disallow explicit type declarations for variables or parameters initialized to a number, string, or boolean
+            "error",
+            {
+              "ignoreParameters": true,
+              "ignoreProperties": true
+            }
+          ],
+          "@typescript-eslint/no-non-null-assertion": "error",        // Disallow non-null assertions using the ! postfix operator
+          "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error", // Disallow unnecessary equality comparisons against boolean literals
+          "@typescript-eslint/typedef": [                             // Require type annotations in certain places
+            "error",
+            {
+              "parameter": true,
+              "arrowParameter": true,
+              "propertyDeclaration": true,
+              "memberVariableDeclaration": true
+            }
+          ],
+          "@typescript-eslint/unified-signatures": "error",
+          "arrow-body-style": ["error", "as-needed"],                 // Require braces around arrow function bodies
+          "brace-style": [                                            // Enforce consistent brace style for blocks
+            "error",
+            "1tbs",
+            { "allowSingleLine": true
+          }],
+          "comma-style": ["error", "last"],                           // Enforce consistent comma style
+          "constructor-super": "error",                               // Require `super()` calls in constructors
+          "curly": "error",                                           // Require following curly brace conventions
+          "dot-notation": "error",                                    // Enforce dot notation whenever possible
+          "eol-last": "error",                                        // Require newline at the end of files
+          "eqeqeq": ["error", "smart"],                               // Require the use of `===` and `!==`
+          "indent": ["error", 2],                                     // Enforce consistent indentation
+          "max-len": [                                                // Enforce a maximum line length
+            "error",
+            {
+              "code": 300
+            }
+          ],
+          "no-bitwise": "error",                                      // Disallow bitwise operators
+          "no-debugger": "error",                                     // Disallow the use of `debugger`
+          "no-dupe-args": "error",                                    // Disallow duplicate arguments in `function` definitions
+          "no-dupe-class-members": "error",                           // Disallow duplicate class members
+          "no-dupe-else-if": "error",                                 // Disallow duplicate conditions in if-else-if chains
+          "no-dupe-keys": "error",                                    // Disallow duplicate keys in object literals
+          "no-duplicate-case": "error",                               // Disallow duplicate case labels
+          "no-duplicate-imports": "error",                            // Disallow duplicate module imports
+          "no-empty": "error",                                        // Disallow empty block statements
+          "no-eval": "error",                                         // Disallow the use of `eval()`
+          "no-extra-semi": "error",                                   // Disallow unnecessary semicolons
+          "no-fallthrough": "error",                                  // Disallow fallthrough of `case` statements
+          "no-irregular-whitespace": "error",                         // Disallow irregular whitespace
+          "no-new-wrappers": "error",                                 // Disallow `new` operators with the `String`, `Number`, and `Boolean` objects
+          "no-redeclare": "error",                                    // Disallow variable redeclaration
+          "no-restricted-imports": ["error", "rxjs/Rx"],              // Disallow specified modules when loaded by `import`
+          "no-throw-literal": "error",                                // Disallow throwing literals as exceptions
+          "no-trailing-spaces": "error",                              // Disallow trailing whitespace at the end of lines
+          "no-undef-init": "error",                                   // Disallow initializing variables to undefined
+          "no-unsafe-finally": "error",                               // Disallow control flow statements in `finally` blocks
+          "no-unused-expressions": [                                  // Disallow unused expressions
+            "warn",
+            {
+              "allowTernary": true
+            }
+          ],
+          "no-unused-labels": "warn",                                 // Disallow unused labels
+          "no-unused-vars": "warn",                                   // Disallow unused variables
+          "no-use-before-define": "error",                            // Disallow the use of variables before they are defined
+          "no-var": "error",                                          // Require `let` or `const` instead of `var`
+          "prefer-const": "error",                                    // Require `const` declarations for variables that are never reassigned after declared
+          "quotes": ["error", "single"],                              // Enforce the consistent use of either backticks, double, or single quotes
+          "radix": "error",                                           // Enforce the consistent use of the radix argument when using `parseInt()`
+          "semi": "error",                                            // Enforce consistent semicolon usage at the end of every statement
+          "spaced-comment": [                                         // Enforce consistent spacing after the `//` or `/*` in a comment
+            "error",
+            "always",
+            {
+              "markers": ["/"],
+              "exceptions": ["*"]
+            }
+          ],
+          "@typescript-eslint/tslint/config": [
+            "error",
+            {
+              "rules": {
+                "import-spacing": true,
+                "whitespace": [
+                  true,
+                  "check-branch",                                     // - Check branching statements (if/else/for/while) are followed by whitespace
+                  "check-decl",                                       // - Check that variable declarations have whitespace around the equals token
+                  "check-operator",                                   // - Check for whitespace around operator tokens
+                  "check-module",                                     // - Check for whitespace in import & export statements
+                  "check-separator",                                  // - Check for whitespace after separator tokens (,/;).
+                  "check-type",                                       // - Check for whitespace before a variable type specification
+                  "check-type-operator",                              // - Check for whitespace between type operators | and &
+                  "check-preblock",                                   // - Check for whitespace before the opening brace of a block
+                  "check-typecast"                                    // - Check for whitespace after an opening brace
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "files": ["*.html"],
+        "extends": ["plugin:@angular-eslint/template/recommended"],
+        "rules": {}
+      }
+    ]
+}
+  
