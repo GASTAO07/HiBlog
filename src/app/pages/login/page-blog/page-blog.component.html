@@ -1,7 +1,9 @@
+<div *ngIf="isLoggedIn()"> Vous êtes connecté!</div>
 <h2 class="Creerunblog">Créer votre blog</h2>
 <div class="general">
 
     <form class="contenu-form">
+
         <div class="form-group">
             <label class="tit" for="title">Titre du blog <br></label>
             <input type="text" placeholder="Un texte" required><br>
@@ -17,8 +19,8 @@
         <!-- <button type="submit">btnText</button> -->
 
         <button type="submit">{{btnText}}</button>
-        
+        <button (click)="logout()">Logout</button>
         <!--<button type ="subtnbmit" (click)="creeruncompte()">Créer un compte</button>-->
     </form>
-    
+
 </div>
