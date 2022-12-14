@@ -110,8 +110,8 @@
             <!-- <input type="text" (ngModelChange)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse" name="pwd"
                 placeholder="Mot de passe"> -->
 
-            <input type="text"  (change)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
-                name="pwd" placeholder="Mot de passe">
+            <input type="password"  (keyup)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
+                name="password" placeholder="Mot de passe">
 
             <!-- <input type="text" (ngModelChange)="loginmodel.motdepasse.pwd = $event" [ngModel]="loginmodel.motdepasse.pwd"
                 name="pwd" placeholder="Mot de passe"> -->
@@ -131,5 +131,7 @@
 
         <button class="button-success" (click)="creerUncompte()" >Créer un compte
         </button>
+
+        
 
     </div>
