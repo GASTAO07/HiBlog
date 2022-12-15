@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   loginmodel: LoginModel;
   isDisabled: boolean = true;
   loginModel: any;
-  emailPattern: any;
+  emailPattern: any = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  passwordPattern : any = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
   constructor(
         private formBuilder: FormBuilder,
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
         private auth: AuthService) { }
 
   ngOnInit(): void {
+
     // this.loginForm = this.formBuilder.group(
     //   {
     //     email: ['', [Validators.required, Validators.email]],
@@ -40,24 +42,29 @@ export class LoginComponent implements OnInit {
 
   controle(): void {
 
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+    // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    // const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
     console.log('ici controle()', this.loginmodel.email, this.loginmodel.motdepasse);
 
     // if (!emailPattern.test(this.loginmodel.email) || !passwordPattern.test(this.loginmodel.motdepasse.pwd)) {
-    if ((!emailPattern.test(this.loginmodel.email) || !passwordPattern.test(this.loginmodel.motdepasse.pwd))) {
+    // if ((!emailPattern.test(this.loginmodel.email) || !passwordPattern.test(this.loginmodel.motdepasse.pwd))) {
+    //   this.isDisabled = true;
+    // } else {
+    //   this.isDisabled = false;
+    //   // const pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
+    // }}
+    if (!this.emailPattern.test(this.loginmodel.email) || !this.passwordPattern.test(this.loginmodel.motdepasse.pwd)) {
       this.isDisabled = true;
     } else {
       this.isDisabled = false;
-      // const pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
     }
   }
 
-  submitLogin(): void {
-    // debugger; // Pour voire si ça marche
-    // const donnesLogin = this.loginForm.getRawValue();
-  }
+  // submitLogin(): void {
+  //   // debugger; // Pour voire si ça marche
+  //   // const donnesLogin = this.loginForm.getRawValue();
+  // }
 
   onContinue(): void {
     if (this.isDisabled) {
@@ -88,9 +95,8 @@ export class LoginComponent implements OnInit {
   getemail(): string {
     return sessionStorage.getItem(this.loginmodel.email);
   }
-
-  getmotdepasse(): void {
-    sessionStorage.getItem(this.loginmodel.motdepasse.pwd);
+  getmotdepasse(): string {
+    return sessionStorage.getItem(this.loginmodel.motdepasse.pwd);
   }
 }
 

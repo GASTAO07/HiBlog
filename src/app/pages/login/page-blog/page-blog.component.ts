@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth-service/auth.service';
 
 @Component({
   selector: 'app-page-blog',
@@ -8,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class PageBlogComponent implements OnInit{
 
   btnText : string = 'Enregistrer';
-  router: any;
 
-  constructor() {}
-
+  constructor(
+    private router: Router,
+    private auth: AuthService) { }
   ngOnInit(): void {
 
   }
