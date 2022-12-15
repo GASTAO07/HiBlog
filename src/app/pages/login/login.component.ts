@@ -12,9 +12,11 @@ import { TableauEmailPasswordService } from 'src/app/service/tableau-email-passw
 })
 
 export class LoginComponent implements OnInit {
+  // Définition des variables
   isDisabled: boolean = true;
   loginmodel: LoginModel;
 
+  //
   constructor(
     private router: Router,
     private auth: AuthService,
@@ -27,6 +29,13 @@ export class LoginComponent implements OnInit {
       email: '', motdepasse: { pwd: '' },
       terms: false
     });
+    /* --- il s’agit d’une classe qui définit un
+    modèle(voir models) pour les informations d’identification de connexion
+
+    ------ ngOnInit() est appelée automatiquement par Angular
+     lorsque le 'LoginComponentLoginComponent est initialisé et utilisé pour
+     initialiser le 'loginmodelloginmodel
+    */
   }
 
   controle(): void {
@@ -39,6 +48,18 @@ export class LoginComponent implements OnInit {
     } else {
       this.isDisabled = false;
     }
+
+    /*
+    --- la méthode utilise 'loginValidationServiceisDisabled propriété est définie sur true,
+    ce qui désactivera le bouton de connexion dans le LoginComponent modèle.
+    Si l’e-mail et le mot de passe sont valides, le isDisabled La propriété est définie sur 'false’,
+    qui activera le bouton de connexion.
+    */
+
+    /*
+    --- validateEmail() et validatePassword() Deux méthodes utilisées pour vérifier,
+     si l’adresse e-mail et le mot de passe saisis valides.
+     */
   }
 
   onContinue(): void {
@@ -49,6 +70,12 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
     this.router.navigateByUrl('pageblog');
+    // sessionStorage n’est disponible que pour la durée de la session du navigateur (et est supprimé lorsque l’onglet ou la fenêtre est fermée)
+
+    /* Il semble qu’il s’agisse d’une méthode permettant de passer à l’étape suivante d’un processus
+    d’authentification. La méthode vérifie si une certaine condition est remplie (si le isDisabled
+      La propriété est 'vraie'true), et si ce n’est pas le cas, il définit l’état de connexion de
+      l’utilisateur dans le stockage local sur true, appelle le login() méthode de l' auth et accède à la page PageBlog.*/
   }
 
   // Utiliser la méthode pour ajouter une nouvelle paire e-mail / mot de passe lors de la création d’un nouveau ?

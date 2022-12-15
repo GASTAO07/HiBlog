@@ -16,12 +16,21 @@ export class TableauEmailPasswordService {
 
   // Méthode pour récupérer le mot de passe d'un email donné
   getPasswordForEmail(email: string): string | undefined {
+  // renvoyer 'undefinedundefined si aucun mot de passe n’est associé à l’adresse e-mail.
     return this.emailPasswords[email];
+    /* prend une adresse e-mail comme argument et renvoie
+    le mot de passe associé à cette adresse e-mail, s’il exist*/
   }
 
-  // Méthode pour vérifier si un email donné est déjà dans la liste
+  //  vérifier si une adresse e-mail donnée est présente dans le 'emailPasswords objet
   hasEmail(email: string): boolean {
     return this.emailPasswords.hasOwnProperty(email);
+    /*
+    hasOwnProperty() Méthode intégrée d’objets qui retourne une valeur booléenne
+    indiquant si l’objet possède une propriété avec la clé spécifiée.
+
+    il prend la clé (nom de la propriété) comme argument.
+    */
   }
 }
 

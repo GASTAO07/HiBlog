@@ -12,6 +12,10 @@ export class LoginValidationService {
   //  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   //  passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
+  /* prend une chaîne comme argument et retourne une
+  valeur booléenne indiquant si la chaîne est une adresse de messagerie/password
+  valide */
+
   validateEmail(email: string): boolean {
     return this.emailPattern.test(email);
   }
