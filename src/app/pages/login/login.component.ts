@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     //     email: ['', [Validators.required, Validators.email]],
     //     motdepasse: ['', [Validators.required]],
     //   }
-
     // );
     this.loginmodel = new LoginModel({
       email: '', motdepasse: { pwd: '' },
