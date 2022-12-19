@@ -16,7 +16,7 @@ export class TableauEmailPasswordService {
 
   // Méthode pour récupérer le mot de passe d'un email donné
   getPasswordForEmail(email: string): string | undefined {
-  // renvoyer 'undefinedundefined si aucun mot de passe n’est associé à l’adresse e-mail.
+  // renvoyer 'undefined si aucun mot de passe n’est associé à l’adresse e-mail.
     return this.emailPasswords[email];
     /* prend une adresse e-mail comme argument et renvoie
     le mot de passe associé à cette adresse e-mail, s’il exist*/
