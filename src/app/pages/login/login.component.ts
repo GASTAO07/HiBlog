@@ -1,9 +1,9 @@
-import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
+import { LoginValidationService } from 'src/app/service/login-validation/login-validation-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { LoginModel } from 'src/app/models/LoginModel';
-import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password.service';
+import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
 
 @Component({
   selector: 'app-login',

@@ -50,10 +50,10 @@ export class CreerUncompteComponent implements OnInit {
     // const pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
   }
 
-  // submitCompte(): void {
-  //   // debugger; // Pour voire si ça marche
-  //   // const donnesCompte = this.compteForm.getRawValue();
-  // }
+  submitCompte(): void {
+    // debugger; // Pour voire si ça marche
+    // const donnesCompte = this.compteForm.getRawValue();
+  }
 
   enregistrer(): void {
     if (this.creruncomptemodel.motdepasse.pwd === this.creruncomptemodel.motdepasse.confirmPwd) {
