@@ -8,13 +8,15 @@ import { PageBlogComponent } from './pages/login/page-blog/page-blog.component';
 import { CommonModule } from '@angular/common';
 import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { BlogListComponent } from './blog-list-vu/blog-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PageBlogComponent,
-    CreerUncompteComponent
+    CreerUncompteComponent,
+    BlogListComponent
   ],
   imports: [
     BrowserModule,

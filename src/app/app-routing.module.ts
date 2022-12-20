@@ -4,6 +4,7 @@ import { PageBlogComponent } from './pages/login/page-blog/page-blog.component';
 import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { BlogListComponent } from './blog-list-vu/blog-list.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
 
   {
     path: 'auth/login', component: LoginComponent,
+  },
+
+  {
+    path: 'listdeblogs', component: BlogListComponent,
   },
 
   {
