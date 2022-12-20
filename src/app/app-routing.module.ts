@@ -5,6 +5,7 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { BlogListComponent } from './blog-list-vu/blog-list.component';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
 
   {
     path : 'CreerUncompte', component : CreerUncompteComponent
+  },
+
+  { 
+    path: 'edit-blog', component: EditBlogComponent 
   }
 
 ];

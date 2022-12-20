@@ -47,6 +47,7 @@ export class PageBlogComponent implements OnInit{
     }
     // Créer un compte
     this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
+    this.controleblog();
     this.router.navigateByUrl('listdeblogs');
 
   }
