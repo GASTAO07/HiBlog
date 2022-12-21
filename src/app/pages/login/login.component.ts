@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   controle(): void {
-    console.log('ici controle()', this.loginmodel.email, this.loginmodel.motdepasse);
+    console.log('ici controle', this.loginmodel.email, this.loginmodel.motdepasse);
     if (
       !this.loginValidationService.validateEmail(this.loginmodel.email) ||
       !this.loginValidationService.validatePassword(this.loginmodel.motdepasse.pwd)
