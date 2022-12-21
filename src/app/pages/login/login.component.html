@@ -1,6 +1,4 @@
 <div class="Contenu-login">
-
-
     <!-- 2
     <form class="form-horizontal" #signupForm="ngForm">
     </form>
@@ -111,7 +109,7 @@
                 placeholder="Mot de passe"> -->
 
             <input type="password"  (keyup)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
-                name="password" placeholder="Mot de passe">
+                name="password" placeholder="Mot de passe"><br>
 
             <!-- <input type="text" (ngModelChange)="loginmodel.motdepasse.pwd = $event" [ngModel]="loginmodel.motdepasse.pwd"
                 name="pwd" placeholder="Mot de passe"> -->
@@ -125,13 +123,8 @@
             Submit
         </button> -->
 
-        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer
-        </button>
+        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer</button>
         
-
-        <button class="button-success" (click)="creerUncompte()" >Créer un compte
-        </button>
-
-        
+        <button class="button-success" (click)="creerUncompte()" >Créer un compte</button>
 
     </div>
