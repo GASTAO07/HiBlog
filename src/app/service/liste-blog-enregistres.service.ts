@@ -24,7 +24,7 @@ export class ListeBlogEnregistresService {
 
   //  vérifier si une adresse e-mail donnée est présente dans le 'emailPasswords objet
   hasTitre(titre: string): boolean {
-    return this.titreDescription.hasOwnProperty(titre);
+    return this.titreDescription?.hasOwnProperty(titre);
     /*
     hasOwnProperty() Méthode intégrée d’objets qui retourne une valeur booléenne
     indiquant si l’objet possède une propriété avec la clé spécifiée.

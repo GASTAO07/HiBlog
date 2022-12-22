@@ -27,10 +27,7 @@
         <textarea id="blogdescription" (change)="controleblog()" [(ngModel)]="blogmodel.blog.description" name="blogdescription " rows="5" placeholder="Hm de quoi voulez-vous nous parler !"
             cols="33"></textarea><br>
 
-        <!-- <button class="button-success" (click)="enregistrer()" [disabled]="isValid">Enregistrer
-    </button> -->
-
-    <button class="button-success" (click)="creerUnblog()" >Enregistrer
+        <button class="button-success" (click)="creerUnblog()">Enregistrer
     </button>
 
     <button (click)="logout()">Logout</button>

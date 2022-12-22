@@ -12,7 +12,6 @@ import { ListeBlogEnregistresService } from 'src/app/service/liste-blog-enregist
 export class PageBlogComponent implements OnInit{
   blogmodel: BlogModel;
   isValidBlog: boolean = true;
-  btnText : string = 'Enregistrer';
 
   constructor(
     private router: Router,
