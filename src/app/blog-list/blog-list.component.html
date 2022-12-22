@@ -1,0 +1,22 @@
+<div class="blog-list">
+  <h1>Blog List</h1>
+  <ul>
+    <li *ngFor="let blog of blogs | keyvalue">
+      <h2>{{ blog.key }}</h2>
+      <p>{{ blog.value }}</p>
+      <button (click)="editBlog(blog.key)">Edit Blog</button>
+    </li>
+  </ul>
+</div>
+
+  <!-- <div class="blog-list">
+    <h1>Blog List</h1>
+    <ul>
+      <li *ngFor="let titre of Object.keys(blogs)">
+        <h2>{{ titre }}</h2>
+        <p>{{ blogs[titre] }}</p>
+        <button (click)="editBlog(titre)">Edit Blog</button>
+      </li>
+    </ul>
+  </div> -->
+  
