@@ -49,7 +49,6 @@ export class PageBlogComponent implements OnInit{
     this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
     this.controleblog();
     this.router.navigateByUrl('listdeblogs');
-
   }
 
   // Récup les infos du compte

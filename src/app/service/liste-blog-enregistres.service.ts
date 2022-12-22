@@ -5,13 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class ListeBlogEnregistresService {
   // Objet pour stocker les paires titre/description
-  private titreDescription: { [titre: string]: string } = {};
+  titreDescription: { [titre: string]: string } = {};
 
   constructor() {}
   // Méthode pour ajouter une nouvelle paire titre/description
   addETitreDescription(titre: string, description: string): void {
     this.titreDescription[titre] = description;
-    console.log('yoooooooo', this.titreDescription);
+    console.log('addETitreDescription', this.titreDescription);
   }
 
   // Méthode pour récupérer description d'un titre
