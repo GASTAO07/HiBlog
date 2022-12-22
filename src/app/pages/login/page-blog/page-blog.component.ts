@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { BlogModel } from 'src/app/models/BlogModel';
-import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from 'src/app/service/liste-blog-enregistres.service';
 
 @Component({
   selector: 'app-page-blog',
