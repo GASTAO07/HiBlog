@@ -18,6 +18,9 @@ export class BlogListComponent implements OnInit{
     private reeditService: ReeditService) {}
 
   ngOnInit(): void {
+  }
+
+  refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 

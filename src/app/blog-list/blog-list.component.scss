@@ -1,0 +1,43 @@
+/* Add some basic styling to the component */
+.blog-list {
+    margin: 20px;
+  }
+  
+  .blog-list h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .blog-list li {
+    margin-bottom: 10px;
+  }
+  
+  .blog-list h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .blog-list p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .blog-list button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  .blog-list button:hover {
+    background-color: #4caf50;
+  }
+  
