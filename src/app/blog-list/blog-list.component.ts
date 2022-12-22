@@ -29,4 +29,9 @@ export class BlogListComponent implements OnInit{
     const newDescription = prompt('Enter the new description for this blog:', currentDescription);
     this.reeditService.setTitreDescription(titre, newDescription);
   }
+
+  addNewBlog(): void {
+    this.router.navigate(['pageblog']);
+  }
+
 }

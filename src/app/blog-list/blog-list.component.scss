@@ -1,43 +1,58 @@
-/* Add some basic styling to the component */
 .blog-list {
-    margin: 20px;
-  }
-  
-  .blog-list h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .blog-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .blog-list li {
-    margin-bottom: 10px;
-  }
-  
-  .blog-list h2 {
-    font-size: 18px;
-    margin: 0;
-  }
-  
-  .blog-list p {
-    font-size: 14px;
-    margin: 0;
-  }
-  
-  .blog-list button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  
-  .blog-list button:hover {
-    background-color: #4caf50;
-  }
-  
+  width: 80%;
+  margin: 0 auto;
+}
+
+.blog-list h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.blog-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-list li {
+  margin-bottom: 1em;
+}
+
+.blog-list li h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.blog-list li p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.blog-list li button {
+  padding: 0.5em 1em;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.blog-list li button:hover {
+  background-color: #555;
+}
+
+button {
+  display: block;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  margin: 2em auto;
+  padding: 1em 2em;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: #555;
+}
