@@ -9,7 +9,7 @@ import { ReeditService } from '../service/reedit-blog/reedit.service';
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.scss']
 })
-export class BlogListComponent implements OnInit{
+export class BlogListComponent implements OnInit {
   blogs: { [titre: string]: string };
   declare Object: any;
   editTitre: string;
@@ -17,65 +17,59 @@ export class BlogListComponent implements OnInit{
 
   constructor(private router: Router,
     private auth: AuthService,
-    private listeBlogEnregistresService : ListeBlogEnregistresService,
-    private reeditService: ReeditService) {}
+    private listeBlogEnregistresService: ListeBlogEnregistresService,
+    private reeditService: ReeditService) { }
 
   ngOnInit(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  // refreshBlogs(): void {
-  //   this.blogs = this.listeBlogEnregistresService.titreDescription;
-  // }
-
-  // editBlog(titre: string): void {
-  //   const currentDescription = this.reeditService.getTitreDescription(titre);
-  //   const newDescription = prompt('Enter the new description for this blog:', currentDescription);
-  //   this.reeditService.setTitreDescription(titre, newDescription);
-  // }
   addNewBlog(): void {
     this.router.navigate(['pageblog']);
   }
 
-  // editBlog(titre: string): void {
-  //   this.editTitre = titre;
-  //   this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
-  // }
-
-  editBlog(titre : string) : void {
+  editBlog(titre: string): void {
     // Définissez les variables editTitre et editDescription avec le titre et la description actuels.
-    this.editTitre = titre ;
-    this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre) ;
+    this.editTitre = titre;
+    this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
 
     // Affiche le formulaire pour permettre à l'utilisateur de saisir le nouveau titre et la nouvelle description.
-    document.getElementById('edit-form').style.display = 'block' ;
+    document.getElementById('edit-form').style.display = 'block';
   }
 
   // Méthode pour soumettre le nouveau titre et la nouvelle description
-  submitEdit() : void {
+  submitEdit(): void {
     // Mise à jour du titre et de la description dans la liste des blogs
-    this.listeBlogEnregistresService.addETitreDescription(this.editTitre, this.editDescription) ;
+    this.listeBlogEnregistresService.addETitreDescription(this.editTitre, this.editDescription);
 
     // Efface le formulaire et le cache
-    this.editTitre = '' ;
-    this.editDescription = '' ;
-    document.getElementById('edit-form').style.display = 'none' ;
+    this.editTitre = '';
+    this.editDescription = '';
+    document.getElementById('edit-form').style.display = 'none';
 
     // Rafraîchir la liste des blogs
-    this.refreshBlogs() ;
+    this.refreshBlogs();
   }
 
-  // Méthode pour annuler l'édition et masquer le formulaire
-  cancelEdit() : void {
-    this.editTitre = '' ;
-    this.editDescription = '' ;
-    document.getElementById('edit-form').style.display = 'none' ;
+  // Méthode pour annuler l'édition et masquer
+  // Afficher l’élément avec un ID de « edit-form » en définissant son style sur .displayblock
+  cancelEdit(): void {
+    this.editTitre = '';
+    this.editDescription = '';
+    document.getElementById('edit-form').style.display = 'none';
+    /* La fonction permet de rechercher un élément avec l’ID spécifié dans le document HTML.
+    Dans ce cas, l’ID est « edit-form ».document.getElementById
+    Une fois l’élément trouvé, sa propriété est accessible, ce qui représente le style en ligne de l’élément.style
+       La propriété du style de l’élément est alors définie, ce qui masque l’élément.display none
+*/
   }
 
-  refreshBlogs() : void {
-    this.blogs = this.listeBlogEnregistresService.titreDescription ;
+  // Rafraichissement d'un blog
+  refreshBlogs(): void {
+    this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
+  // Effacer un blog
   deleteBlog(titre: string): void {
     this.listeBlogEnregistresService.deleteBlog(titre);
     this.refreshBlogs();
