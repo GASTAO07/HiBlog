@@ -4,23 +4,23 @@
     <li *ngFor="let blog of blogs | keyvalue">
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
-      <button (click)="editBlog(blog.key)">Edit Blog</button>
-      <button (click)="deleteBlog(blog.key)">Delete Blog</button>
+      <button (click)="editBlog(blog.key)">Editer le Blog</button>
+      <button (click)="deleteBlog(blog.key)">Effacer le Blog</button>
     </li>
   </ul>
-  <button (click)="addNewBlog()">Add New Blog</button>
+  <button (click)="addNewBlog()">Ajouter un Blog</button>
 </div>
 
 <!-- editer le blog -->
 <form id="edit-form" style="display:none;">
 
   <label for="edit-titre">Titre:</label><br>
-  <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre"><br>
+  <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre">
 
   <label for="edit-description">Description:</label><br>
-  <textarea id="edit-description" [(ngModel)]="editDescription" name="editDescription"></textarea><br>
+  <textarea id="edit-description" [(ngModel)]="editDescription" name="editDescription"></textarea>
 
-  <button (click)="submitEdit()">Submit</button>
-  <button (click)="cancelEdit()">Cancel
+  <button (click)="submitEdit()">Modifier</button>
+  <button (click)="cancelEdit()">Annuler</button>
 
   <button (click)="refreshBlogs()">Refresh</button>

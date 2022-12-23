@@ -24,9 +24,7 @@ export class BlogListComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  addNewBlog(): void {
-    this.router.navigate(['pageblog']);
-  }
+  // Methodes
 
   editBlog(titre: string): void {
     // Définissez les variables editTitre et editDescription avec le titre et la description actuels.
@@ -36,6 +34,8 @@ export class BlogListComponent implements OnInit {
     // Affiche le formulaire pour permettre à l'utilisateur de saisir le nouveau titre et la nouvelle description.
     document.getElementById('edit-form').style.display = 'block';
   }
+
+  // ------------------------------------------------------------------------------------
 
   // Méthode pour soumettre le nouveau titre et la nouvelle description
   submitEdit(): void {
@@ -51,6 +51,8 @@ export class BlogListComponent implements OnInit {
     this.refreshBlogs();
   }
 
+  // ------------------------------------------------------------------------------------
+
   // Méthode pour annuler l'édition et masquer
   // Afficher l’élément avec un ID de « edit-form » en définissant son style sur .displayblock
   cancelEdit(): void {
@@ -64,14 +66,24 @@ export class BlogListComponent implements OnInit {
 */
   }
 
+  // ------------------------------------------------------------------------------------
+
   // Rafraichissement d'un blog
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
+  // ------------------------------------------------------------------------------------
+
   // Effacer un blog
   deleteBlog(titre: string): void {
     this.listeBlogEnregistresService.deleteBlog(titre);
     this.refreshBlogs();
+  }
+
+  // ------------------------------------------------------------------------------------
+
+  addNewBlog(): void {
+    this.router.navigate(['pageblog']);
   }
 }

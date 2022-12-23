@@ -10,6 +10,7 @@ import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-bl
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit{
+// Variables
   blogmodel: BlogModel;
   isValidBlog: boolean = true;
 
@@ -25,6 +26,9 @@ export class PageBlogComponent implements OnInit{
     });
   }
 
+
+  // ------------------------------------------------------------------------------------
+
   controleblog(): void {
     console.log('ici Blog controle()', this.blogmodel.blog.description, this.blogmodel.blog.titre);
     if (!this.blogmodel.blog.description || !this.blogmodel.blog.titre) {
@@ -34,8 +38,9 @@ export class PageBlogComponent implements OnInit{
     } else {
       this.isValidBlog = false;
     }
-    // const pattern = new RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm);
   }
+
+  // ------------------------------------------------------------------------------------
 
   // Utiliser la méthode pour ajouter une nouvelle paire e-mail / mot de passe lors de la création d’un nouveau ?
   creerUnblog(): void {
@@ -50,6 +55,8 @@ export class PageBlogComponent implements OnInit{
     this.router.navigateByUrl('listdeblogs');
   }
 
+  // ------------------------------------------------------------------------------------
+
   // Récup les infos du compte
   gettitre(): string {
     return sessionStorage.getItem(this.blogmodel.blog.titre);
@@ -57,11 +64,16 @@ export class PageBlogComponent implements OnInit{
   getdescription(): string {
     return sessionStorage.getItem(this.blogmodel.blog.description);
   }
+
+  // ------------------------------------------------------------------------------------
+
   // voir si l'utilisateur est logged
   // isLoggedInPageblogComponent qui vérifie si l’état de connexion de l’utilisateur est 'true. Si l’utilisateur est connecté, la méthode renvoie 'truetrue, sinon il retourne 'false
   isLoggedIn(): boolean {
     return localStorage.getItem('isLoggedIn') === 'true';
   }
+
+  // ------------------------------------------------------------------------------------
 
   logout(): void {
     localStorage.setItem('isLoggedIn', 'false');

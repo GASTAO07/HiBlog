@@ -8,11 +8,16 @@ export class ListeBlogEnregistresService {
   titreDescription: { [titre: string]: string } = {};
 
   constructor() {}
+
+  // ------------------------------------------------------------------------------------
+
   // Méthode pour ajouter une nouvelle paire titre/description
   addETitreDescription(titre: string, description: string): void {
     this.titreDescription[titre] = description;
     console.log('addETitreDescription', this.titreDescription);
   }
+
+  // ------------------------------------------------------------------------------------
 
   // Méthode pour récupérer description d'un titre
   getTitreDescription(titre: string): string | undefined {
@@ -21,6 +26,8 @@ export class ListeBlogEnregistresService {
     /* prend une adresse e-mail comme argument et renvoie
       le mot de passe associé à cette adresse e-mail, s’il exist*/
   }
+
+  // ------------------------------------------------------------------------------------
 
   //  vérifier si une adresse e-mail donnée est présente dans le 'emailPasswords objet
   hasTitre(titre: string): boolean {
@@ -32,6 +39,8 @@ export class ListeBlogEnregistresService {
     il prend la clé (nom de la propriété) comme argument.
     */
   }
+
+  // ------------------------------------------------------------------------------------
 
   deleteBlog(titre: string): void {
     delete this.titreDescription[titre];

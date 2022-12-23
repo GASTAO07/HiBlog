@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
-// import { EditBlogComponent } from './edit-blog/edit-blog.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +16,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     LoginComponent,
     PageBlogComponent,
     CreerUncompteComponent,
-    BlogListComponent,
-    // EditBlogComponent
+    BlogListComponent
   ],
   imports: [
     BrowserModule,

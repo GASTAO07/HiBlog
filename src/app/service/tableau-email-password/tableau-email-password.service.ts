@@ -8,11 +8,17 @@ export class TableauEmailPasswordService {
   private emailPasswords: { [email: string]: string } = {};
 
   constructor() {}
+
+
+  // ------------------------------------------------------------------------------------
+
   // Méthode pour ajouter une nouvelle paire email/mot de passe
   addEmailPassword(email: string, password: string): void {
     this.emailPasswords[email] = password;
     console.log('yoooooooo', this.emailPasswords);
   }
+
+  // ------------------------------------------------------------------------------------
 
   // Méthode pour récupérer le mot de passe d'un email donné
   getPasswordForEmail(email: string): string | undefined {
@@ -21,6 +27,8 @@ export class TableauEmailPasswordService {
     /* prend une adresse e-mail comme argument et renvoie
     le mot de passe associé à cette adresse e-mail, s’il exist*/
   }
+
+  // ------------------------------------------------------------------------------------
 
   //  vérifier si une adresse e-mail donnée est présente dans le 'emailPasswords objet
   hasEmail(email: string): boolean {
