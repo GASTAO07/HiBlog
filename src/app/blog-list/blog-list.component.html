@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
   .blog-box {
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
 </div>
 <button (click)="addNewBlog()">Add New Blog</button>
 
-<!-- <div class="blog-list">
+ <div class="blog-list">
   <h1>Blog List</h1>
   <ul>
     <li *ngFor="let blog of blogs | keyvalue">
@@ -33,4 +33,26 @@
     <button (click)="refreshBlogs()">Refresh</button>
   </ul>
 </div>
-<button (click)="addNewBlog()">Add New Blog</button> -->
+<button (click)="addNewBlog()">Add New Blog</button> --> 
+
+<div class="blog-list">
+  <h1>Blog List</h1>
+  <ul>
+    <li *ngFor="let blog of blogs | keyvalue">
+      <h2>{{ blog.key }}</h2>
+      <p>{{ blog.value }}</p>
+      <button (click)="editBlog(blog.key)">Edit Blog</button>
+      <button (click)="deleteBlog(blog.key)">Delete Blog</button>
+    </li>
+  </ul>
+</div>
+
+<!-- Form for editing a blog -->
+<form id="edit-form" style="display:none;">
+  <label for="edit-titre">Titre:</label><br>
+  <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre"><br>
+  <label for="edit-description">Description:</label><br>
+  <textarea id="edit-description" [(ngModel)]="editDescription" name="editDescription"></textarea><br>
+  <button (click)="submitEdit()">Submit</button>
+  <button (click)="cancelEdit()">Cancel
+
