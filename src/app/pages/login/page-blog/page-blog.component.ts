@@ -28,7 +28,6 @@ export class PageBlogComponent implements OnInit{
     });
   }
 
-
   // ------------------------------------------------------------------------------------
 
   controleblog(): void {
@@ -51,7 +50,7 @@ export class PageBlogComponent implements OnInit{
       alert('Désolé, Ce titre exite déjà !');
       return;
     }
-    // Créer un compte
+    // Créer un Blog
     this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
     this.controleblog();
     this.router.navigateByUrl('listdeblogs');
