@@ -9,6 +9,11 @@ export class ListeBlogEnregistresService {
 
   constructor() {}
 
+  // Méthodde pour renvoyer la description d'un titre
+  setTitreDescription(titre: string, description: string): void {
+    this.titreDescription[titre] = description;
+  }
+
   // ------------------------------------------------------------------------------------
 
   // Méthode pour ajouter une nouvelle paire titre/description
@@ -41,7 +46,7 @@ export class ListeBlogEnregistresService {
   }
 
   // ------------------------------------------------------------------------------------
-
+  // Méthode pour supprimer un couple titre/description de la liste
   deleteBlog(titre: string): void {
     delete this.titreDescription[titre];
   }

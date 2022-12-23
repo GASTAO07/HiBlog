@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
-import { ReeditService } from '../service/reedit-blog/reedit.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -18,13 +17,11 @@ export class BlogListComponent implements OnInit {
   constructor(private router: Router,
     private auth: AuthService,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
-    private reeditService: ReeditService) { }
+  ) { }
 
   ngOnInit(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
-
-  // Methodes
 
   editBlog(titre: string): void {
     // Définissez les variables editTitre et editDescription avec le titre et la description actuels.

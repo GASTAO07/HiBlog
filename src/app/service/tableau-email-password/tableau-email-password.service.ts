@@ -15,7 +15,7 @@ export class TableauEmailPasswordService {
   // Méthode pour ajouter une nouvelle paire email/mot de passe
   addEmailPassword(email: string, password: string): void {
     this.emailPasswords[email] = password;
-    console.log('yoooooooo', this.emailPasswords);
+    console.log('addEmailPassword', this.emailPasswords);
   }
 
   // ------------------------------------------------------------------------------------

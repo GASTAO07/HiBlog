@@ -2,6 +2,7 @@
   <h1>Blog List</h1>
   <ul>
     <li *ngFor="let blog of blogs | keyvalue">
+      <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
       <button (click)="editBlog(blog.key)">Editer le Blog</button>
