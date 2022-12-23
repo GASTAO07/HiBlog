@@ -1,4 +1,4 @@
-<div *ngIf="isLoggedIn()"> Vous êtes connecté!</div>
+<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <!-- {{this.loginmodel.email}} -->
 
 <h2 class="Creerunblog">Créer votre blog</h2>
@@ -17,5 +17,5 @@
         name="blogdescription " rows="5" placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
 
     <button class="button-success" (click)="creerUnblog()">Enregistrer</button>
-    <button (click)="logout()">Logout</button>
+    <button (click)="this.loginValidationService.logout()">Logout</button>
 </div>

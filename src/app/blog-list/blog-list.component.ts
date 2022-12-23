@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
+import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -17,6 +18,7 @@ export class BlogListComponent implements OnInit {
   constructor(private router: Router,
     private auth: AuthService,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
+    public loginValidationService : LoginValidationService
   ) { }
 
   ngOnInit(): void {

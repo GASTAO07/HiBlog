@@ -1,3 +1,4 @@
+<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <div class="blog-list">
   <h1>Blog List</h1>
   <ul>
@@ -25,3 +26,5 @@
   <button (click)="cancelEdit()">Annuler</button>
 
   <button (click)="refreshBlogs()">Refresh</button>
+
+  <button (click)="this.loginValidationService.logout()">Logout</button>

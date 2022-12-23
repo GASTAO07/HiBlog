@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { BlogModel } from 'src/app/models/BlogModel';
 import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 
 @Component({
   selector: 'app-page-blog',
@@ -17,7 +18,8 @@ export class PageBlogComponent implements OnInit{
   constructor(
     private router: Router,
     private auth: AuthService,
-    private listeBlogEnregistresService : ListeBlogEnregistresService) { }
+    private listeBlogEnregistresService : ListeBlogEnregistresService,
+    public loginValidationService : LoginValidationService) { }
 
   ngOnInit(): void {
     this.blogmodel = new BlogModel({
@@ -63,20 +65,5 @@ export class PageBlogComponent implements OnInit{
   }
   getdescription(): string {
     return sessionStorage.getItem(this.blogmodel.blog.description);
-  }
-
-  // ------------------------------------------------------------------------------------
-
-  // voir si l'utilisateur est logged
-  // isLoggedInPageblogComponent qui vérifie si l’état de connexion de l’utilisateur est 'true. Si l’utilisateur est connecté, la méthode renvoie 'truetrue, sinon il retourne 'false
-  isLoggedIn(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  }
-
-  // ------------------------------------------------------------------------------------
-
-  logout(): void {
-    localStorage.setItem('isLoggedIn', 'false');
-    this.router.navigateByUrl('auth/login');
   }
 }
