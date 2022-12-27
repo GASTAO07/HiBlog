@@ -1,0 +1,31 @@
+<div class = "Atras">
+<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
+<div class="blog-list">
+  <ul>
+    <li *ngFor="let blog of blogs | keyvalue">
+       <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
+      <h2>{{ blog.key }}</h2>
+      <p>{{ blog.value }}</p>
+      <button (click)="editBlog(blog.key)">Modifier</button>
+
+    </li>
+  </ul>
+  
+</div>
+
+
+<form id="edit-blog-titre-description" style="display:none;">
+
+  <label for="edit-titre">Titre:</label><br>
+  <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre"><br>
+
+  <label for="edit-description">Description:</label><br>
+  <textarea id="edit-description" [(ngModel)]="editDescription" name="editDescription"></textarea>
+
+  <button (click)="submitEdit()">Enregistrer</button>
+  <button (click)="cancelEdit()">Annuler</button>
+  <button (click)="refreshBlogs()">Rafraîchir</button>
+  
+</form>
+  <button (click)="this.loginValidationService.logout()">Logout</button>
+</div>

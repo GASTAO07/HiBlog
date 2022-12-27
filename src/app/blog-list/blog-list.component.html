@@ -1,4 +1,4 @@
-<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
+ <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <div class="blog-list">
   <h1>Blog List</h1>
   <ul>
@@ -6,25 +6,11 @@
       <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
-      <button (click)="editBlog(blog.key)">Editer le Blog</button>
-      <button (click)="deleteBlog(blog.key)">Effacer le Blog</button>
+      <button (click)="editBlog()">Editer le Blog</button>
     </li>
   </ul>
-  <button (click)="addNewBlog()">Ajouter un Blog</button>
-  <button (click)="this.loginValidationService.logout()">Logout</button>
 </div>
 
-<!-- editer le blog -->
-<form id="edit-form" style="display:none;">
-
-  <label for="edit-titre">Titre:</label><br>
-  <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre">
-
-  <label for="edit-description">Description:</label><br>
-  <textarea id="edit-description" [(ngModel)]="editDescription" name="editDescription"></textarea>
-
-  <button (click)="submitEdit()">Modifier</button>
-  <button (click)="cancelEdit()">Annuler</button>
-
-  <button (click)="refreshBlogs()">Refresh</button>
+<button (click)="addNewBlog()">Ajouter un Blog</button>
+<button (click)="this.loginValidationService.logout()">Logout</button>
 
