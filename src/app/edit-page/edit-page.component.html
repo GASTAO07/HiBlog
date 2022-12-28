@@ -1,10 +1,23 @@
-<p>edit-page works!</p>
-<p>edit-page works!</p>
+<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
+<!-- {{this.loginmodel.email}} -->
 
-<p>edit-page works!</p>
+<h2 class="Creerunblog">Editer votre blog</h2>
 
-<p>edit-page works!</p>
+<div class="Contenu-Blog">
 
-<p>edit-page works!</p>
+    <div class="form-group">
+        <label for="inputblog">Titre du Blog : </label><br>
 
-<p>edit-page works!</p>
+        <input type="text" [(ngModel)]="editTitre" id="inputblog" name="titre"
+            placeholder="Entrez le titre de votre blog">
+    </div>
+
+    <label for="blogdescription">Description :</label><br>
+    <textarea id="blogdescription" [(ngModel)]="editDescription" 
+        name="blogdescription " rows="5" placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
+
+        <button class="button-success" (click)="submitEdit()">Enregistrer</button>
+        <button (click)="cancelEdit()">Annuler</button>
+        <!-- <button (click)="refreshBlogs()">Rafraîchir</button> -->
+    <button (click)="this.loginValidationService.logout()">Logout</button>
+</div>

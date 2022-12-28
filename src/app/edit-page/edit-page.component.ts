@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EditFormComponent } from '../edit-form/edit-form.component';
+import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -15,6 +16,7 @@ export class EditPageComponent {
   constructor(
     private router: Router,
     private editFormComponent : EditFormComponent,
+    public loginValidationService : LoginValidationService
   ) { }
 
   submitEdit(): void {
