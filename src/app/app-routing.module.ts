@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import { EditPageComponent } from './edit-page/edit-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
   {
     path : 'edit', component : EditFormComponent
   },
+
+  {
+    path: 'editpagecompo', component: EditPageComponent
+  },
+
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
-// Define a custom color palette
+
 $primary-color: #052f17;
 $secondary-color: #0f351e;
 $tertiary-color: #8b008b;
 
-// Define some base styles
+
 h2 {
   font-size: 1.5em;
   color: $primary-color;
@@ -14,14 +14,14 @@ p {
   color: $secondary-color;
 }
 
-// Style the form
+
 #edit-blog-titre-description {
   display: none;
   border: 1px solid $tertiary-color;
   padding: 10px;
 }
 
-// Style the buttons
+
 button {
     display: block;
     border: none;
@@ -38,7 +38,6 @@ button:hover {
   background-color: darken($primary-color, 10%);
 }
 
-// Style the input and textarea elements
 input, textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -46,13 +45,17 @@ input, textarea {
     width: 80%;
   }
   
-  // Style the input element when it is focused
   input:focus, textarea:focus {
     outline: none;
     border-color: #00bfff;
   }
   
-  .Atras {
-    background: #eee;
-  }
+//   .Atras {
+//     background: rgb(187, 233, 201);
+//   }
   
+h2.Editerunblog {
+    text-align: center;
+    font-size: 2em;
+    margin: 32px 0;
+  }

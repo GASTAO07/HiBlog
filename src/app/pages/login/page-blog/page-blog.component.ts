@@ -23,7 +23,7 @@ export class PageBlogComponent implements OnInit{
 
   ngOnInit(): void {
     this.blogmodel = new BlogModel({
-      blog : { titre : '', description : ''},
+      blog : { id: '', titre : '', description : ''},
       terms: false
     });
   }
@@ -44,14 +44,29 @@ export class PageBlogComponent implements OnInit{
   // ------------------------------------------------------------------------------------
 
   // Utiliser la méthode pour ajouter une nouvelle paire e-mail / mot de passe lors de la création d’un nouveau ?
+  // creerUnblog(): void {
+  //   // Vérifier si l'email saisi existe déjà dans la liste.
+  //   if (this.listeBlogEnregistresService.hasTitre(this.blogmodel.blog.titre)) {
+  //     alert('Désolé, Ce titre exite déjà !');
+  //     return;
+  //   }
+  //   // Créer un Blog
+  //   this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
+  //   this.controleblog();
+  //   this.router.navigateByUrl('listdeblogs');
+  // }
   creerUnblog(): void {
-    // Vérifier si l'email saisi existe déjà dans la liste.
+    // Check if the title already exists in the list of blog posts
     if (this.listeBlogEnregistresService.hasTitre(this.blogmodel.blog.titre)) {
-      alert('Désolé, Ce titre exite déjà !');
+      alert('Sorry, this title already exists!');
       return;
     }
-    // Créer un Blog
-    this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
+    // Create a new blog post
+    this.listeBlogEnregistresService.addETitreDescription(
+      this.blogmodel.blog.titre,
+      this.blogmodel.blog.description
+    );
+
     this.controleblog();
     this.router.navigateByUrl('listdeblogs');
   }

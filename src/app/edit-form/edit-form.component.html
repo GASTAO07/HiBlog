@@ -1,13 +1,15 @@
 <div class = "Atras">
-<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
+<div *ngIf="this.loginValidationService.isLoggedIn()">Vous êtes connecté!</div>
+<h2 class="Editerunblog">Editer votre blog</h2>
 <div class="blog-list">
   <ul>
     <li *ngFor="let blog of blogs | keyvalue">
-       <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
+        <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
-      <button (click)="editBlog(blog.key)">Modifier</button>
-
+      <!-- <button class="Modifier" (onclick)="editBlog(blog.value)">Modifier</button> -->
+      <button class="Modifier" (click)="editBlog()">Modifier</button>
+      <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
     </li>
   </ul>
   
@@ -25,7 +27,38 @@
   <button (click)="submitEdit()">Enregistrer</button>
   <button (click)="cancelEdit()">Annuler</button>
   <button (click)="refreshBlogs()">Rafraîchir</button>
-  
+
+
+<!-- </form> -->
+<!-- <div *ngFor="let blog of blogs">
+  <h2>{{blog.titre}}</h2>
+  <p>{{blog.description}}</p>
+  <button (click)="editBlog(blog)">Edit</button>
+</div> -->
+
+<!-- <form id="edit-blog-form">
+  <label for="edit-blog-title">Title:</label><br>
+  <input type="text" id="edit-blog-title" [(ngModel)]="blog.titre" name="editTitre"><br>
+  <label for="edit-blog-description">Description:</label><br>
+  <textarea id="edit-blog-description" [(ngModel)]="blog.description" name="editDescription"></textarea><br>
+  <button type="button" (click)="submitEdit()">Save</button>
+  <button type="button" (click)="cancelEdit()">Cancel</button>
 </form>
+
   <button (click)="this.loginValidationService.logout()">Logout</button>
-</div>
+</div> -->
+
+<!-- <div *ngIf="this.loginValidationService.isLoggedIn()">
+  <h1>Modifier un Blog</h1>
+  <form (ngSubmit)="updateBlog()">
+    <label>Titre:</label>
+    <input [(ngModel)]="blog.titre" name="titre" type="text" required>
+    <br>
+    <label>Description:</label>
+    <textarea [(ngModel)]="blog.description" name="description" rows="5" required></textarea>
+    <br>
+    <button type="submit">Modifier</button>
+  </form>
+  <button (click)="goBack()">Annuler</button> -->
+<!-- </div> -->
+

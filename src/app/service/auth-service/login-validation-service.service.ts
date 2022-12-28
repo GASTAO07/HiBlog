@@ -1,6 +1,7 @@
 // service qui fournit des méthodes de validation des adresses e-mail et des mots de passe et mail
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
