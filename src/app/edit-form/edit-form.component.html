@@ -1,6 +1,7 @@
 <div class = "Atras">
 <div *ngIf="this.loginValidationService.isLoggedIn()">Vous êtes connecté!</div>
 <h2 class="Editerunblog">Editer votre blog</h2>
+
 <div class="blog-list">
   <ul>
     <li *ngFor="let blog of blogs | keyvalue">
@@ -8,7 +9,8 @@
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
       <!-- <button class="Modifier" (onclick)="editBlog(blog.value)">Modifier</button> -->
-      <button class="Modifier" (click)="editBlog()">Modifier</button>
+      <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button>
+      <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
       <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
     </li>
   </ul>
@@ -16,7 +18,7 @@
 </div>
 
 
-<form id="edit-blog-titre-description" style="display:none;">
+<!-- <form id="edit-blog-titre-description" style="display:none;">
 
   <label for="edit-titre">Titre:</label><br>
   <input type="text" id="edit-titre" [(ngModel)]="editTitre" name="editTitre"><br>
@@ -26,7 +28,7 @@
 
   <button (click)="submitEdit()">Enregistrer</button>
   <button (click)="cancelEdit()">Annuler</button>
-  <button (click)="refreshBlogs()">Rafraîchir</button>
+  <button (click)="refreshBlogs()">Rafraîchir</button> -->
 
 
 <!-- </form> -->

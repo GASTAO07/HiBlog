@@ -255,27 +255,23 @@ export class EditFormComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  editBlog(): void {
-    this.router.navigate(['editpagecompo']);
-  }
-
-  submitEdit(): void {
-    // Update the editedBlog object with the new title and description
-    this.editedBlog.titre = this.editTitre;
-    this.editedBlog.description = this.editDescription;
-    // Clear the form and hide it
-    this.editTitre = '';
-    this.editDescription = '';
-    document.getElementById('edit-blog-form').style.display = 'none';
+  editBlog(titre: string): void {
+    this.editTitre = titre;
+    this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
+    console.log('edit-form', this.editDescription, this.editTitre);
+    // Naviguer vers le composant de formulaire d'édition de blog en utilisant le titre et la description du blog sélectionné comme paramètres de la route
+    this.router.navigate(['editpagecompo'], { queryParams: { titre: this.editTitre, description: this.editDescription } });
+    // this.router.navigate(['editpagecompo']);
+    // document.getElementById('edit-blog-titre-description');
   }
 
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  cancelEdit(): void {
-    this.editTitre = '';
-    this.editDescription = '';
-    this.router.navigate(['/']);
-  }
+  // cancelEdit(): void {
+  //   this.editTitre = '';
+  //   this.editDescription = '';
+  //   this.router.navigate(['/']);
+  // }
 }

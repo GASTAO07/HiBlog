@@ -29,6 +29,16 @@ export class ListeBlogEnregistresService {
     return undefined;
   }
 
+  // updateBlog(titre: string, description: string): void {
+  //   // Find the index of the blog post with the matching ID
+  //   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  //   const index = this.blogs.findIndex((blog: { titre: string, description: string }));
+  //   if (index !== -1) {
+  //     // Update the title and description of the blog post
+  //     this.blogs[index].titre = titre;
+  //     this.blogs[index].description = description;
+  //   }
+  // }
   updateBlog(id: string, titre: string, description: string): void {
     // Find the index of the blog post with the matching ID
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -61,6 +71,7 @@ export class ListeBlogEnregistresService {
     return this.titreDescription[titre];
     /* prend une adresse e-mail comme argument et renvoie
       le mot de passe associé à cette adresse e-mail, s’il exist*/
+    console.log(this.getTitreDescription);
   }
 
   // ------------------------------------------------------------------------------------

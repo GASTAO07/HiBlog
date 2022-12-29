@@ -1,23 +1,24 @@
 <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <!-- {{this.loginmodel.email}} -->
+<div id="edit-blog-titre-description">
+    <h2 class="Creerunblog">Modifier votre blog</h2>
 
-<h2 class="Creerunblog">Editer votre blog</h2>
+    <div class="Contenu-Blog">
 
-<div class="Contenu-Blog">
+        <div class="form-group">
+            <label for="inputblog">Titre du Blog : </label><br>
 
-    <div class="form-group">
-        <label for="inputblog">Titre du Blog : </label><br>
+            <input type="text" [(ngModel)]="editTitre" id="inputblog" name="titre"
+            placeholder="Entrez le titre de votre blog"><br>
 
-        <input type="text" [(ngModel)]="editTitre" id="inputblog" name="titre"
-            placeholder="Entrez le titre de votre blog">
-    </div>
+            <label for="blogdescription">Description :</label><br>
+            <textarea id="blogdescription" [(ngModel)]="editDescription" name="blogdescription " rows="5"
+            placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
 
-    <label for="blogdescription">Description :</label><br>
-    <textarea id="blogdescription" [(ngModel)]="editDescription" 
-        name="blogdescription " rows="5" placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
-
+        </div>
         <button class="button-success" (click)="submitEdit()">Enregistrer</button>
         <button (click)="cancelEdit()">Annuler</button>
         <!-- <button (click)="refreshBlogs()">Rafraîchir</button> -->
-    <button (click)="this.loginValidationService.logout()">Logout</button>
+        <button (click)="this.loginValidationService.logout()">Logout</button>
+    </div>
 </div>
