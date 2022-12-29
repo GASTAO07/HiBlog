@@ -42,19 +42,6 @@ export class PageBlogComponent implements OnInit{
   }
 
   // ------------------------------------------------------------------------------------
-
-  // Utiliser la méthode pour ajouter une nouvelle paire e-mail / mot de passe lors de la création d’un nouveau ?
-  // creerUnblog(): void {
-  //   // Vérifier si l'email saisi existe déjà dans la liste.
-  //   if (this.listeBlogEnregistresService.hasTitre(this.blogmodel.blog.titre)) {
-  //     alert('Désolé, Ce titre exite déjà !');
-  //     return;
-  //   }
-  //   // Créer un Blog
-  //   this.listeBlogEnregistresService.addETitreDescription(this.blogmodel.blog.titre, this.blogmodel.blog.description);
-  //   this.controleblog();
-  //   this.router.navigateByUrl('listdeblogs');
-  // }
   creerUnblog(): void {
     // Check if the title already exists in the list of blog posts
     if (this.listeBlogEnregistresService.hasTitre(this.blogmodel.blog.titre)) {
