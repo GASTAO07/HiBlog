@@ -14,6 +14,7 @@ export class BlogListComponent implements OnInit {
   declare Object: any;
   editTitre: string;
   editDescription: string;
+  showCreateForm : boolean = true;
 
   constructor(
     private router: Router,
@@ -35,7 +36,8 @@ export class BlogListComponent implements OnInit {
     this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
     console.log('edit-form', this.editDescription, this.editTitre);
     // Naviguer vers le composant de formulaire d'édition de blog en utilisant le titre et la description du blog sélectionné comme paramètres de la route
-    this.router.navigate(['editpagecompo'], { queryParams: { titre: this.editTitre, description: this.editDescription } });
+    this.router.navigate(['pageblog'], { queryParams: { titre: this.editTitre, description: this.editDescription } });
+    this.showCreateForm = true;
   }
   // ------------------------------------------------------------------------------------
 

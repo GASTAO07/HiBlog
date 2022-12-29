@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { BlogModel } from 'src/app/models/BlogModel';
 import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
+import { BlogListComponent } from 'src/app/blog-list/blog-list.component';
+import { LoginComponent } from '../login.component';
 
 @Component({
   selector: 'app-page-blog',
@@ -11,21 +13,35 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit{
-// Variables
+
+  // Variables
   blogmodel: BlogModel;
   isValidBlog: boolean = true;
 
   constructor(
     private router: Router,
     private auth: AuthService,
+    private route: ActivatedRoute,
     private listeBlogEnregistresService : ListeBlogEnregistresService,
-    public loginValidationService : LoginValidationService) { }
+    public loginValidationService : LoginValidationService,
+    public blogListComponent : BlogListComponent,
+    public loginComponent : LoginComponent) { }
 
   ngOnInit(): void {
     this.blogmodel = new BlogModel({
       blog : { id: '', titre : '', description : ''},
       terms: false
     });
+
+    // Editer
+
+    // Récupère le titre du blog à éditer à partir de l'URL
+    // eslint-disable-next-line dot-notation
+    this.blogListComponent.editTitre = this.route.snapshot.queryParams['titre'];
+    // eslint-disable-next-line dot-notation
+    this.blogListComponent.editDescription = this.route.snapshot.queryParams['description'];
+    // console.log('test root', this.route, this.route.snapshot, this.route.snapshot.paramMap);
+    console.log('edit-page', this.blogListComponent.editDescription, this.blogListComponent.editTitre);
   }
 
   // ------------------------------------------------------------------------------------
@@ -56,6 +72,7 @@ export class PageBlogComponent implements OnInit{
 
     this.controleblog();
     this.router.navigateByUrl('listdeblogs');
+    this.blogListComponent.showCreateForm = false;
   }
 
   // ------------------------------------------------------------------------------------
@@ -66,5 +83,23 @@ export class PageBlogComponent implements OnInit{
   }
   getdescription(): string {
     return sessionStorage.getItem(this.blogmodel.blog.description);
+  }
+
+  // ------------------------------------------------------------------------------------
+
+  // Editer
+
+  submitEdit(): void {
+    this.listeBlogEnregistresService.addETitreDescription(this.blogListComponent.editTitre, this.blogListComponent.editDescription);
+
+    this.blogListComponent.editTitre = '';
+    this.blogListComponent.editDescription = '';
+    this.router.navigate(['listdeblogs']);
+  }
+
+  cancelEdit(): void {
+    this.blogListComponent.editTitre = '';
+    this.blogListComponent.editDescription = '';
+    this.router.navigate(['listdeblogs']);
   }
 }
