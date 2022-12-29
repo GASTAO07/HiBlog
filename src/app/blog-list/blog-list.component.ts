@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth-service/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
+// import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 
@@ -15,8 +15,9 @@ export class BlogListComponent implements OnInit {
   editTitre: string;
   editDescription: string;
 
-  constructor(private router: Router,
-    private auth: AuthService,
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService : LoginValidationService
   ) { }
@@ -25,10 +26,17 @@ export class BlogListComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  editBlog() : void {
-    this.router.navigate(['edit']);
-  }
+  // editBlog() : void {
+  //   this.router.navigate(['editform']);
+  // }
 
+  editBlog(titre: string): void {
+    this.editTitre = titre;
+    this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
+    console.log('edit-form', this.editDescription, this.editTitre);
+    // Naviguer vers le composant de formulaire d'édition de blog en utilisant le titre et la description du blog sélectionné comme paramètres de la route
+    this.router.navigate(['editpagecompo'], { queryParams: { titre: this.editTitre, description: this.editDescription } });
+  }
   // ------------------------------------------------------------------------------------
 
   // Rafraichissement d'un blog

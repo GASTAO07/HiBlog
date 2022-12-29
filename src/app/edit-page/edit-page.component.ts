@@ -1,9 +1,9 @@
 // edit-page.component.ts
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditFormComponent } from '../edit-form/edit-form.component';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
+import { BlogListComponent } from '../blog-list/blog-list.component';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class EditPageComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    public editFormComponent : EditFormComponent,
+    public blogListComponent : BlogListComponent,
     public loginValidationService : LoginValidationService,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
   ) { }
@@ -24,24 +24,24 @@ export class EditPageComponent {
   ngOnInit() : void {
     // Récupère le titre du blog à éditer à partir de l'URL
     // eslint-disable-next-line dot-notation
-    this.editFormComponent.editTitre = this.route.snapshot.queryParams['titre'];
+    this.blogListComponent.editTitre = this.route.snapshot.queryParams['titre'];
     // eslint-disable-next-line dot-notation
-    this.editFormComponent.editDescription = this.route.snapshot.queryParams['description'];
+    this.blogListComponent.editDescription = this.route.snapshot.queryParams['description'];
     // console.log('test root', this.route, this.route.snapshot, this.route.snapshot.paramMap);
-    console.log('edit-page', this.editFormComponent.editDescription, this.editFormComponent.editTitre);
+    console.log('edit-page', this.blogListComponent.editDescription, this.blogListComponent.editTitre);
   }
 
   submitEdit(): void {
-    this.listeBlogEnregistresService.addETitreDescription(this.editFormComponent.editTitre, this.editFormComponent.editDescription);
+    this.listeBlogEnregistresService.addETitreDescription(this.blogListComponent.editTitre, this.blogListComponent.editDescription);
 
-    this.editFormComponent.editTitre = '';
-    this.editFormComponent.editDescription = '';
+    this.blogListComponent.editTitre = '';
+    this.blogListComponent.editDescription = '';
     this.router.navigate(['listdeblogs']);
   }
 
   cancelEdit(): void {
-    this.editFormComponent.editTitre = '';
-    this.editFormComponent.editDescription = '';
+    this.blogListComponent.editTitre = '';
+    this.blogListComponent.editDescription = '';
     this.router.navigate(['edit']);
   }
 }

@@ -6,7 +6,9 @@
       <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
       <h2>{{ blog.key }}</h2>
       <p>{{ blog.value }}</p>
-      <button (click)="editBlog()">Editer le Blog</button>
+      <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button>
+            <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
+      <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
     </li>
   </ul>
 </div>

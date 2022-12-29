@@ -8,17 +8,17 @@
         <div class="form-group">
             <label for="inputblog">Titre du Blog : </label><br>
 
-            <input type="text" [(ngModel)]="editFormComponent.editTitre" id="inputblog" name="titre"
+            <input type="text" [(ngModel)]="blogListComponent.editTitre" id="inputblog" name="titre"
             placeholder="Entrez le titre de votre blog"><br>
 
             <label for="blogdescription">Description :</label><br>
-            <textarea id="blogdescription" [(ngModel)]="editFormComponent.editDescription" name="blogdescription " rows="5"
+            <textarea id="blogdescription" [(ngModel)]="blogListComponent.editDescription" name="blogdescription " rows="5"
             placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
 
         </div>
         <button class="button-success" (click)="submitEdit()">Enregistrer</button>
         <button (click)="cancelEdit()">Annuler</button>
-        <button (click)="editFormComponent.refreshBlogs()">Rafraîchir</button>
+        <button (click)="blogListComponent.refreshBlogs()">Rafraîchir</button>
         <button (click)="this.loginValidationService.logout()">Logout</button>
     </div>
 </div>

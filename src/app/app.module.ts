@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
-import { EditFormComponent } from './edit-form/edit-form.component';
 import { RouterModule } from '@angular/router';
 import { EditPageComponent } from './edit-page/edit-page.component';
 
@@ -20,7 +19,6 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     PageBlogComponent,
     CreerUncompteComponent,
     BlogListComponent,
-    EditFormComponent,
     EditPageComponent
   ],
   imports: [
@@ -32,7 +30,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     FormsModule,
     RouterModule
   ],
-  providers: [EditFormComponent],
+  providers: [BlogListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
