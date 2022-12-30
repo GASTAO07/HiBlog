@@ -1,23 +1,25 @@
 <div class="Contenu-login">
-
+    <h2 class="Hiblog">Hiblog</h2>
+    <p style="background-image: url('C:/Users/rgastao/OneDrive - Capgemini/Documents/tuto/HiBlog/src/images/book-writing-line-icon-concept-sign-outline-vector-illustration-linear-symbol-173314200.jpg');"></p>
     <div class="form-horizontal">
+        <div class="emailpasswordbox">
+            <div class="form-group">
+                <label for="inputemail">Email : </label>
 
-        <div class="form-group">
-            <label for="inputemail">Email : </label>
+                <input type="email" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
+                    placeholder="Email" pattern=".+@capgemini\.com" required size="30" />
+            </div><br>
 
-            <input type="email" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
-                placeholder="Email" pattern=".+@capgemini\.com" required size="30" />
-        </div>
+            <div class="form-group">
+                <label for="inputmotdepasse">Mot de passe : </label>
 
-        <div class="form-group">
-            <label for="inputmotdepasse">Mot de passe : </label>
-
-            <input type="password" (keyup)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
-                name="password" placeholder="Mot de passe">
-        </div>
-
+                <input type="password" (keyup)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
+                    name="password" placeholder="Mot de passe">
+            </div><br>
+        </div><br>
         <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer</button>
 
         <button class="button-success" (click)="creerUncompte()">Créer un compte</button>
 
     </div>
+</div>

@@ -19,7 +19,13 @@
 
 
 .contenu-form:hover {
-    box-shadow: 0 30px 60px 0 rgb(54, 54, 54);
+  border-radius: 10px;
+  background-color: rgb(67, 105, 148);
+  box-shadow: 0 60px 60px 0 gray;
+  text-align: center;
+  width: 45%;
+  height: 350px;
+  transition: all 0.5s ease-in-out;
 }
 
 .onContinue {
@@ -69,27 +75,38 @@
   }
   
   .button-success {
-    display: inline-block;
-    width: 120px;
-    height: 35px;
-    background-color: #46a049;
+    font-size: 1em;
+    padding: 0.5em 1em;
     border: none;
     border-radius: 5px;
-    color: white;
-    padding: 15px 0px;
-    margin-top: 5px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 13px;
-    box-shadow: 0 10px 30px 0 rgb(9, 32, 50);
-    border-radius: 5px 5px 5px 5px;
-    text-align: center;
-    width: 60%;
-    transition: all 0.3s ease-in-out;
-    font-size: 14px;
+    background-color: #135774;
+    color: #fff;
     cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 1em;  /* espace*/
+}
+.Creercomptebox
+{
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 52px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
+h2.Hiblog{
+  text-align: center;
+  font-size: 2em;
+  margin: 32px 0;
+}
+
+h2.CreerUncompte{
+  text-align: center;
+  font-size: 1,5em;
+  margin: 32px 0;
+}
 .titre
 {
     font-size: 25px;

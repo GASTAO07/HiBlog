@@ -19,7 +19,7 @@ export class BlogListComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private listeBlogEnregistresService: ListeBlogEnregistresService,
+    public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService : LoginValidationService
   ) { }
 
@@ -49,6 +49,7 @@ export class BlogListComponent implements OnInit {
   // ------------------------------------------------------------------------------------
 
   addNewBlog(): void {
+    this.showCreateForm = false;
     this.router.navigate(['pageblog']);
   }
 }

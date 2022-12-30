@@ -1,4 +1,5 @@
 .Contenu-login {
+
 .form-horizontal {
     display: flex;
     justify-content: center;
@@ -6,6 +7,13 @@
     align-items: center;
     margin: 10%;
 }
+
+h2.Hiblog{
+    text-align: center;
+    font-size: 2em;
+    margin: 32px 0;
+  }
+
     .contenu-form {
         border-radius: 10px;
         background-color: rgb(67, 105, 148);
@@ -35,6 +43,16 @@
       }
     }
 
+}
+
+.emailpasswordbox
+{
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .contenu-form:hover {
@@ -82,14 +100,14 @@
       padding: 0.5em 1em;
       border: none;
       border-radius: 5px;
-      background-color: #46a049;
+      background-color: #135774;
       color: #fff;
       cursor: pointer;
       transition: background-color 0.2s;
       margin-bottom: 1em;  /* espace*/
   
       &:hover {
-        background-color: #46a049;
+        background-color: #223842;
       }
     }
 }
