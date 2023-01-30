@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 // import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
@@ -14,42 +14,34 @@ export class BlogListComponent implements OnInit {
   declare Object: any;
   editTitre: string;
   editDescription: string;
-  showCreateForm : boolean = true;
+  isValidBlog: boolean = true;
+  // showEditForm: boolean = false;
+
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
-    public loginValidationService : LoginValidationService
+    public loginValidationService: LoginValidationService,
   ) { }
 
   ngOnInit(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
 
-  // editBlog() : void {
-  //   this.router.navigate(['editform']);
-  // }
-
   editBlog(titre: string): void {
     this.editTitre = titre;
     this.editDescription = this.listeBlogEnregistresService.getTitreDescription(titre);
-    console.log('edit-form', this.editDescription, this.editTitre);
-    // Naviguer vers le composant de formulaire d'édition de blog en utilisant le titre et la description du blog sélectionné comme paramètres de la route
-    this.router.navigate(['pageblog'], { queryParams: { titre: this.editTitre, description: this.editDescription } });
-    this.showCreateForm = true;
+    this.router.navigate(['pageblog'], { queryParams: { titre: this.editTitre, description: this.editDescription, isCreation: false } });
   }
-  // ------------------------------------------------------------------------------------
 
+  // ------------------------------------------------------------------------------------
   // Rafraichissement d'un blog
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.titreDescription;
   }
-
   // ------------------------------------------------------------------------------------
-
   addNewBlog(): void {
-    this.showCreateForm = false;
-    this.router.navigate(['pageblog']);
+    this.router.navigate(['pageblog'], { queryParams: { isCreation: true } });
   }
 }

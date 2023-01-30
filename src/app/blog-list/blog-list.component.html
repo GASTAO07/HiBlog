@@ -1,6 +1,6 @@
 <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <div class="blog-list">
-  <h1>Blog List</h1>
+  <h1>Liste de Blog</h1>
   <div class="blogbox">
     <ul>
       <div class="blogbox1">
@@ -14,13 +14,11 @@
             <div class="blogbox">
               <p>{{ blog.value }}</p>
             </div><br>
-
-          
-          <button class="button-success" (click)="editBlog(blog.key)">Modifier</button><br>
-          <button class="button-success" (click)="listeBlogEnregistresService.deleteBlog(blog.key)">Delete</button>
-          <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
-          <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
-        </div><br>
+            <button class="button-success" (click)="editBlog(blog.key)">Modifier</button><br>
+         <!-- <button class="button-success" (click)="listeBlogEnregistresService.deleteBlog(blog.key)">Effacer</button>  -->
+            <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
+            <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
+          </div><br>
         </li>
       </div>
     </ul>

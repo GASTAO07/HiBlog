@@ -4,7 +4,7 @@ export class BlogModel {
       throw new Error('Method not implemented.');
     }
     blog !: {
-        id: string,
+        id?: string,
         titre: string,
         description : string,
     };

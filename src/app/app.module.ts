@@ -10,7 +10,6 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
-// import { EditPageComponent } from './edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { RouterModule } from '@angular/router';
     PageBlogComponent,
     CreerUncompteComponent,
     BlogListComponent,
-    // EditPageComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +28,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule
   ],
-  providers: [BlogListComponent, LoginComponent],
+  providers: [BlogListComponent, LoginComponent, PageBlogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

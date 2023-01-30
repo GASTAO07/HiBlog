@@ -30,9 +30,6 @@ const routes: Routes = [
     path : 'CreerUncompte', component : CreerUncompteComponent
   },
 
-  // {
-  //   path: 'editpagecompo', component: EditPageComponent
-  // },
 
 ];
 
