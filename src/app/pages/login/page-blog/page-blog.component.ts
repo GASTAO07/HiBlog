@@ -36,8 +36,14 @@ export class PageBlogComponent implements OnInit {
       },
     });
 
+    this.blog = {
+      titre : null,
+      description: null,
+    };
+
     // eslint-disable-next-line dot-notation
     this.isCreation = this.route.snapshot.queryParams['isCreation'];
+    console.log('iscreation', this.isCreation);
 
     // Si isCreation est faux, récupérer les valeurs du titre et de la description et remplir le formulaire pour l'édition.
     if (!this.isCreation) {
