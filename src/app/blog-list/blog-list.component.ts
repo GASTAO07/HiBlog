@@ -15,12 +15,9 @@ export class BlogListComponent implements OnInit {
   editTitre: string;
   editDescription: string;
   isValidBlog: boolean = true;
-  // showEditForm: boolean = false;
-
 
   constructor(
     private router: Router,
-    // private route: ActivatedRoute,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
   ) { }
@@ -43,5 +40,9 @@ export class BlogListComponent implements OnInit {
   // ------------------------------------------------------------------------------------
   addNewBlog(): void {
     this.router.navigate(['pageblog'], { queryParams: { isCreation: true } });
+  }
+
+  deleteBlog(titre: string): void {
+    delete this.listeBlogEnregistresService.titreDescription[titre];
   }
 }

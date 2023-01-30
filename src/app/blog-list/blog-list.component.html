@@ -15,6 +15,7 @@
               <p>{{ blog.value }}</p>
             </div><br>
             <button class="button-success" (click)="editBlog(blog.key)">Modifier</button><br>
+            <button class="button-success" (click)="deleteBlog(blog.key)">Effacer</button>
          <!-- <button class="button-success" (click)="listeBlogEnregistresService.deleteBlog(blog.key)">Effacer</button>  -->
             <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
             <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
@@ -24,7 +25,6 @@
     </ul>
   </div><br>
 </div> <br>
-
 <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
 <button class="button-success" (click)="refreshBlogs()">Rafraîchir</button>
 <br><button class="button-success" (click)="this.loginValidationService.logout()">Logout</button>

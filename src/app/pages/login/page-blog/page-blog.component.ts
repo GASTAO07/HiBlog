@@ -18,7 +18,7 @@ export class PageBlogComponent implements OnInit {
     titre: string,
     description: string,
   };
-  isCreation: boolean;
+  isCreation: boolean = false;
 
   constructor(
     private router: Router,
@@ -37,16 +37,19 @@ export class PageBlogComponent implements OnInit {
     });
 
     this.blog = {
-      titre : null,
+      titre: null,
       description: null,
     };
 
     // eslint-disable-next-line dot-notation
-    this.isCreation = this.route.snapshot.queryParams['isCreation'];
+    this.isCreation = this.route.snapshot.queryParams['isCreation'] === 'false';
+    // eslint-disable-next-line dot-notation
+    console.log(this.route.snapshot.queryParams['isCreation'] === 'true');
     console.log('iscreation', this.isCreation);
 
+
     // Si isCreation est faux, récupérer les valeurs du titre et de la description et remplir le formulaire pour l'édition.
-    if (!this.isCreation) {
+    if (this.isCreation) {
       // eslint-disable-next-line dot-notation
       this.blog.titre = this.route.snapshot.queryParams['titre'];
 
@@ -63,7 +66,7 @@ export class PageBlogComponent implements OnInit {
 
   controleblog(): void {
     console.log('ici Blog controle()', this.blogmodel.blog.description, this.blogmodel.blog.titre);
-    if (this.blogmodel.blog.description || this.blogmodel.blog.titre ) {
+    if (this.blogmodel.blog.description || this.blogmodel.blog.titre) {
       {
         this.isValidBlog = false;
       }

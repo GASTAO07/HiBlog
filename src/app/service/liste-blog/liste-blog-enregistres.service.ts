@@ -59,9 +59,6 @@ export class ListeBlogEnregistresService {
   getTitreDescription(titre: string): string | undefined {
     // renvoyer 'undefined si aucun description n’est associé au titre
     return this.titreDescription[titre];
-    /* prend une adresse e-mail comme argument et renvoie
-      le mot de passe associé à cette adresse e-mail, s’il exist*/
-    console.log(this.getTitreDescription);
   }
 
   // ------------------------------------------------------------------------------------
@@ -82,4 +79,7 @@ export class ListeBlogEnregistresService {
   deleteBlog(titre: string): void {
     delete this.titreDescription[titre];
   }
+
+
+
 }
