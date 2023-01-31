@@ -44,9 +44,8 @@ export class PageBlogComponent implements OnInit {
     // eslint-disable-next-line dot-notation
     this.isCreation = this.route.snapshot.queryParams['isCreation'] === 'false';
     // eslint-disable-next-line dot-notation
-    console.log(this.route.snapshot.queryParams['isCreation'] === 'true');
-    console.log('iscreation', this.isCreation);
-
+    // console.log(this.route.snapshot.queryParams['isCreation'] === 'false');
+    // console.log('iscreation', this.isCreation);
 
     // Si isCreation est faux, récupérer les valeurs du titre et de la description et remplir le formulaire pour l'édition.
     if (this.isCreation) {
@@ -83,7 +82,7 @@ export class PageBlogComponent implements OnInit {
       return;
     }
     // Create a new blog post
-    this.listeBlogEnregistresService.addETitreDescription(
+    this.listeBlogEnregistresService.addBlog(
       this.blogmodel.blog.titre,
       this.blogmodel.blog.description,
     );
@@ -115,15 +114,15 @@ export class PageBlogComponent implements OnInit {
       this.isValidBlog = false;
     }
   }
-
+  // ------------------------------------------------------------------------------------
   submitEdit(): void {
     this.controleeditblog();
-    this.listeBlogEnregistresService.addETitreDescription(this.blog.titre, this.blog.description);
-    this.blog.titre = '';
-    this.blog.description = '';
+    this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description);
+    // this.blog.titre = '';
+    // this.blog.description = '';
     this.router.navigate(['listdeblogs']);
   }
-
+  // ------------------------------------------------------------------------------------
   cancelEdit(): void {
     this.blog.titre = '';
     this.blog.description = '';

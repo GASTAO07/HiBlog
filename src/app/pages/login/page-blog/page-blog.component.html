@@ -19,6 +19,7 @@
             cols="33"></textarea><br>
 
         <button class="button-success" (click)="creerUnblog()" [disabled]="isValidBlog">Enregistrer</button>
+        <button class="button-success" (click)="cancelEdit()">Annuler</button>
         <button (click)="this.loginValidationService.logout()">Logout</button>
     </div>
 </div>

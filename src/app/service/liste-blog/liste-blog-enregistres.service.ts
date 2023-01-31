@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-interface Blog {
+
+export interface Blog {
   titre: string,
   description: string,
-  id?: string,
+  id: number,
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ListeBlogEnregistresService {
-
   // Objet pour stocker les paires titre/description
-  titreDescription: { [titre: string]: string } = {};
-  blogs: { id: string, titre: string, description: string }[] = [];
+  blogs: Blog[] = [];
 
-  constructor() {}
+  // ------------------------------------------------------------------------------------
+  constructor() { }
   getBlogs(): Blog[] {
     return this.blogs;
   }
 
-  getBlogById(id: string): { titre: string, description: string } | undefined {
-    // Iterate through the list of blog posts and return the one with the matching ID
+  // ------------------------------------------------------------------------------------
+  getBlogById(id: number): Blog | undefined {
+    // Itère dans la liste des articles de blog et renvoie celui dont l'ID correspond.
     for (const blog of this.blogs) {
       if (blog.id === id) {
         return blog;
@@ -29,43 +31,50 @@ export class ListeBlogEnregistresService {
     return undefined;
   }
 
-  updateBlog(id: string, titre: string, description: string): void {
-    // Find the index of the blog post with the matching ID
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const index = this.blogs.findIndex((blog: { id: string, titre: string, description: string }) => blog.id === id);
+  // ------------------------------------------------------------------------------------
+  updateBlog(id: number, titre: string, description: string): void {
+    // Trouvez l'index de l'article de blog avec l'ID correspondant.
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const index = this.blogs.findIndex(blog => blog.id === id);
+    // Vérifiez si un article de blog portant le même titre existe déjà.
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const existingBlogIndex = this.blogs.findIndex(blog => blog.titre === titre);
     if (index !== -1) {
-      // Update the title and description of the blog post
-      this.blogs[index].titre = titre;
-      this.blogs[index].description = description;
+      // Mettre à jour l'article de blog existant s'il existe
+      if (existingBlogIndex !== -1 && existingBlogIndex !== index) {
+        this.blogs[existingBlogIndex].description = description;
+      } else {
+        // Mettre à jour le titre et la description de l'article de blog.
+        this.blogs[index].titre = titre;
+        this.blogs[index].description = description;
+      }
+    } else if (existingBlogIndex === -1) {
+      // Ajoutez un nouvel article de blog s'il n'existe pas déjà.
+      this.blogs.push({ id, titre, description });
     }
-  }
-
-  // Méthodde pour renvoyer la description d'un titre
-  setTitreDescription(titre: string, description: string): void {
-    this.titreDescription[titre] = description;
   }
 
   // ------------------------------------------------------------------------------------
 
   // Méthode pour ajouter une nouvelle paire titre/description
-  addETitreDescription(titre: string, description: string): void {
-    this.titreDescription[titre] = description;
-    console.log('addETitreDescription', this.titreDescription);
+  addBlog(titre: string, description: string): void {
+    this.blogs[titre] = description;
+    console.log('addBlog', this.blogs);
   }
 
   // ------------------------------------------------------------------------------------
 
   // Méthode pour récupérer description d'un titre
-  getTitreDescription(titre: string): string | undefined {
+  getBlogList(titre: string): Blog | undefined {
     // renvoyer 'undefined si aucun description n’est associé au titre
-    return this.titreDescription[titre];
+    return this.blogs[titre];
   }
 
   // ------------------------------------------------------------------------------------
 
-  //  vérifier si une adresse e-mail donnée est présente dans le 'emailPasswords objet
+  //  vérifier si le titre donnée est présent
   hasTitre(titre: string): boolean {
-    return this.titreDescription?.hasOwnProperty(titre);
+    return this.blogs?.hasOwnProperty(titre);
     /*
     hasOwnProperty() Méthode intégrée d’objets qui retourne une valeur booléenne
     indiquant si l’objet possède une propriété avec la clé spécifiée.
@@ -76,10 +85,8 @@ export class ListeBlogEnregistresService {
 
   // ------------------------------------------------------------------------------------
   // Méthode pour supprimer un couple titre/description de la liste
-  deleteBlog(titre: string): void {
-    delete this.titreDescription[titre];
+  deleteBlog(id: number): void {
+    delete this.blogs[id];
   }
-
-
 
 }

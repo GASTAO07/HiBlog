@@ -1,30 +1,32 @@
-<div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
-<div class="blog-list">
-  <h1>Liste de Blog</h1>
-  <div class="blogbox">
-    <ul>
-      <div class="blogbox1">
-        <li *ngFor="let blog of blogs | keyvalue">
-          <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
-          <div class="blogbox2">
 
-            <div class="blogbox">
-              <h2>{{ blog.key }}</h2>
-            </div>
-            <div class="blogbox">
-              <p>{{ blog.value }}</p>
+  <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
+  <div class="blog-list">
+    <h1>Liste de Blog</h1>
+    <div class="blogbox">
+      <ul>
+        <div class="blogbox1">
+          <li *ngFor="let blog of blogs_ | keyvalue">
+            <!-- directive pour boucler l’objet et afficher ses paires clé-valeur *ngFor blogs keyvalue -->
+            <div class="blogbox2">
+
+              <div class="blogbox">
+                <h2>{{ blog.key }}</h2>
+              </div>
+              <div class="blogbox">
+                <p>{{ blog.value }}</p>
+              </div><br>
+              <button class="button-success" (click)=" modifyBlog(id, blog.key, blog.value)">Modifier</button><br>
+              <button class="button-success" (click)="deleteBlog(id)">Effacer</button>
+              <!-- <button class="button-success" (click)="listeBlogEnregistresService.deleteBlog(blog.key)">Effacer</button>  -->
+              <!-- <button class="Modifier" (click)=" modifyBlog(blog.key, blog.value)">Modifier</button> -->
+              <!-- <button class="Modifier" (click)=" modifyBlog(blog.key)">Modifier</button> -->
             </div><br>
-            <button class="button-success" (click)="editBlog(blog.key)">Modifier</button><br>
-            <button class="button-success" (click)="deleteBlog(blog.key)">Effacer</button>
-         <!-- <button class="button-success" (click)="listeBlogEnregistresService.deleteBlog(blog.key)">Effacer</button>  -->
-            <!-- <button class="Modifier" (click)="editBlog(blog.key, blog.value)">Modifier</button> -->
-            <!-- <button class="Modifier" (click)="editBlog(blog.key)">Modifier</button> -->
-          </div><br>
-        </li>
-      </div>
-    </ul>
-  </div><br>
-</div> <br>
-<button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
-<button class="button-success" (click)="refreshBlogs()">Rafraîchir</button>
-<br><button class="button-success" (click)="this.loginValidationService.logout()">Logout</button>
+          </li>
+        </div>
+      </ul>
+    </div><br>
+  </div> <br>
+  <!-- <button class="button-success" (click)="addNewBlog(blog.key, blog.value)">Ajouter un Blog</button><br> -->
+
+  <button class="button-success" (click)="refreshBlogs()">Rafraîchir</button>
+  <br><button class="button-success" (click)="this.loginValidationService.logout()">Logout</button>
