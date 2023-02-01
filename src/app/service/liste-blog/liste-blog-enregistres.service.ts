@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Injectable } from '@angular/core';
 
 export interface Blog {
+  id: number,
   titre: string,
   description: string,
-  id: number,
+
 }
 
 @Injectable({
@@ -12,16 +14,17 @@ export interface Blog {
 
 export class ListeBlogEnregistresService {
   // Objet pour stocker les paires titre/description
-  blogs: Blog[] = [];
+  private blogs: Blog[] = [];
 
   // ------------------------------------------------------------------------------------
   constructor() { }
-  getBlogs(): Blog[] {
+
+  getBlogList(): Blog[] | undefined {
     return this.blogs;
   }
 
   // ------------------------------------------------------------------------------------
-  getBlogById(id: number): Blog | undefined {
+  getBlogById(id: number): Blog {
     // Itère dans la liste des articles de blog et renvoie celui dont l'ID correspond.
     for (const blog of this.blogs) {
       if (blog.id === id) {
@@ -64,17 +67,17 @@ export class ListeBlogEnregistresService {
 
   // ------------------------------------------------------------------------------------
 
-  // Méthode pour récupérer description d'un titre
-  getBlogList(titre: string): Blog | undefined {
-    // renvoyer 'undefined si aucun description n’est associé au titre
-    return this.blogs[titre];
-  }
+  // // Méthode pour récupérer description d'un titre
+  // getBlogList(titre: string): Blog | undefined {
+  //   // renvoyer 'undefined si aucun description n’est associé au titre
+  //   return this.blogs[titre];
+  // }
 
   // ------------------------------------------------------------------------------------
 
   //  vérifier si le titre donnée est présent
-  hasTitre(titre: string): boolean {
-    return this.blogs?.hasOwnProperty(titre);
+  hasTitre(id: number): boolean {
+    return this.blogs?.hasOwnProperty(id);
     /*
     hasOwnProperty() Méthode intégrée d’objets qui retourne une valeur booléenne
     indiquant si l’objet possède une propriété avec la clé spécifiée.

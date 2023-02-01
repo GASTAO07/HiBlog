@@ -1,17 +1,17 @@
-export class BlogModel {
-    [x: string]: any;
-    static addEventListener(): void {
-      throw new Error('Method not implemented.');
-    }
-    blog !: {
-        id?: number,
-        titre: string,
-        description : string,
-    };
+// export class BlogModel {
+//     [x: string]: any;
+//     static addEventListener(): void {
+//       throw new Error('Method not implemented.');
+//     }
+//     blog !: {
+//         id?: number,
+//         titre: string,
+//         description : string,
+//     };
 
-    constructor(values: Object = {}) {
-      // Constructor constructeur d'initialisation
-      // méthode qui renvoie l'objet cible.
-      Object.assign(this, values);
-    }
-}
+//     constructor(values: Object = {}) {
+//       // Constructor constructeur d'initialisation
+//       // méthode qui renvoie l'objet cible.
+//       Object.assign(this, values);
+//     }
+// }

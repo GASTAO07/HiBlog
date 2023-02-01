@@ -12,7 +12,7 @@ import { LoginValidationService } from '../service/auth-service/login-validation
 
 export class BlogListComponent implements OnInit {
   // ------------------------------------------------------------------------------------
-  blogs_: Blog[] = [];
+  blogs: Blog[] = [];
 
   id: number;
   editTitre: string;
@@ -27,70 +27,27 @@ export class BlogListComponent implements OnInit {
   ) { }
   // ------------------------------------------------------------------------------------
   ngOnInit(): void {
-    this.blogs_ = this.listeBlogEnregistresService.blogs;
+    this.refreshBlogs();
   }
 
   // ------------------------------------------------------------------------------------
-  modifyBlog(id: number, titre: string, description: string): void {
-    for (const blog of this.blogs_) {
-      if (blog.id === id) {
-        this.id = id;
-        console.log('id mod', this.id);
-      }
-    }
-    this.editTitre = titre;
-
-    // this.editDescription = this.listeBlogEnregistresService.getBlogList(description);
-    const blog = this.listeBlogEnregistresService.getBlogList(description);
-    this.editDescription = blog.description;
-
-    console.log(this.editTitre, this.editDescription);
-
-    this.router.navigate(['pageblog'], { queryParams: { id: this.id, titre: this.editTitre, description: this.editDescription, isCreation: false } });
-
-    // this.id = this.listeBlogEnregistresService.getBlogById(id);
-    // this.editTitre = this.blogs_[titre];
-
-    // for (const blog of this.blogs_) {
-    //   if (blog.description === titre) {
-    //     this.editTitre = titre;
-    //     console.log('id mod', this.editTitre);
-    //   }
-    // }
-    // for (const blog of this.blogs_) {
-    //   if (blog.description === description) {
-    //     this.editDescription = description;
-    //     console.log('id mod', this.editDescription);
-    //   }
-    // }
-
-    // this.editDescription = description;
-
+  modifyBlog(id : number): void {
+    this.router.navigate(['pageblog'], { queryParams: { id: id , isCreation: false } });
   }
 
   // ------------------------------------------------------------------------------------
   // Rafraichissement d'un blog
   refreshBlogs(): void {
-    this.blogs_ = this.listeBlogEnregistresService.blogs;
+    this.blogs = this.listeBlogEnregistresService.getBlogList();
   }
   // ------------------------------------------------------------------------------------
-  addNewBlog(titre: string, description: string): void {
-    // for (const blog of this.blogs_) {
-    //   if (blog.description === titre) {
-    //     this.editTitre = titre;
-    //   }
-    // }
-
-    this.editTitre = titre;
-
-    const blog = this.listeBlogEnregistresService.getBlogList(description);
-    this.editDescription = blog.description;
-
+  addNewBlog(): void {
     this.router.navigate(['pageblog'], { queryParams: { isCreation: true } });
   }
 
   // ------------------------------------------------------------------------------------
-  deleteBlog(id: number): void {
-    delete this.listeBlogEnregistresService.blogs[id];
+  deleteBlog(id : number): void {
+    this.listeBlogEnregistresService.deleteBlog(id);
+    this.refreshBlogs();
   }
 }
