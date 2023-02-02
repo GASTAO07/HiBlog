@@ -11,42 +11,35 @@ import { LoginValidationService } from '../service/auth-service/login-validation
 })
 
 export class BlogListComponent implements OnInit {
-  // ------------------------------------------------------------------------------------
   blogs: Blog[] = [];
-
   id: number;
-  editTitre: string;
-  editDescription: string;
   isValidBlog: boolean = true;
 
-  // ------------------------------------------------------------------------------------
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-  ) { }
-  // ------------------------------------------------------------------------------------
+  ) {
+
+  }
+
   ngOnInit(): void {
     this.refreshBlogs();
   }
 
-  // ------------------------------------------------------------------------------------
-  modifyBlog(id : number): void {
-    this.router.navigate(['pageblog'], { queryParams: { id: id , isCreation: false } });
+  modifyBlog(id: number): void {
+    this.router.navigate(['pageblog'], { queryParams: { id: id, isCreation: false } });
   }
 
-  // ------------------------------------------------------------------------------------
-  // Rafraichissement d'un blog
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
   }
-  // ------------------------------------------------------------------------------------
+
   addNewBlog(): void {
     this.router.navigate(['pageblog'], { queryParams: { isCreation: true } });
   }
 
-  // ------------------------------------------------------------------------------------
-  deleteBlog(id : number): void {
+  deleteBlog(id: number): void {
     this.listeBlogEnregistresService.deleteBlog(id);
     this.refreshBlogs();
   }

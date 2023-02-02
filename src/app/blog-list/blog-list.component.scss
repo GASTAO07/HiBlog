@@ -95,18 +95,23 @@ button.button-success:hover {
   display: flex;
   margin-bottom: 20px;
   margin-bottom: 20px;
+  
 }
 
 .blogbox1{
   max-width: 900px;
   margin: 0 auto;
-  padding: 22px;
+  padding: 24px;
   background-color: rgb(141, 186, 214);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  display: block;
+  display: flex;
   margin-bottom: 20px;
   margin-bottom: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding : 24px ;
+  gap: 12px
 }
 
 .blogbox2{
@@ -119,4 +124,18 @@ button.button-success:hover {
   display: block;
   margin-bottom: 20px;
   margin-bottom: 20px;
+}
+
+.blogbox0{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: rgb(246, 247, 248);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
 }

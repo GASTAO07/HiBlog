@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
     // le statut de connexion de l’utilisateur dans le stockage local en appelant 'localStorage.setItem Méthode et passage true comme valeur
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
-    this.router.navigateByUrl('pageblog');
+    this.router.navigate(['pageblog'], { queryParams: { isCreation: true } });
     // sessionStorage n’est disponible que pour la durée de la session du navigateur (et est supprimé lorsque l’onglet ou la fenêtre est fermée)
 
     /* Il semble qu’il s’agisse d’une méthode permettant de passer à l’étape suivante d’un processus

@@ -1,7 +1,7 @@
 <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <!-- {{this.loginmodel.email}} -->
 
-<div *ngIf="!isCreation" (submit)="$event.preventDefault()" method="POST">
+<div *ngIf="isCreation" (submit)="$event.preventDefault()" method="POST">
     <!-- Formulaire de création -->
 
     <h2 class="Creerunblog">Créer votre blog</h2>
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-<div *ngIf="isCreation">
+<div *ngIf="!isCreation">
     <!-- Formulaire d'édition  -->
     <!-- {{this.loginmodel.email}} -->
     <div id="edit-blog-titre-description">
