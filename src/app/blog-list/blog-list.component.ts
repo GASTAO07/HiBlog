@@ -19,16 +19,14 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-  ) {
-
-  }
+  ) {  }
 
   ngOnInit(): void {
     this.refreshBlogs();
   }
 
-  modifyBlog(id: number): void {
-    this.router.navigate(['pageblog'], { queryParams: { id: id, isCreation: false } });
+  modifyBlog(id: number, titre: string, description: string): void {
+    this.router.navigate(['pageblog'], { queryParams: { id: id, titre: titre, description : description, isCreation: false } });
   }
 
   refreshBlogs(): void {

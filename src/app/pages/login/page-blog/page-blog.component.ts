@@ -29,10 +29,8 @@ export class PageBlogComponent implements OnInit {
       this.titre = '';
       this.description = '';
     } else {
-
       // eslint-disable-next-line dot-notation
       this.id = parseInt(this.route.snapshot.queryParams['id'], 10);
-
       const blogFound = this.listeBlogEnregistresService.getBlogById(this.id);
       if (!!blogFound) {
         this.titre = blogFound.titre;
@@ -43,7 +41,6 @@ export class PageBlogComponent implements OnInit {
     }
   }
 
-  // ------------------------------------------------------------------------------------
   controleblog(): void {
     if (!(this.description || this.titre)) {
       {
@@ -54,13 +51,11 @@ export class PageBlogComponent implements OnInit {
     }
   }
 
-  // ------------------------------------------------------------------------------------
   creerUnblog(): void {
     this.controleblog();
     this.listeBlogEnregistresService.addBlog(this.titre, this.description);
     this.router.navigate(['listdeblogs']);
   }
-  // ------------------------------------------------------------------------------------
 
   controleeditblog(): void {
     if (!(this.titre || this.description)) {
@@ -72,16 +67,13 @@ export class PageBlogComponent implements OnInit {
     }
   }
 
-  // ------------------------------------------------------------------------------------
   submitEdit(): void {
     this.controleeditblog();
-    this.router.navigate(['listdeblogs'], { queryParams: { titre: this.titre, description: this.description } });
+    this.listeBlogEnregistresService.modifyBlog(this.id, this.titre, this.description);
+    this.router.navigate(['listdeblogs']);
   }
-  // ------------------------------------------------------------------------------------
 
   cancelEdit(): void {
-    this.titre = '';
-    this.description = '';
     this.router.navigate(['listdeblogs']);
   }
 }
