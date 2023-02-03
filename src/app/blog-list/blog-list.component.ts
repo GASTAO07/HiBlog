@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { Blog, ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 
@@ -19,14 +18,14 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
     this.refreshBlogs();
   }
 
   modifyBlog(id: number, titre: string, description: string): void {
-    this.router.navigate(['pageblog'], { queryParams: { id: id, titre: titre, description : description, isCreation: false } });
+    this.router.navigate(['pageblog'], { queryParams: { id: id, titre: titre, description: description, isCreation: false } });
   }
 
   refreshBlogs(): void {

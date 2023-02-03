@@ -5,7 +5,6 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-// import { EditPageComponent } from './edit-page/edit-page.component';
 
 const routes: Routes = [
   {
@@ -23,14 +22,12 @@ const routes: Routes = [
   },
 
   {
-    path : 'pageblog', component : PageBlogComponent, canActivate: [AuthGuard]
+    path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard]
   },
 
   {
-    path : 'CreerUncompte', component : CreerUncompteComponent
+    path: 'CreerUncompte', component: CreerUncompteComponent
   },
-
-
 ];
 
 @NgModule({

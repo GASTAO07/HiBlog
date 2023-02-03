@@ -14,40 +14,6 @@
   padding: 0;
 }
 
-.blog-list li {
-  margin-bottom: 1em;
-}
-
-.blog-list li h2 {
-  font-size: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-.blog-list li p {
-  font-size: 1em;
-  line-height: 1.5;
-}
-
-.blog-list li button {
-  padding: 0.5em 1em;
-  border: none;
-  background-color: #135774;
-  color: #fff;
-  cursor: pointer;
-}
-
-BLOGS{
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 52px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-.blog-list li button:hover {
-  background-color: #555;
-}
 
 button {
   background-color: #135774;
@@ -61,7 +27,6 @@ button {
   margin: 0 auto;
 }
 
-
 button:hover {
   background-color: #273439;
 }
@@ -74,7 +39,7 @@ button.button-success {
   padding: 12px 24px;
   font-size: 1em;
   cursor: pointer;
-  line-height: 0,8;
+  line-height: 0, 8;
   display: block;
   margin: 0 auto;
 }
@@ -85,7 +50,7 @@ button.button-success:hover {
   margin: 0 auto;
 }
 
-.blogbox{
+.blogbox {
   max-width: 600px;
   margin: 0 auto;
   padding: 22px;
@@ -95,38 +60,10 @@ button.button-success:hover {
   display: flex;
   margin-bottom: 20px;
   margin-bottom: 20px;
-  
+
 }
 
-.blogbox1{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 24px;
-  background-color: rgb(141, 186, 214);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  display: flex;
-  margin-bottom: 20px;
-  margin-bottom: 20px;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-padding : 24px ;
-  gap: 12px
-}
-
-.blogbox2{
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 22px;
-  background-color: rgb(246, 247, 248);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  display: block;
-  margin-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-.blogbox0{
+.blogbox0 {
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px;
@@ -138,4 +75,32 @@ button.button-success:hover {
   margin-bottom: 20px;
   flex: 0 0 100%;
   scroll-snap-align: start;
+}
+
+.blogbox1 {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: rgb(141, 186, 214);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 24px;
+  gap: 12px
+}
+
+.blogbox2 {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 22px;
+  background-color: rgb(246, 247, 248);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 20px;
+  margin-bottom: 20px;
 }

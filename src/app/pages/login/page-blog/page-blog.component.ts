@@ -9,11 +9,11 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit {
-  isValidBlog: boolean = true;
   id: number;
   titre: string;
   description: string;
   isCreation: boolean = true;
+  isValidBlog: boolean = true;
 
   constructor(
     private router: Router,
@@ -73,7 +73,7 @@ export class PageBlogComponent implements OnInit {
     this.router.navigate(['listdeblogs']);
   }
 
-  cancelEdit(): void {
+  cancelCreroredit(): void {
     this.router.navigate(['listdeblogs']);
   }
 }

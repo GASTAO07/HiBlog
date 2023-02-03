@@ -1,32 +1,24 @@
-
-
 <div class="contenu-login">
     <div class="form-horizontal">
         <h2 class="Hiblog">Hiblog</h2>
-<div class="Creercomptebox">
-    <h2 class="CreerUncompte">Créer un compte</h2>
-        <div class="form-group">
-            <label for="inputemail">Email : </label>
-
-            <input type="email" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.email" id="inputemail"
-                name="email" placeholder="Email" pattern=".+@capgemini\.com" required size="30" />
-        </div>
-
-        <div class="form-group">
-            <label for="inputmotdepasse">Mot de passe : </label>
-
-            <input type="text" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.motdepasse.pwd"
-                id="inputmotdepasse" name="pwd" placeholder="Mot de passe">
-        </div>
-
-        <div class="form-group">
-            <label for="inputconfirmermotdepasse">Confirmer le mot de passe : </label>
-
-            <input type="text" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.motdepasse.confirmPwd"
-                id="inputmotdepasse" name="confirm_pwd" placeholder="Confirmer le mot de passe">
-        </div>
-    </div><br>
-    
+        <div class="Creercomptebox">
+            <h2 class="CreerUncompte">Créer un compte</h2>
+            <div class="form-group">
+                <label for="inputemail">Email : </label>
+                <input type="email" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.email" id="inputemail"
+                    name="email" placeholder="Email" pattern=".+@capgemini\.com" required size="30" />
+            </div>
+            <div class="form-group">
+                <label for="inputmotdepasse">Mot de passe : </label>
+                <input type="text" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.motdepasse.pwd"
+                    id="inputmotdepasse" name="pwd" placeholder="Mot de passe">
+            </div>
+            <div class="form-group">
+                <label for="inputconfirmermotdepasse">Confirmer le mot de passe : </label>
+                <input type="text" (change)="controlecreation()" [(ngModel)]="creruncomptemodel.motdepasse.confirmPwd"
+                    id="inputmotdepasse" name="confirm_pwd" placeholder="Confirmer le mot de passe">
+            </div>
+        </div><br>
         <button class="button-success" (click)="enregistrer()" [disabled]="isValid">Enregistrer
         </button>
     </div>

@@ -2,36 +2,27 @@
   <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
   <div class="blog-list">
     <h1>Liste de Blog</h1>
-    <div class="blogbox0">
-      <ul>
-
-        <div class="blogbox1">
-
-          <div *ngFor="let blog of blogs">
-            <div class="blogbox0">
-
-              <div class="blogbox">
-                <td>{{ blog.titre }}</td>
-              </div>
-
-              <div class="blogbox">
-                <p>{{ blog.description }}</p>
-              </div><br>
-
-              <button class="button-success" (click)="modifyBlog(blog.id, blog.titre, blog.description)">Modifier</button><br>
-              <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
+    <ul>
+      <div class="blogbox1">
+        <div *ngFor="let blog of blogs">
+          <div class="blogbox0">
+            <div class="blogbox">
+              <td>{{ blog.titre }}</td>
             </div>
-            
+            <div class="blogbox">
+              <p>{{ blog.description }}</p>
+            </div><br>
+            <button class="button-success"
+              (click)="modifyBlog(blog.id, blog.titre, blog.description)">Modifier</button><br>
+            <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
           </div>
-        </div><br>
-        
-      </ul>
-    </div>
+        </div>
+      </div><br>
+    </ul>
     <div *ngIf="blogs.length === 0">
       Il n'y pas de blog.
     </div>
   </div> <br>
   <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
-  <button class="button-success" (click)="refreshBlogs()">Rafraîchir</button>
   <br><button class="button-success" (click)="this.loginValidationService.logout()">Logout</button>
 </div>

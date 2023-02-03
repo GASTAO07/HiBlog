@@ -8,28 +8,20 @@ import { LoginModel } from 'src/app/models/LoginModel';
   styleUrls: ['./creer-uncompte.component.scss']
 })
 export class CreerUncompteComponent implements OnInit {
-// Variables
   creruncomptemodel!: LoginModel;
   isValid: boolean = true;
-
-  // ------------------------------------------------------------------------------------
-
   @Input() confirmer: string = '';
 
-  constructor(
-    private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.creruncomptemodel = new LoginModel({
-      email: '', motdepasse: { pwd: ''},
+      email: '', motdepasse: { pwd: '' },
       terms: false
     });
   }
 
-  // ------------------------------------------------------------------------------------
-
   controlecreation(): void {
-    console.log('ici controle()', this.creruncomptemodel.email, this.creruncomptemodel.motdepasse);
     if (!this.creruncomptemodel.motdepasse.pwd || !this.creruncomptemodel.motdepasse.confirmPwd || !this.creruncomptemodel.email) {
       {
         this.isValid = true;
@@ -38,8 +30,6 @@ export class CreerUncompteComponent implements OnInit {
       this.isValid = false;
     }
   }
-
-  // ------------------------------------------------------------------------------------
 
   enregistrer(): void {
     if (this.creruncomptemodel.motdepasse.pwd === this.creruncomptemodel.motdepasse.confirmPwd) {

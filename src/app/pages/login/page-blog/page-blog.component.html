@@ -1,49 +1,34 @@
 <div *ngIf="this.loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
-<!-- {{this.loginmodel.email}} -->
-
-<div *ngIf="isCreation" (submit)="$event.preventDefault()" method="POST">
-    <!-- Formulaire de création -->
-
+<div *ngIf="isCreation">
     <h2 class="Creerunblog">Créer votre blog</h2>
-
     <div class="Contenu-Blog">
         <div class="form-group">
             <label for="inputblog">Titre du Blog : </label><br>
             <input type="text" [(ngModel)]="titre" (change)="controleblog()" id="inputblog" name="titre"
                 placeholder="Entrez le titre de votre blog">
         </div>
-
         <label for="blog.description">Description :</label><br>
         <textarea id="blog.description" (change)="controleblog()" [(ngModel)]="description" name="blogdescription "
-            rows="5" placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
-
+            rows="5" placeholder="Donnez une description à votre blog" cols="33"></textarea><br>
         <button class="button-success" (click)="creerUnblog()" [disabled]="isValidBlog">Enregistrer</button>
-        <button class="button-success" (click)="cancelEdit()">Annuler</button>
+        <button class="button-success" (click)="cancelCreroredit()">Annuler</button>
         <button (click)="this.loginValidationService.logout()">Logout</button>
     </div>
 </div>
 
 <div *ngIf="!isCreation">
-    <!-- Formulaire d'édition  -->
-    <!-- {{this.loginmodel.email}} -->
     <div id="edit-blog-titre-description">
-
         <h2 class="Creerunblog">Modifier votre blog</h2>
-
         <div class="Contenu-Blog">
-
             <div class="form-group">
                 <label for="inputblog">Titre du Blog : </label><br>
-
                 <input type="text" [(ngModel)]="titre" name="titre" placeholder="Entrez le titre de votre blog"><br>
-
                 <label for="blogdescription">Description :</label><br>
                 <textarea id="blogdescription" [(ngModel)]="description" name="blogdescription " rows="5"
-                    placeholder="Hm de quoi voulez-vous nous parler !" cols="33"></textarea><br>
+                    placeholder="Donnez une description à votre blog" cols="33"></textarea><br>
             </div>
             <button class="button-success" (click)="submitEdit()" [disabled]="!isValidBlog">Enregistrer</button>
-            <button class="button-success" (click)="cancelEdit()">Annuler</button>
-            <!-- <button class="button-success" (click)="blogListComponent.refreshBlogs()">Rafraîchir</button> -->
+            <button class="button-success" (click)="cancelCreroredit()">Annuler</button>
             <button class="button-success" (click)="this.loginValidationService.logout()">Logout</button>
         </div>
     </div>
