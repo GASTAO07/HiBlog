@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
-    this.router.navigate(['pageblog'], { queryParams: {    } });
+    this.router.navigate(['pageblog']);
   }
 
   creerUncompte(): void {

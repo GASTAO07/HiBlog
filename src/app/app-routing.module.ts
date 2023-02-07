@@ -22,11 +22,15 @@ const routes: Routes = [
   },
 
   {
-    path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard]
+    path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard],
   },
 
   {
-    path: 'CreerUncompte', component: CreerUncompteComponent
+    path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'CreerUncompte', component: CreerUncompteComponent,
   },
 ];
 

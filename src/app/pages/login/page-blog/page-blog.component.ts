@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Blog, ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-page-blog',
@@ -11,6 +12,7 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
 export class PageBlogComponent implements OnInit {
   blog: Blog;
   isValidBlog: boolean = true;
+  titlePage: string;
 
   constructor(
     private router: Router,
@@ -20,16 +22,24 @@ export class PageBlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    // avoir un seul component et pour la creation et modification
+    // Component pour le loggin et loggout (barre de menu)
+
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {
+
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {
         this.blog = blogFound;
+        this.titlePage = 'Modify';
+
       } else {
         console.error('id invalide');
       }
     } else {
+      this.titlePage = 'Ajouter';
       this.blog = { titre: '', description: '', category: '' }; // Initialise s'il n'y pas d'id
     }
   }
@@ -57,4 +67,5 @@ export class PageBlogComponent implements OnInit {
   cancelCreroredit(): void {
     this.router.navigate(['listdeblogs']);
   }
+
 }

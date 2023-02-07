@@ -29,7 +29,7 @@ export class BlogListComponent implements OnInit {
   }
 
   addNewBlog(): void {
-    this.router.navigate(['pageblog'], { queryParams: {} });
+    this.router.navigate(['pageblog']);
   }
 
   deleteBlog(id: number): void {
