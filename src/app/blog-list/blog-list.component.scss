@@ -58,9 +58,19 @@ button.button-success:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
-  margin-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
+  .blogboxElement {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 22px;
+    margin-left: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 50 0 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 20px;
+  }
 }
 
 .blogbox0 {
@@ -71,7 +81,6 @@ button.button-success:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: block;
-  margin-bottom: 20px;
   margin-bottom: 20px;
   flex: 0 0 100%;
   scroll-snap-align: start;
@@ -104,3 +113,5 @@ button.button-success:hover {
   margin-bottom: 20px;
   margin-bottom: 20px;
 }
+
+

@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-
 export interface Blog {
-  id: number,
+  id?: number,
   titre: string,
   description: string,
+  category: string,
 }
-
 @Injectable({
   providedIn: 'root'
 })
-
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
   constructor() { }
@@ -26,16 +24,16 @@ export class ListeBlogEnregistresService {
     }
   }
 
-  addBlog(titre: string, description: string): void {
+  addBlog(titre: string, description: string, category: string): void {
     const id = this.blogs.length + 1;
-    this.blogs.push({ id: id, titre: titre, description: description });
+    this.blogs.push({ id: id, titre: titre, description: description, category: category });
   }
 
-  modifyBlog(id: number, titre: string, description: string): void {
+  modifyBlog(id: number, titre: string, description: string, category: string): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const index = this.blogs.findIndex(blog => blog.id === id);
     if (index !== -1) {
-      this.blogs[index] = { id, titre, description };
+      this.blogs[index] = { id, titre, description, category };
     } else {
       throw new Error('blog n\'existe pas ');
     }

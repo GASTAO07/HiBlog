@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { Blog, ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 
 @Component({
@@ -9,67 +9,48 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit {
-  id: number;
-  titre: string;
-  description: string;
-  isCreation: boolean = true;
+  blog: Blog;
   isValidBlog: boolean = true;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
   ) { }
 
   ngOnInit(): void {
     // eslint-disable-next-line dot-notation
-    this.isCreation = this.route.snapshot.queryParams['isCreation'] === 'true';
-    if (this.isCreation) {
-      this.titre = '';
-      this.description = '';
-    } else {
-      // eslint-disable-next-line dot-notation
-      this.id = parseInt(this.route.snapshot.queryParams['id'], 10);
-      const blogFound = this.listeBlogEnregistresService.getBlogById(this.id);
+    const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    if (!!id) {
+      const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {
-        this.titre = blogFound.titre;
-        this.description = blogFound.description;
+        this.blog = blogFound;
       } else {
         console.error('id invalide');
       }
+    } else {
+      this.blog = { titre: '', description: '', category: '' }; // Initialise s'il n'y pas d'id
     }
   }
 
-  controleblog(): void {
-    if (!(this.description || this.titre)) {
-      {
-        this.isValidBlog = true;
-      }
+  validateBlog(): void {
+    if (!(this.blog.titre || this.blog.description)) {
+      this.isValidBlog = true;
     } else {
       this.isValidBlog = false;
     }
   }
 
   creerUnblog(): void {
-    this.controleblog();
-    this.listeBlogEnregistresService.addBlog(this.titre, this.description);
+    this.validateBlog();
+    this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description, this.blog.category);
     this.router.navigate(['listdeblogs']);
   }
 
-  controleeditblog(): void {
-    if (!(this.titre || this.description)) {
-      {
-        this.isValidBlog = true;
-      }
-    } else {
-      this.isValidBlog = false;
-    }
-  }
-
-  submitEdit(): void {
-    this.controleeditblog();
-    this.listeBlogEnregistresService.modifyBlog(this.id, this.titre, this.description);
+  submitBlogChanges(): void {
+    this.validateBlog();
+    this.listeBlogEnregistresService.modifyBlog(this.blog.id, this.blog.titre, this.blog.description, this.blog.category);
     this.router.navigate(['listdeblogs']);
   }
 
