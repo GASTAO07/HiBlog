@@ -1,41 +1,22 @@
-<div *ngIf="loginValidationService.isLoggedIn()"> Vous êtes connecté!</div> 
+<div *ngIf="loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
 <h2 class="Creerunblog">{{titlePage}}</h2>
-<div *ngIf="!blog.id"> 
-    <div class="Contenu-Blog">
-        <div class="form-group">
-            <label for="inputblog">Categorie : </label>
-            <input type="text" [(ngModel)]="blog.category" (change)="validateBlog()" id="inputblog" name="titre"
-                placeholder="Entrez une categorie pour votre blog">
-        </div>
-        <div class="form-group">
-            <label for="inputblog">Titre du Blog : </label>
-            <input type="text" [(ngModel)]="blog.titre" (change)="validateBlog()" id="inputblog" name="titre"
-                placeholder="Entrez le titre de votre blog">
-        </div>
+<div class="Contenu-Blog">
+    <div class="form-group">
+        <label for="inputblog">Categorie :</label>
+        <input type="text" [(ngModel)]="blog.category" (change)="validateBlog()" id="inputblog" name="titre"
+            placeholder="Entrez une categorie pour votre blog">
+    </div>
+    <div class="form-group">
+        <label for="inputblog">Titre du Blog :</label>
+        <input type="text" [(ngModel)]="blog.titre" (change)="validateBlog()" id="inputblog" name="titre"
+            placeholder="Entrez le titre de votre blog">
+    </div>
+    <div class="form-group">
         <label for="blog.description">Description :</label>
-        <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description"
-            name="blogdescription " rows="5" placeholder="Donnez une description à votre blog" cols="33"></textarea>
-        <button class="button-success" (click)="creerUnblog()" [disabled]="isValidBlog">Enregistrer</button><br>
-        <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
-        <button (click)="loginValidationService.logout()">Logout</button>
+        <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description" name="blogdescription "
+            rows="5" placeholder="Donnez une description à votre blog" cols="33"></textarea>
     </div>
+      <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()" [disabled]="isValidBlog">{{textButton}}</button><br>
+    <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
+    <button (click)="loginValidationService.logout()">Logout</button>
 </div>
-
-<div *ngIf="!!blog.id">
-    <div id="edit-blog-titre-description">
-        <div class="Contenu-Blog">
-            <div class="form-group">
-                <label for="inputblog">Titre du Blog : </label>
-                <input type="te xt" [(ngModel)]="blog.titre" name="titre"
-                    placeholder="Entrez le titre de votre blog"><br>
-                <label for="blogdescription">Description :</label>
-                <textarea id="blogdescription" [(ngModel)]="blog.description" name="blogdescription " rows="5"
-                    placeholder="Donnez une description à votre blog" cols="33"></textarea>
-            </div>
-            <button class="button-success" (click)="submitBlogChanges()" [disabled]="!isValidBlog">Enregistrer</button><br>
-            <button class="button-success" (click)="cancelCreroredit()">Annuler</button><br>
-            <button class="button-success" (click)="loginValidationService.logout()">Logout</button>
-        </div>
-    </div>
-</div>
-

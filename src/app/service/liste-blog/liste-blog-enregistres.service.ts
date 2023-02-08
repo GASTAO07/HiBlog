@@ -35,7 +35,7 @@ export class ListeBlogEnregistresService {
     if (index !== -1) {
       this.blogs[index] = { id, titre, description, category };
     } else {
-      throw new Error('blog n\'existe pas ');
+      throw new Error('blog n\'existe pas');
     }
   }
 
