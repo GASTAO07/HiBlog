@@ -1,5 +1,4 @@
-<div *ngIf="loginValidationService.isLoggedIn()"> Vous êtes connecté!</div>
-<h2 class="Creerunblog">{{titlePage}}</h2>
+<h2 class="Creerunblog">{{titrePage}}</h2>
 <div class="Contenu-Blog">
     <div class="form-group">
         <label for="inputblog">Categorie :</label>
@@ -18,5 +17,4 @@
     </div>
       <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()" [disabled]="isValidBlog">{{textButton}}</button><br>
     <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
-    <button (click)="loginValidationService.logout()">Logout</button>
 </div>

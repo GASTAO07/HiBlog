@@ -10,6 +10,7 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
+import { ToolBarComponent } from './tool-bar/tool-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     PageBlogComponent,
     CreerUncompteComponent,
     BlogListComponent,
+    ToolBarComponent,
   ],
   imports: [
     BrowserModule,

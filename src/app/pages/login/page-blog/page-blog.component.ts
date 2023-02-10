@@ -11,7 +11,7 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
 export class PageBlogComponent implements OnInit {
   blog: Blog;
   isValidBlog: boolean = true;
-  titlePage: string;
+  titrePage: string;
   textButton: string;
 
   constructor(
@@ -23,6 +23,8 @@ export class PageBlogComponent implements OnInit {
 
   ngOnInit(): void {
     // Component pour le loggin et loggout (barre de menu)
+    // Access quand connecté (profil et logout)
+
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {
@@ -30,14 +32,14 @@ export class PageBlogComponent implements OnInit {
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {
         this.blog = blogFound;
-        this.titlePage = 'Modifier un blog';
+        this.titrePage = 'Modifier un blog';
         this.textButton = 'Enregistrer les modifs';
         // Créer
       } else {
         console.error('id invalide');
       }
     } else {
-      this.titlePage = 'Ajouter un blog';
+      this.titrePage = 'Ajouter un blog';
       this.textButton = 'Créer un blog';
       this.blog = { titre: '', description: '', category: '' }; // Initialise s'il n'y pas d'id
     }
@@ -55,18 +57,18 @@ export class PageBlogComponent implements OnInit {
   creerUnblog(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description, this.blog.category);
-    this.router.navigate(['listdeblogs']);
+    this.router.navigate(['listedeblogs']);
   }
 
   /// Executer submit si on edit dans le html
   submitBlogChanges(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.modifyBlog(this.blog.id, this.blog.titre, this.blog.description, this.blog.category);
-    this.router.navigate(['listdeblogs']);
+    this.router.navigate(['listedeblogs']);
   }
 
   cancelCreroredit(): void {
-    this.router.navigate(['listdeblogs']);
+    this.router.navigate(['listedeblogs']);
   }
 
 }

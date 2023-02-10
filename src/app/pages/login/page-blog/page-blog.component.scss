@@ -1,7 +1,12 @@
 h2.Creerunblog {
+  position: absolute;
+  top: 10;
+  height: 60px;
+  display: flex;
+
     text-align: center;
     font-size: 2em;
-    margin: 32px 0;
+    margin: 32px 10px;
   }
   
   .Contenu-Blog {
@@ -9,7 +14,7 @@ h2.Creerunblog {
     margin: 0 auto;
     padding: 32px;
     background-color: white;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 8px rgba(8, 60, 99, 0.1);
     border-radius: 4px;
   }
   

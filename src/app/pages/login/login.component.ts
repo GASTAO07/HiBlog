@@ -1,6 +1,6 @@
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { LoginModel } from 'src/app/models/LoginModel';
 import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
@@ -18,11 +18,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
+    public route: ActivatedRoute,
     private loginValidationService: LoginValidationService,
     private tableauEmailPasswordService: TableauEmailPasswordService
   ) { }
 
   ngOnInit(): void {
+    this.loginValidationService.isLoggedOut();
     this.loginmodel = new LoginModel({
       email: '', motdepasse: { pwd: '' },
       terms: false
@@ -46,7 +48,7 @@ export class LoginComponent implements OnInit {
     }
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
-    this.router.navigate(['listdeblogs']);
+    this.router.navigate(['listedeblogs']);
   }
 
   creerUncompte(): void {
@@ -55,6 +57,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.tableauEmailPasswordService.addEmailPassword(this.loginmodel.email, this.loginmodel.motdepasse.pwd);
-    this.router.navigateByUrl('CreerUncompte');
+    this.router.navigateByUrl('creeruncompte');
   }
 }
