@@ -23,7 +23,6 @@ export class ToolBarComponent {
   goToBloglist(): void {
     this.router.navigateByUrl('listedeblogs');
   }
-
 }
 
 
