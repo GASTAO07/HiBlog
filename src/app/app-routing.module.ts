@@ -18,7 +18,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'listdeblogs', component: BlogListComponent,
+    path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard],
   },
 
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'CreerUncompte', component: CreerUncompteComponent,
+    path: 'creeruncompte', component: CreerUncompteComponent,
   },
 ];
 
