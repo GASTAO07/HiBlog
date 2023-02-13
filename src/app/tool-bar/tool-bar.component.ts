@@ -23,6 +23,10 @@ export class ToolBarComponent {
   goToBloglist(): void {
     this.router.navigateByUrl('listedeblogs');
   }
+
+  logout() : void {
+    this.router.navigateByUrl('auth/login');
+  }
 }
 
 

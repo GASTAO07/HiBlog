@@ -48,6 +48,9 @@ export class LoginComponent implements OnInit {
     }
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
+
+    this.auth.setUser({ email: this.loginmodel.email });
+
     this.router.navigate(['listedeblogs']);
   }
 

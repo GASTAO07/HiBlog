@@ -1,7 +1,10 @@
-<app-tool-bar></app-tool-bar><br>
+<app-tool-bar></app-tool-bar>
 <div>
   <div class="blog-list">
-    <h1>Liste de Blog</h1>
+    <div *ngIf="user">
+      Salut : {{ this.user }}
+    </div>    
+    <h1>Blogs</h1>
     <ul>
       <div class="blogbox1">
         <div *ngFor="let blog of blogs">
@@ -35,5 +38,4 @@
     </div>
   </div>
   <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
-  <!-- <button class="button-success" (click)="this.loginValidationService.logout()">Logout</button> -->
 </div>
