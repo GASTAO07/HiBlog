@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Blog, ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { Blog } from '../interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 
 @Component({

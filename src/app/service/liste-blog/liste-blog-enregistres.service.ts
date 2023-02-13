@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
-export interface Blog {
-  id?: number,
-  titre: string,
-  description: string,
-  category: string,
-}
+import { Blog } from 'src/app/interfaces/blog.interface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -47,3 +43,4 @@ export class ListeBlogEnregistresService {
     }
   }
 }
+
