@@ -23,9 +23,6 @@ export class PageBlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Component pour le loggin et loggout (barre de menu)
-    // Access quand connecté (profil et logout)
-
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {

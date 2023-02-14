@@ -6,6 +6,7 @@ import { Blog } from 'src/app/interfaces/blog.interface';
 })
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
+
   constructor() { }
 
   getBlogList(): Blog[] | undefined {

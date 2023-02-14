@@ -15,6 +15,7 @@ export class BlogListComponent implements OnInit {
   blogs: Blog[] = [];
   isValidBlog: boolean = true;
   user: User;
+
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
