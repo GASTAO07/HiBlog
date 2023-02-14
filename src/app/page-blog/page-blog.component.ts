@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Blog, ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from 'src/app/service/liste-blog/liste-blog-enregistres.service';
+import { Blog } from '../interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 
 @Component({
@@ -22,9 +23,6 @@ export class PageBlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Component pour le loggin et loggout (barre de menu)
-    // Access quand connecté (profil et logout)
-
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {

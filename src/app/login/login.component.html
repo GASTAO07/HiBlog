@@ -5,12 +5,12 @@
         <div class="emailpasswordbox">
             <div class="form-group">
                 <label for="inputemail">Email : </label>
-                <input type="email" (change)="controle()" [(ngModel)]="loginmodel.email" id="inputemail" name="email"
+                <input type="email" (change)="controle()" [(ngModel)]="user.email" id="inputemail" name="email"
                     placeholder="Entrez votre mail" pattern=".+@capgemini\.com" required size="30" />
             </div><br>
             <div class="form-group">
                 <label for="inputmotdepasse">Mot de passe : </label>
-                <input type="password" (keyup)="controle()" [(ngModel)]="loginmodel.motdepasse.pwd" id="inputmotdepasse"
+                <input type="password" (keyup)="controle()" [(ngModel)]="user.motdepasse.pwd" id="inputmotdepasse"
                     name="password" placeholder="Entrez un mot de passe">
             </div><br>
         </div><br>

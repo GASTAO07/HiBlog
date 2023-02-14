@@ -2,8 +2,8 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
-import { LoginModel } from 'src/app/models/LoginModel';
 import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,14 @@ import { TableauEmailPasswordService } from 'src/app/service/tableau-email-passw
 
 export class LoginComponent implements OnInit {
   isDisabled: boolean = true;
-  loginmodel: LoginModel;
+  user: User = {
+    nom: '',
+    email: '',
+    motdepasse: {
+      pwd: ''
+    }
+  };
+
 
   constructor(
     private router: Router,
@@ -25,16 +32,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginValidationService.isLoggedOut();
-    this.loginmodel = new LoginModel({
-      email: '', motdepasse: { pwd: '' },
-      terms: false
-    });
   }
 
   controle(): void {
     if (
-      !this.loginValidationService.validateEmail(this.loginmodel.email) ||
-      !this.loginValidationService.validatePassword(this.loginmodel.motdepasse.pwd)
+      !this.loginValidationService.validateEmail(this.user.email) ||
+      !this.loginValidationService.validatePassword(this.user.motdepasse.pwd)
     ) {
       this.isDisabled = true;
     } else {
@@ -48,18 +51,15 @@ export class LoginComponent implements OnInit {
     }
     localStorage.setItem('isLoggedIn', 'true');
     this.auth.login();
-
-    this.auth.setUser({ email: this.loginmodel.email });
-
     this.router.navigate(['listedeblogs']);
   }
 
   creerUncompte(): void {
-    if (this.tableauEmailPasswordService.hasEmail(this.loginmodel.email)) {
+    if (this.tableauEmailPasswordService.hasEmail(this.user.email)) {
       alert('Désolé, cet e-mail existe déjà !');
       return;
     }
-    this.tableauEmailPasswordService.addEmailPassword(this.loginmodel.email, this.loginmodel.motdepasse.pwd);
+    this.tableauEmailPasswordService.addEmailPassword(this.user.email, this.user.motdepasse.pwd);
     this.router.navigateByUrl('creeruncompte');
   }
 }

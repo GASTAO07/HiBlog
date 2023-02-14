@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Blog, ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
+import { Blog } from '../interfaces/blog.interface';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 import { AuthService } from '../service/auth-service/auth.service';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-blog-list',
@@ -12,8 +14,8 @@ import { AuthService } from '../service/auth-service/auth.service';
 export class BlogListComponent implements OnInit {
   blogs: Blog[] = [];
   isValidBlog: boolean = true;
-  user: string;
-  User : string;
+  user: User;
+
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
