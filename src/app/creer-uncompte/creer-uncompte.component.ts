@@ -9,7 +9,7 @@ import { AuthService } from '../service/auth-service/auth.service';
   styleUrls: ['./creer-uncompte.component.scss']
 })
 export class CreerUncompteComponent implements OnInit {
-  creruncompte: User = {
+  newUser: User = {
     nom: '',
     email: '',
     motdepasse: {
@@ -28,7 +28,7 @@ export class CreerUncompteComponent implements OnInit {
   }
 
   controlecreation(): void {
-    if (!this.creruncompte.motdepasse.pwd || !this.creruncompte.motdepasse.confirmPwd || !this.creruncompte.email) {
+    if (!this.newUser.motdepasse.pwd || !this.newUser.motdepasse.confirmPwd || !this.newUser.email) {
       {
         this.isValid = true;
       }
@@ -38,14 +38,14 @@ export class CreerUncompteComponent implements OnInit {
   }
 
   enregistrer(): void {
-    if (this.creruncompte.motdepasse.pwd === this.creruncompte.motdepasse.confirmPwd) {
+    if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
       this.controlecreation();
       this.auth.setUser({
-        email: this.creruncompte.email,
-        nom: this.creruncompte.nom,
-        prenom: this.creruncompte.prenom,
+        email: this.newUser.email,
+        nom: this.newUser.nom,
+        prenom: this.newUser.prenom,
         motdepasse: {
-          pwd: this.creruncompte.motdepasse.pwd,
+          pwd: this.newUser.motdepasse.pwd,
         }
       });
       this.router.navigateByUrl('auth/login');
