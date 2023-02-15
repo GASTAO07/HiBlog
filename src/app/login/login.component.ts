@@ -14,13 +14,10 @@ import { User } from '../interfaces/user.interface';
 export class LoginComponent implements OnInit {
   isDisabled: boolean = true;
   user: User = {
-    nom: '',
+    id: 0,
     email: '',
-    motdepasse: {
-      pwd: ''
-    }
+    motdepasse: { pwd: '', confirmPwd: '' }
   };
-
 
   constructor(
     private router: Router,
@@ -55,11 +52,11 @@ export class LoginComponent implements OnInit {
   }
 
   creerUncompte(): void {
-    if (this.tableauEmailPasswordService.hasEmail(this.user.email)) {
+    if (this.tableauEmailPasswordService.hasUser(this.user.email)) {
       alert('Désolé, cet e-mail existe déjà !');
       return;
     }
-    this.tableauEmailPasswordService.addEmailPassword(this.user.email, this.user.motdepasse.pwd);
+    this.tableauEmailPasswordService.addUser(this.user);
     this.router.navigateByUrl('creeruncompte');
   }
 }

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
-import { AuthService } from '../service/auth-service/auth.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-creer-uncompte',
@@ -10,19 +10,17 @@ import { AuthService } from '../service/auth-service/auth.service';
 })
 export class CreerUncompteComponent implements OnInit {
   newUser: User = {
-    nom: '',
+    id: 0,
     email: '',
-    motdepasse: {
-      pwd: '',
-      confirmPwd: '',
-    }
-  };
+    nom: '',
+    prenom: '',
+    motdepasse: { pwd: '' } };
 
   isValid: boolean = true;
   @Input() confirmer: string = '';
 
   constructor(private router: Router,
-   private auth: AuthService ) { }
+    private userservice : UserService) { }
 
   ngOnInit(): void {
   }
@@ -40,18 +38,18 @@ export class CreerUncompteComponent implements OnInit {
   enregistrer(): void {
     if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
       this.controlecreation();
-      this.auth.setUser({
+      this.userservice.setUser({
         email: this.newUser.email,
         nom: this.newUser.nom,
         prenom: this.newUser.prenom,
         motdepasse: {
           pwd: this.newUser.motdepasse.pwd,
-        }
+        },
+        id: 0
       });
       this.router.navigateByUrl('auth/login');
     }
   }
-
 }
 
 

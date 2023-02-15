@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
 import { Blog } from '../interfaces/blog.interface';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
-import { AuthService } from '../service/auth-service/auth.service';
 import { User } from '../interfaces/user.interface';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -20,13 +20,14 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-    private auth : AuthService,
+    private userservice : UserService
   ) { }
 
   ngOnInit(): void {
-    this.refreshBlogs();
-    this.user = this.auth.getUser();
+    this.user = this.userservice.getUser();
     console.log('user : ', this.user);
+
+    this.refreshBlogs();
   }
 
   modifyTheBlog(id: number): void {

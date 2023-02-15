@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+import { User } from 'src/app/interfaces/user.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  setUser(user: User): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+}
