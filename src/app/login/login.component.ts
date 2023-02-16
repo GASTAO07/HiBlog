@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
 import { User } from '../interfaces/user.interface';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     public route: ActivatedRoute,
     private loginValidationService: LoginValidationService,
-    private tableauEmailPasswordService: TableauEmailPasswordService
+    private tableauEmailPasswordService: TableauEmailPasswordService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -46,9 +48,10 @@ export class LoginComponent implements OnInit {
     if (this.isDisabled) {
       return;
     }
-    localStorage.setItem('isLoggedIn', 'true');
-    this.auth.login();
-    this.router.navigate(['listedeblogs']);
+    if (this.userService.checkUser(this.user)) {
+      this.auth.login();
+      this.router.navigate(['listedeblogs']);
+    }
   }
 
   creerUncompte(): void {
@@ -56,7 +59,6 @@ export class LoginComponent implements OnInit {
       alert('Désolé, cet e-mail existe déjà !');
       return;
     }
-    this.tableauEmailPasswordService.addUser(this.user);
     this.router.navigateByUrl('creeruncompte');
   }
 }
