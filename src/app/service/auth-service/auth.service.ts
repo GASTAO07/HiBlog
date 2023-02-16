@@ -9,7 +9,6 @@ export class AuthService {
   login(): void {
     this.token = 'MyFakeToken';
     localStorage.setItem('isLoggedIn', 'true');
-    console.log('authici', 'isLoggedIn');
   }
 
   logout(): void {

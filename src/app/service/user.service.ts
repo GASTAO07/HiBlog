@@ -41,4 +41,14 @@ export class UserService {
     }
   }
 
+  onContinueSet(usersetcheck : User): void {
+    // Récupérer le tableau d'utilisateur
+    const users: User[] = this.getUsers();
+    const index = users.findIndex((user: User): boolean => user.email === usersetcheck.email);
+    if (index !== -1) {
+      localStorage.setItem('currentUserId', users[index].id.toString());
+    }
+  }
+
+
 }

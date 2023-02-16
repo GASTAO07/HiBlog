@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     }
     if (this.userService.checkUser(this.user)) {
       this.auth.login();
+      this.userService.onContinueSet(this.user);
       this.router.navigate(['listedeblogs']);
     }
   }

@@ -11,9 +11,7 @@ export class ToolBarComponent {
   isUserLoggedIn: boolean = false;
 
   ngOnInit(): void {
-    console.log('debutappcomp is user : ', this.isUserLoggedIn);
     this.isUserLoggedIn = this.loginValidationService.isLoggedIn();
-    console.log('finappcomp is user : ', this.isUserLoggedIn);
   }
 
   constructor(

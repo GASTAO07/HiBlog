@@ -45,7 +45,7 @@ export class CreerUncompteComponent implements OnInit {
         motdepasse: {
           pwd: this.newUser.motdepasse.pwd,
         },
-        id: 0
+        id: Math.floor(Math.random() * 1000),
       });
       this.router.navigateByUrl('auth/login');
     }
