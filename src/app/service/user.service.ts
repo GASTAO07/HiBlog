@@ -51,4 +51,10 @@ export class UserService {
   }
 
 
+  getUserById(id: number): User {
+    const users = this.getUsers();
+    const user = users.find((user: User): boolean => user.id === id);
+    return user;
+  }
+
 }

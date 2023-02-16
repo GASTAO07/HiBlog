@@ -20,13 +20,18 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-    private userservice : UserService
+    private userservice: UserService
   ) { }
 
   ngOnInit(): void {
-    this.user = this.userservice.getUser();
-    console.log('user : ', this.user);
-
+    const currentUserId = Number(localStorage.getItem('currentUserId'));
+    const currentUser: User = this.userservice.getUserById(currentUserId);
+    // Si currentUser est undefined, renvoyer une erreur
+    if (currentUser === undefined) {
+      console.error('User introuvable');
+    } else {
+      this.user = currentUser;
+    }
     this.refreshBlogs();
   }
 
