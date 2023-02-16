@@ -9,33 +9,18 @@ export class UserService {
   setUser(user: User): void {
     // 1- Récupérer le tableau d'utilisateurs
     const users: User[] = this.getUsers();
-
     // 2- Ajouter mon utilisateur passé en paramètre au tableau
     users.push(user);
-
     // 3- Sauvegarder le nouveau tableau dans le LocalStorage
     this.setUsers(users);
-
   }
 
-  getUser() : User {
-    return {
-      id: 0,
-      email: '',
-      nom: '',
-      prenom: '',
-      motdepasse: { pwd: '' }
-    };
-  }
-
+  // Methode pour aller chercher le tableau d'utilisateur
   getUsers(): User[] {
-    // Si JSON.parse(localStorage.getItem('users') est défini
-    // Alors je renvoie JSON.parse(localStorage.getItem('users')
-    // Sinon, je renvoie un tableau vide
     const usersInLocalStorage = JSON.parse(localStorage.getItem('users'));
     if (usersInLocalStorage) {
       return usersInLocalStorage;
-    }else {
+    } else {
       return [];
     }
   }
@@ -43,4 +28,17 @@ export class UserService {
   setUsers(users: User[]): void {
     localStorage.setItem('users', JSON.stringify(users));
   }
+
+  checkUser(userToCheck: User): boolean {
+    // Récupérer le tableau d'utilisateur
+    const users: User[] = this.getUsers();
+    // Vérifier si l'email existe dans la liste d'utilisateurs
+    const index = users.findIndex((user: User): boolean => user.email === userToCheck.email);
+    if (index !== -1) {
+      return users[index].motdepasse.pwd === userToCheck.motdepasse.pwd;
+    } else {
+      return false;
+    }
+  }
+
 }
