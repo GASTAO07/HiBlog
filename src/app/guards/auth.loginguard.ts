@@ -6,20 +6,20 @@ import { LoginValidationService } from '../service/auth-service/login-validation
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+
+export class AuthLoginGuard implements CanActivate {
   constructor(
-    private auth: AuthService,
-    private router: Router,
-    private loginValidationService : LoginValidationService) { }
+        private auth: AuthService,
+        private router: Router,
+        private loginValidationService : LoginValidationService) { }
 
   canActivate(): boolean {
-    if (this.loginValidationService.isLoggedIn()) {
+    if (!this.loginValidationService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['auth/login']); // aller à la page login
+      this.router.navigate(['listedeblogs']); // return à la liste de blogs si djà connecté
       return false;
     }
-
   }
 
 }
