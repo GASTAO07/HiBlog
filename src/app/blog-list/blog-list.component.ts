@@ -28,7 +28,7 @@ export class BlogListComponent implements OnInit {
     const currentUser: User = this.userservice.getUserById(currentUserId);
     // Si currentUser est undefined, renvoyer une erreur
     if (currentUser === undefined) {
-      console.error('User introuvable');
+      return;
     } else {
       this.user = currentUser;
     }
@@ -48,7 +48,10 @@ export class BlogListComponent implements OnInit {
   }
 
   deleteBlog(id: number): void {
-    this.listeBlogEnregistresService.deleteBlog(id);
-    this.refreshBlogs();
+    const confirmed = confirm('Vous êtes sûr de vouloir effacer ce blog ? ') ;
+    if (confirmed) {
+      this.listeBlogEnregistresService.deleteBlog(id);
+      this.refreshBlogs();
+    }
   }
 }

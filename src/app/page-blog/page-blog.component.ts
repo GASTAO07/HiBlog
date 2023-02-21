@@ -17,9 +17,9 @@ export class PageBlogComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public route: ActivatedRoute,
+    private route: ActivatedRoute,
     private listeBlogEnregistresService: ListeBlogEnregistresService,
-    public loginValidationService: LoginValidationService,
+    private loginValidationService: LoginValidationService,
   ) { }
 
   ngOnInit(): void {

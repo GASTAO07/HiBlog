@@ -1,0 +1,41 @@
+<app-tool-bar></app-tool-bar>
+<div>
+    <div class="blog-list">
+        <div *ngIf="user">
+            <h1>Informations utilisateur</h1>
+            <ul>
+                <div class="userbox0">
+
+                    <div class="userbox">
+                        <label for="blog.category">Nom :</label>
+                        <div class="userboxElement">
+                            <td> {{ user.nom }}</td>
+                        </div>
+                    </div>
+
+                    <div class="userbox">
+                        <label for="inputblog">Prénom : </label>
+                        <div class="userboxElement">
+                            <td>{{ user.prenom }}</td>
+                        </div>
+                    </div>
+
+                    <div class="userbox">
+                        <label for="blog.description">Email :</label>
+                        <div class="userboxElement">
+                            <p> {{ user.email }}</p>
+                        </div>
+                    </div>
+
+                    <div class="userbox">
+                        <button class="button-success" (click)="modifyUser(user.id)">Modifier mon
+                            compte</button><br>
+                        <button class="button-success" (click)="deleteUser(user.id)">Effacer mon compte</button>
+                    </div>
+
+                </div>
+            </ul>
+        </div>
+    </div>
+
+</div>
