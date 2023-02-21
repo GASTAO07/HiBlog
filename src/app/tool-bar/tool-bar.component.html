@@ -1,11 +1,17 @@
 <div *ngIf="isUserLoggedIn">
     <div class="toolbar" role="banner">
-        <h2 class="Hiblog">Hiblog</h2>
-    <nav>
-        <div class="navicon">
-            <div></div>
+        <h2 class="Hiblog">Hiblog</h2><br>
+        <div *ngIf="user">
+            <h3 class="user">
+                Bienvenu(e), {{ user.nom }} {{user.prenom}}
+            </h3>
         </div>
-        <a (click)="logout()">Sortir</a>
-        <a (click)=" goToBloglist()">Blogs</a>
-    </nav>
-</div>
+        <nav>
+            <div class="navicon">
+                <div></div>
+            </div>
+            <a (click)="logout()">Sortir</a>
+            <a (click)=" goToBloglist()">Blogs</a>
+            <a (click)=" userList()">Compte</a>
+        </nav>
+    </div>
