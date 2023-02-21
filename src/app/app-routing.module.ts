@@ -5,7 +5,8 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-
+import { UserListComponent } from './user-list/user.component';
+import { AuthLoginGuard } from './guards/auth.loginguard';
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,11 @@ const routes: Routes = [
   },
 
   {
-    path: 'auth/login', component: LoginComponent,
+    path: 'userlist', component: UserListComponent, canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'auth/login', component: LoginComponent, canActivate: [AuthLoginGuard],
   },
 
   {
