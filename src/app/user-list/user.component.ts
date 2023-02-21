@@ -28,7 +28,6 @@ export class UserListComponent implements OnInit {
     } else {
       this.user = currentUser;
     }
-    this.userService.getUsers();
   }
 
   modifyUser(id: number): void {
@@ -39,9 +38,7 @@ export class UserListComponent implements OnInit {
     const confirmed = confirm('Vous êtes sûr de vouloir effacer cet utilisateur? vous allez être deconnecté !');
     if (confirmed) {
       this.userService.deleteUser(id);
-      this.userService.getUsers();
-      this.loginValidationService.isLoggedOut();
-      this.router.navigateByUrl('auth/login');
+      this.loginValidationService.logOut();
     }
   }
 

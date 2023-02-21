@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
-import { AuthService } from '../service/auth-service/auth.service';
 import { UserService } from '../service/user-service/user.service';
 import { User } from '../interfaces/user.interface';
 
@@ -29,7 +28,6 @@ export class ToolBarComponent {
   constructor(
     private loginValidationService: LoginValidationService,
     private router: Router,
-    private auth: AuthService,
     private userService: UserService) {}
 
   goToBloglist(): void {
@@ -37,9 +35,7 @@ export class ToolBarComponent {
   }
 
   logout() : void {
-    this.loginValidationService.isLoggedOut();
-    localStorage.removeItem('currentUserId');
-    this.router.navigateByUrl('auth/login');
+    this.loginValidationService.logOut();
   }
 
   userInfo() : void {

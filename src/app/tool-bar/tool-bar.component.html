@@ -1,6 +1,7 @@
 <div *ngIf="isUserLoggedIn">
     <div class="toolbar" role="banner">
         <h2 class="Hiblog">Hiblog</h2><br>
+        <!-- <h3>{{pageName}}</h3> -->
         <div *ngIf="user">
             <h3 class="user">
                 Bienvenu(e), {{ user.nom }} {{user.prenom}}
@@ -15,3 +16,4 @@
             <a (click)=" userInfo()">Compte</a>
         </nav>
     </div>
+</div>

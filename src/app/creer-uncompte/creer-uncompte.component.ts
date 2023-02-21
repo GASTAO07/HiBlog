@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../service/user-service/user.service';
@@ -21,7 +21,7 @@ export class CreerUncompteComponent implements OnInit {
   };
 
   isValid: boolean = true;
-  @Input() confirmer: string = '';
+
 
   constructor(private router: Router,
     private userService: UserService,
