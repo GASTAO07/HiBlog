@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
-import { UserService } from '../service/user.service';
+import { UserService } from '../service/user-service/user.service';
 
 @Component({
   selector: 'app-creer-uncompte',
@@ -11,6 +11,7 @@ import { UserService } from '../service/user.service';
 export class CreerUncompteComponent implements OnInit {
   titrePage: string;
   textButton: string;
+
   newUser: User = {
     id: 0,
     email: '',
@@ -30,13 +31,11 @@ export class CreerUncompteComponent implements OnInit {
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {
-      // Editer
       const userFound = this.userService.getUserById(id);
       if (!!userFound) {
         this.newUser = userFound;
         this.titrePage = 'Modifier mon compte';
         this.textButton = 'Enregistrer les modifs';
-        // Créer
       } else {
         console.error('id invalide');
       }
@@ -72,19 +71,22 @@ export class CreerUncompteComponent implements OnInit {
       });
       this.router.navigateByUrl('auth/login');
     }
-
   }
 
   enregistrerChangesNewUser(): void {
     if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
       this.controlecreation();
       this.userService.updateUser(this.newUser);
-      this.router.navigateByUrl('userlist');
+      this.router.navigateByUrl('user');
     }
   }
 
-  cancel(): void {
-    this.router.navigate(['userlist']);
+  cancelChangesNewUser(): void {
+    this.router.navigate(['user']);
+  }
+
+  cancelCreateNewUser(): void {
+    this.router.navigate(['auth/login']);
   }
 
 }

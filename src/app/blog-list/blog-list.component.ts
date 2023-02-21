@@ -4,7 +4,7 @@ import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-en
 import { Blog } from '../interfaces/blog.interface';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 import { User } from '../interfaces/user.interface';
-import { UserService } from '../service/user.service';
+import { UserService } from '../service/user-service/user.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -20,12 +20,12 @@ export class BlogListComponent implements OnInit {
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     public loginValidationService: LoginValidationService,
-    private userservice: UserService
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     const currentUserId = Number(localStorage.getItem('currentUserId'));
-    const currentUser: User = this.userservice.getUserById(currentUserId);
+    const currentUser: User = this.userService.getUserById(currentUserId);
     // Si currentUser est undefined, renvoyer une erreur
     if (currentUser === undefined) {
       return;

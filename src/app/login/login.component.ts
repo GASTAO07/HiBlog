@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
 import { User } from '../interfaces/user.interface';
-import { UserService } from '../service/user.service';
+import { UserService } from '../service/user-service/user.service';
 
 @Component({
   selector: 'app-login',

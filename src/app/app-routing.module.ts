@@ -13,27 +13,21 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth/login'
   },
-
   {
-    path: 'userlist', component: UserListComponent, canActivate: [AuthGuard],
+    path: 'user', component: UserListComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'auth/login', component: LoginComponent, canActivate: [AuthLoginGuard],
   },
-
   {
     path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'creeruncompte', component: CreerUncompteComponent,
   },

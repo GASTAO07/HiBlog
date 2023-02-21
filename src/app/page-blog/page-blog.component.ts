@@ -26,13 +26,11 @@ export class PageBlogComponent implements OnInit {
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {
-      // Editer
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {
         this.blog = blogFound;
         this.titrePage = 'Modifier un blog';
         this.textButton = 'Enregistrer les modifs';
-        // Créer
       } else {
         console.error('id invalide');
       }
@@ -51,14 +49,12 @@ export class PageBlogComponent implements OnInit {
     }
   }
 
-  /// Executer Creer
   creerUnblog(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description, this.blog.category);
     this.router.navigate(['listedeblogs']);
   }
 
-  /// Executer submit si on edit dans le html
   submitBlogChanges(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.modifyBlog(this.blog.id, this.blog.titre, this.blog.description, this.blog.category);
@@ -68,5 +64,4 @@ export class PageBlogComponent implements OnInit {
   cancelCreroredit(): void {
     this.router.navigate(['listedeblogs']);
   }
-
 }

@@ -17,7 +17,7 @@ export class AuthLoginGuard implements CanActivate {
     if (!this.loginValidationService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['listedeblogs']); // return à la liste de blogs si djà connecté
+      this.router.navigate(['listedeblogs']);
       return false;
     }
   }

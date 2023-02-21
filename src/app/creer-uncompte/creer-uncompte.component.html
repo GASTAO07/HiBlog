@@ -3,7 +3,6 @@
         <h2 class="Hiblog">Hiblog</h2>
         <div class="Creercomptebox">
             <h2 class="CreerUncompte">Créer un compte</h2>
-
             <div class="form-group">
                 <label for="inputemail">Prénom : </label>
                 <input type="email" (change)="controlecreation()" [(ngModel)]="newUser.prenom" id="inputemail"
@@ -15,8 +14,6 @@
                 <input type="email" (change)="controlecreation()" [(ngModel)]="newUser.nom" id="inputemail" name="email"
                     placeholder="Nom" />
             </div>
-
-
             <div class="form-group">
                 <label for="inputemail">Email : </label>
                 <input type="email" (change)="controlecreation()" [(ngModel)]="newUser.email" id="inputemail"
@@ -34,5 +31,5 @@
             </div>
         </div><br>
         <button class="button-success" (click)="newUser.id ? enregistrerChangesNewUser() : enregistrerNewUser()" [disabled]="isValid">{{textButton}}</button><br>
-        <br><button class="button-success" (click)="cancel()">Annuler</button>
+        <button class="button-success" (click)="newUser.id ? cancelChangesNewUser() : cancelCreateNewUser()" >Annuler</button><br>
     </div>
