@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../service/user.service';
 
@@ -9,20 +9,42 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./creer-uncompte.component.scss']
 })
 export class CreerUncompteComponent implements OnInit {
+  titrePage: string;
+  textButton: string;
   newUser: User = {
     id: 0,
     email: '',
     nom: '',
     prenom: '',
-    motdepasse: { pwd: '' } };
+    motdepasse: { pwd: '' }
+  };
 
   isValid: boolean = true;
   @Input() confirmer: string = '';
 
   constructor(private router: Router,
-    private userservice : UserService) { }
+    private userService: UserService,
+    public route: ActivatedRoute, ) { }
 
   ngOnInit(): void {
+    // eslint-disable-next-line dot-notation
+    const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    if (!!id) {
+      // Editer
+      const userFound = this.userService.getUserById(id);
+      if (!!userFound) {
+        this.newUser = userFound;
+        this.titrePage = 'Modifier mon compte';
+        this.textButton = 'Enregistrer les modifs';
+        // Créer
+      } else {
+        console.error('id invalide');
+      }
+    } else {
+      this.titrePage = 'Créer mon compte';
+      this.textButton = 'Créer un compte';
+      this.newUser = { nom: '', prenom: '', email: '', motdepasse : { pwd : ''} }; // Initialise s'il n'y pas d'id
+    }
   }
 
   controlecreation(): void {
@@ -35,10 +57,11 @@ export class CreerUncompteComponent implements OnInit {
     }
   }
 
-  enregistrer(): void {
+  enregistrerNewUser(): void {
     if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
       this.controlecreation();
-      this.userservice.setUser({
+
+      this.userService.setUser({
         email: this.newUser.email,
         nom: this.newUser.nom,
         prenom: this.newUser.prenom,
@@ -49,7 +72,21 @@ export class CreerUncompteComponent implements OnInit {
       });
       this.router.navigateByUrl('auth/login');
     }
+
   }
+
+  enregistrerChangesNewUser(): void {
+    if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
+      this.controlecreation();
+      this.userService.updateUser(this.newUser);
+      this.router.navigateByUrl('userlist');
+    }
+  }
+
+  cancel(): void {
+    this.router.navigate(['userlist']);
+  }
+
 }
 
 
