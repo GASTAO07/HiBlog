@@ -30,7 +30,7 @@ export class LoginValidationService {
 
   isLoggedOut(): void {
     localStorage.setItem('isLoggedIn', 'false');
-    this.router.navigateByUrl('auth/login');
+
   }
 
   onContinue(): void {
