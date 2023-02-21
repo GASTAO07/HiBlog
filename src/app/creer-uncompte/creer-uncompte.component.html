@@ -12,8 +12,8 @@
 
             <div class="form-group">
                 <label for="inputemail">Nom : </label>
-                <input type="email" (change)="controlecreation()" [(ngModel)]="newUser.nom" id="inputemail"
-                    name="email" placeholder="Nom" />
+                <input type="email" (change)="controlecreation()" [(ngModel)]="newUser.nom" id="inputemail" name="email"
+                    placeholder="Nom" />
             </div>
 
 
@@ -33,6 +33,6 @@
                     id="inputmotdepasse" name="confirm_pwd" placeholder="Confirmer le mot de passe">
             </div>
         </div><br>
-        <button class="button-success" (click)="enregistrer()" [disabled]="isValid">Enregistrer
-        </button>
+        <button class="button-success" (click)="newUser.id ? enregistrerChangesNewUser() : enregistrerNewUser()" [disabled]="isValid">{{textButton}}</button><br>
+        <br><button class="button-success" (click)="cancel()">Annuler</button>
     </div>
