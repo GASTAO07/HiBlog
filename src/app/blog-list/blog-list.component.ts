@@ -15,7 +15,8 @@ export class BlogListComponent implements OnInit {
   blogs: Blog[] = [];
   isValidBlog: boolean = true;
   user: User;
-
+  searchQuery: string = '';
+  titrePage: string = 'Liste de blogs';
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
@@ -54,4 +55,17 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
+
+  search(): void {
+    if (this.searchQuery) {
+      this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
+        (blog : Blog) : boolean =>
+          blog.titre.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          blog.description.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    } else {
+      this.refreshBlogs();
+    }
+  }
+
 }
