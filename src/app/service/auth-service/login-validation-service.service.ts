@@ -24,11 +24,10 @@ export class LoginValidationService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('currentUserId') !== 'null';
+    return (localStorage.getItem('currentUserId') !== 'null') && (localStorage.getItem('currentUserId') !== null);
   }
 
   logOut(): void {
-    // localStorage.setItem('isLoggedIn', 'false');
     localStorage.setItem('currentUserId', null);
     this.router.navigateByUrl('auth/login');
   }
