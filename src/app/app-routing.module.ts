@@ -5,30 +5,29 @@ import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.componen
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-
+import { UserListComponent } from './user-list/user.component';
+import { AuthLoginGuard } from './guards/auth.loginguard';
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: 'auth/login'
   },
-
   {
-    path: 'auth/login', component: LoginComponent,
+    path: 'user', component: UserListComponent, canActivate: [AuthGuard],
   },
-
+  {
+    path: 'auth/login', component: LoginComponent, canActivate: [AuthLoginGuard],
+  },
   {
     path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],
   },
-
   {
     path: 'creeruncompte', component: CreerUncompteComponent,
   },

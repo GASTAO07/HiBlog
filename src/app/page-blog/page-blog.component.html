@@ -1,5 +1,5 @@
-<h2 class="Creerunblog">{{titrePage}}</h2><br>
-<br><div class="Contenu-Blog">
+<app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar>
+<div class="Contenu-Blog">
     <div class="form-group">
         <label for="inputblog">Categorie :</label>
         <input type="text" [(ngModel)]="blog.category" (change)="validateBlog()" id="inputblog" name="titre"
@@ -13,8 +13,9 @@
     <div class="form-group">
         <label for="blog.description">Description :</label>
         <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description" name="blogdescription "
-            rows="5" placeholder="Donnez une description à votre blog" cols="33"></textarea>
+            rows="10" placeholder="Donnez une description à votre blog" ></textarea>
     </div>
-      <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()" [disabled]="isValidBlog">{{textButton}}</button><br>
+    <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()"
+        [disabled]="isValidBlog">{{textButton}}</button><br>
     <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
 </div>

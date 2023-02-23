@@ -14,7 +14,6 @@
   padding: 0;
 }
 
-
 button {
   background-color: #135774;
   color: white;
@@ -75,8 +74,8 @@ button.button-success:hover {
 
 .blogbox0 {
   max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px;
+  margin: 10 auto;
+  padding: 20px;
   background-color: rgb(246, 247, 248);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -84,6 +83,11 @@ button.button-success:hover {
   margin-bottom: 20px;
   flex: 0 0 100%;
   scroll-snap-align: start;
+}
+
+app-tool-bar.titre {
+  text-align: center;
+  font-size: 1em;
 }
 
 .blogbox1 {
@@ -102,16 +106,41 @@ button.button-success:hover {
   gap: 12px
 }
 
+.search-container {
+  position: relative;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.search-container button[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
 .blogbox2 {
-  max-width: 1000px;
+  max-width: 3000px;
   margin: 0 auto;
-  padding: 22px;
+  padding: 10px;
   background-color: rgb(246, 247, 248);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: block;
-  margin-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 

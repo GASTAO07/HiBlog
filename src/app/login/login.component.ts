@@ -1,10 +1,9 @@
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/service/auth-service/auth.service';
 import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
 import { User } from '../interfaces/user.interface';
-import { UserService } from '../service/user.service';
+import { UserService } from '../service/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService,
     public route: ActivatedRoute,
     private loginValidationService: LoginValidationService,
     private tableauEmailPasswordService: TableauEmailPasswordService,
@@ -30,7 +28,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loginValidationService.isLoggedOut();
+    this.loginValidationService.logOut();
   }
 
   controle(): void {
@@ -49,9 +47,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     if (this.userService.checkUser(this.user)) {
-      this.auth.login();
+      this.loginValidationService.isLoggedIn();
       this.userService.onContinueSet(this.user);
-      this.router.navigate(['listedeblogs']);
+      this.router.navigateByUrl('listedeblogs');
     }
   }
 

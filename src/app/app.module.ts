@@ -11,6 +11,7 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
+import { UserListComponent } from './user-list/user.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ToolBarComponent } from './tool-bar/tool-bar.component';
     CreerUncompteComponent,
     BlogListComponent,
     ToolBarComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

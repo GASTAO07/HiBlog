@@ -41,7 +41,16 @@ export class UserService {
     }
   }
 
-  onContinueSet(usersetcheck : User): void {
+  updateUser(user: User): void {
+    const users = this.getUsers();
+    const index = users.findIndex((user: User): boolean => user.id === user.id);
+    if (index !== -1) {
+      users[index] = user;
+      this.setUsers(users);
+    }
+  }
+
+  onContinueSet(usersetcheck: User): void {
     // Récupérer le tableau d'utilisateur
     const users: User[] = this.getUsers();
     const index = users.findIndex((user: User): boolean => user.email === usersetcheck.email);
@@ -50,6 +59,17 @@ export class UserService {
     }
   }
 
+  deleteUser(id: number): void {
+    // Récupérer le tableau d'utilisateur
+    const users: User[] = this.getUsers();
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const index = users.findIndex((user: User): boolean => user.id === id);
+    if (index !== -1) {
+      users.splice(index, 1);
+      localStorage.removeItem('currentUserId');
+      this.setUsers(users);
+    }
+  }
 
   getUserById(id: number): User {
     const users = this.getUsers();

@@ -1,7 +1,6 @@
 // service qui fournit des méthodes de validation des adresses e-mail et des mots de passe et mail
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,8 @@ export class LoginValidationService {
   isDisabled: boolean = true;
 
   constructor(
-    private auth: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private loginValidationService: LoginValidationService) { }
 
   validateEmail(email: string): boolean {
     return this.emailPattern.test(email);
@@ -25,20 +24,12 @@ export class LoginValidationService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true';
+    return (localStorage.getItem('currentUserId') !== 'null') && (localStorage.getItem('currentUserId') !== null);
   }
 
-  isLoggedOut(): void {
-    localStorage.setItem('isLoggedIn', 'false');
+  logOut(): void {
+    localStorage.setItem('currentUserId', null);
     this.router.navigateByUrl('auth/login');
   }
 
-  onContinue(): void {
-    if (this.isDisabled) {
-      return;
-    }
-    localStorage.setItem('isLoggedIn', 'true');
-    this.auth.login();
-    this.router.navigate(['listedeblogs']);
-  }
 }
