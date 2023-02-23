@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
 import { UserService } from '../service/user-service/user.service';
@@ -10,6 +10,9 @@ import { User } from '../interfaces/user.interface';
   styleUrls: ['./tool-bar.component.scss']
 })
 export class ToolBarComponent {
+
+  @Input() pageTitle : string;
+  searchQuery: string = '';
   isUserLoggedIn: boolean = false;
   isValidBlog: boolean = true;
   user: User;
