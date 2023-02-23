@@ -1,7 +1,14 @@
-<app-tool-bar></app-tool-bar>
+<app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar><br>
+
 <div>
   <div class="blog-list">
-    <h1>Blogs</h1>
+    <div class="search-container">
+      <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
+      <div *ngIf="blogs.length === 0 && searchQuery">
+        <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
+      </div>
+      <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
+    </div><br>
     <ul>
       <div class="blogbox1">
         <div *ngFor="let blog of blogs">
