@@ -10,6 +10,7 @@ import { LoginValidationService } from 'src/app/service/auth-service/login-valid
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit {
+
   blog: Blog;
   isValidBlog: boolean = true;
   titrePage: string;
