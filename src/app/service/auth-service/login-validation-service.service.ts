@@ -13,7 +13,7 @@ export class LoginValidationService {
 
   constructor(
     private router: Router,
-    private loginValidationService: LoginValidationService) { }
+  ) { }
 
   validateEmail(email: string): boolean {
     return this.emailPattern.test(email);
