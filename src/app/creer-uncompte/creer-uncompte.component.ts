@@ -35,7 +35,7 @@ export class CreerUncompteComponent implements OnInit {
       if (!!userFound) {
         this.newUser = userFound;
         this.titrePage = 'Modifier mon compte';
-        this.textButton = 'Enregistrer les modifs';
+        this.textButton = 'Enregistrer';
       } else {
         console.error('id invalide');
       }

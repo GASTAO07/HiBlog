@@ -31,7 +31,7 @@ export class PageBlogComponent implements OnInit {
       if (!!blogFound) {
         this.blog = blogFound;
         this.titrePage = 'Modifier un blog';
-        this.textButton = 'Enregistrer les modifs';
+        this.textButton = 'Enregistrer';
       } else {
         console.error('id invalide');
       }
