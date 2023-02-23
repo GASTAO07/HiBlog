@@ -8,8 +8,8 @@ import { LoginValidationService } from '../service/auth-service/login-validation
 
 export class AuthLoginGuard implements CanActivate {
   constructor(
-        private router: Router,
-        private loginValidationService : LoginValidationService) { }
+    private router: Router,
+    private loginValidationService: LoginValidationService) { }
 
   canActivate(): boolean {
     if (!this.loginValidationService.isLoggedIn()) {
