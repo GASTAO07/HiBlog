@@ -8,7 +8,7 @@ body {
 }
 
 nav {
-  width: 300px;
+  width: 30px;
   background: white;
   color: rgba(0, 0, 0, 0.87);
   -webkit-clip-path: circle(24px at 30px 24px);
@@ -27,9 +27,9 @@ nav:hover {
 }
 
 a {
-  display: block;
+  display: flex;
   line-height: 50px;
-  padding: 0 20px;
+  padding: 0 60px;
   color: inherit;
   cursor: pointer;
   -webkit-user-select: none;
@@ -45,9 +45,9 @@ a:active { background: #8dbad6; }
 .navicon {
   padding: 23px 20px;
   cursor: pointer;
-  -webkit-transform-origin: 32px 24px;
-  -ms-transform-origin: 32px 24px;
-  transform-origin: 32px 24px;
+  -webkit-transform-origin: 2px 4px;
+  -ms-transform-origin: 2px 4px;
+  transform-origin: 3px 2px;
 }
 
 .navicon div {
@@ -59,7 +59,7 @@ a:active { background: #8dbad6; }
 
 .navicon div:before,
 .navicon div:after {
-  display: block;
+  display: flex;
   content: "";
   width: 20px;
   height: 2px;
