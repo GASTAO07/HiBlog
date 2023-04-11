@@ -52,7 +52,7 @@ export class ToolBarComponent {
     private userService: UserService) { }
 
   goToBloglist(): void {
-    this.router.navigateByUrl('listedeblogs');
+    this.router.navigateByUrl('/blog/listedeblogs');
   }
 
   logout(): void {
@@ -61,7 +61,7 @@ export class ToolBarComponent {
 
   userInfo(): void {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    this.router.navigateByUrl('user').then(() => {
+    this.router.navigateByUrl('/user/profile').then(() => {
       localStorage.setItem('user', JSON.stringify(this.user));
     });
   }

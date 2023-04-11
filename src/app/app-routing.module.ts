@@ -1,36 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageBlogComponent } from './page-blog/page-blog.component';
-import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
-import { AuthGuard } from './guards/auth.guard';
-import { LoginComponent } from './login/login.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
-import { UserListComponent } from './user-list/user.component';
-import { AuthLoginGuard } from './guards/auth.loginguard';
+
 const routes: Routes = [
+  {
+    path: 'auth',
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+
+  {
+    path: 'user',
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+
+  {
+    path: 'blog',
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+  },
+
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth/login'
+    redirectTo: '/auth/login'
   },
   {
-    path: 'user', component: UserListComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'auth/login', component: LoginComponent, canActivate: [AuthLoginGuard],
-  },
-  {
-    path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'creeruncompte', component: CreerUncompteComponent,
-  },
+    path: '**',
+    redirectTo: '/auth/login'
+  }
 ];
 
 @NgModule({

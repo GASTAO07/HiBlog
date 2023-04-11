@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     if (this.userService.checkUser(this.user)) {
       this.loginValidationService.isLoggedIn();
       this.userService.onContinueSet(this.user);
-      this.router.navigateByUrl('listedeblogs');
+      this.router.navigateByUrl('/blog/listedeblogs');
     }
   }
 
@@ -56,6 +56,6 @@ export class LoginComponent implements OnInit {
       alert('Désolé, cet e-mail existe déjà !');
       return;
     }
-    this.router.navigateByUrl('creeruncompte');
+    this.router.navigateByUrl('/auth/creeruncompte');
   }
 }

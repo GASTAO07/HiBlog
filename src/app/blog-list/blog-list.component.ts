@@ -50,7 +50,7 @@ export class BlogListComponent implements OnInit {
   }
 
   modifyTheBlog(id: number): void {
-    this.router.navigate(['pageblog'], { queryParams: { id: id } });
+    this.router.navigate(['/blog/pageblog'], { queryParams: { id: id } });
   }
 
   refreshBlogs(): void {
@@ -58,7 +58,7 @@ export class BlogListComponent implements OnInit {
   }
 
   addNewBlog(): void {
-    this.router.navigate(['pageblog']);
+    this.router.navigate(['/blog/pageblog']);
   }
 
   duplicateBlog(id: number) : void {
