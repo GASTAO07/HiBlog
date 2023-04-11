@@ -11,7 +11,6 @@ import { UserService } from '../service/user-service/user.service';
 export class CreerUncompteComponent implements OnInit {
   titrePage: string;
   textButton: string;
-
   newUser: User = {
     id: 0,
     email: '',
@@ -19,9 +18,7 @@ export class CreerUncompteComponent implements OnInit {
     prenom: '',
     motdepasse: { pwd: '' }
   };
-
   isValid: boolean = true;
-
 
   constructor(private router: Router,
     private userService: UserService,

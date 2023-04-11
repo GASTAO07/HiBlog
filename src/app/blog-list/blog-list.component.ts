@@ -25,6 +25,19 @@ export class BlogListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+    } else {
+      this.user = {
+        nom: '',
+        prenom: '',
+        email: '',
+        avatarUrl: '',
+        motdepasse: { pwd: '', confirmPwd: '' }
+      };
+    }
+
     const currentUserId = Number(localStorage.getItem('currentUserId'));
     const currentUser: User = this.userService.getUserById(currentUserId);
     // Si currentUser est undefined, renvoyer une erreur
@@ -46,6 +59,10 @@ export class BlogListComponent implements OnInit {
 
   addNewBlog(): void {
     this.router.navigate(['pageblog']);
+  }
+
+  duplicateBlog(id: number) : void {
+    this.listeBlogEnregistresService.duplicateBlog(id);
   }
 
   deleteBlog(id: number): void {

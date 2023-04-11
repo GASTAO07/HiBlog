@@ -10,6 +10,8 @@
         </nav>
         <h2 class="Hiblog">Hiblog</h2><br>
         <div *ngIf="user">
+            <img [src]="user.avatarUrl || '../../assets/images/avatar.png'" alt="Avatar" class="avatar"><br>
+            <input type="file" (change)="onFileSelected($event)" [hidden]="user.avatarUrl">
             <h3 class="user">
                 Bienvenu(e), {{ user.nom }} {{user.prenom}}
             </h3>
