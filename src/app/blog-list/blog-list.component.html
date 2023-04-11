@@ -1,5 +1,4 @@
 <app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar><br>
-
 <div>
   <div class="blog-list">
     <div class="search-container">
@@ -33,6 +32,7 @@
             </div>
           </div>
           <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
+          <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
           <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
         </div>
       </div>
