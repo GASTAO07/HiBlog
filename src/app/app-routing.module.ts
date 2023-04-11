@@ -9,28 +9,35 @@ import { UserListComponent } from './user-list/user.component';
 import { AuthLoginGuard } from './guards/auth.loginguard';
 const routes: Routes = [
   {
+    path: 'auth',
+    children: [
+      { path: 'login', component: LoginComponent, canActivate: [AuthLoginGuard] },
+      { path: 'creeruncompte', component: CreerUncompteComponent }
+    ]
+  },
+  {
+    path: 'user',
+    children: [
+      { path: 'profile', component: UserListComponent, canActivate: [AuthGuard] }
+    ]
+  },
+  {
+    path: 'blog',
+    children: [
+      { path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard], },
+      { path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],  },
+      { path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard], },
+    ]
+  },
+  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth/login'
+    redirectTo: '/auth/login'
   },
   {
-    path: 'user', component: UserListComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'auth/login', component: LoginComponent, canActivate: [AuthLoginGuard],
-  },
-  {
-    path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],
-  },
-  {
-    path: 'creeruncompte', component: CreerUncompteComponent,
-  },
+    path: '**',
+    redirectTo: '/auth/login'
+  }
 ];
 
 @NgModule({
