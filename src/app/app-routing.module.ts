@@ -1,34 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageBlogComponent } from './page-blog/page-blog.component';
-import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
-import { AuthGuard } from './guards/auth.guard';
-import { LoginComponent } from './login/login.component';
-import { BlogListComponent } from './blog-list/blog-list.component';
-import { UserListComponent } from './user-list/user.component';
-import { AuthLoginGuard } from './guards/auth.loginguard';
+
 const routes: Routes = [
   {
     path: 'auth',
-    children: [
-      { path: 'login', component: LoginComponent, canActivate: [AuthLoginGuard] },
-      { path: 'creeruncompte', component: CreerUncompteComponent }
-    ]
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
+
   {
     path: 'user',
-    children: [
-      { path: 'profile', component: UserListComponent, canActivate: [AuthGuard] }
-    ]
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
+
   {
     path: 'blog',
-    children: [
-      { path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard], },
-      { path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],  },
-      { path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard], },
-    ]
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
   },
+
   {
     path: '',
     pathMatch: 'full',
