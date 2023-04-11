@@ -39,6 +39,11 @@ export class ToolBarComponent {
       this.user = currentUser;
     }
     this.isUserLoggedIn = this.loginValidationService.isLoggedIn();
+
+    const userId = this.user.id;
+    const avatarUrl = localStorage.getItem(`user_${userId}_avatar`);
+    this.user.avatarUrl = avatarUrl;
+
   }
 
   constructor(
@@ -61,14 +66,16 @@ export class ToolBarComponent {
     });
   }
 
-
-  onFileSelected(event: any): void {
-    const file: File = event.target.files[0];
+  onFileSelected(event: any) : void {
+    const selectedFile: File = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (): void => {
-      this.user.avatarUrl = reader.result as string;
-      localStorage.setItem('user', JSON.stringify(this.user));
+    reader.readAsDataURL(selectedFile);
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    reader.onload = () => {
+      const image = reader.result as string;
+      const userId = this.user.id;
+      localStorage.setItem(`user_${userId}_avatar`, image);
+      this.user.avatarUrl = image;
     };
   }
 
@@ -76,8 +83,4 @@ export class ToolBarComponent {
     this.user.avatarUrl = value;
     localStorage.setItem('user', JSON.stringify(this.user));
   }
-
-
 }
-
-
