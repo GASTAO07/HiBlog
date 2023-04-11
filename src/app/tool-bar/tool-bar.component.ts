@@ -21,7 +21,7 @@ export class ToolBarComponent {
     if (storedUser) {
       this.user = JSON.parse(storedUser);
     } else {
-      // Set default values for user object if it is not already saved in local storage
+      // Définir les valeurs par défaut de l'objet utilisateur s'il n'est pas déjà enregistré dans la mémoire locale.
       this.user = {
         nom: '',
         prenom: '',
@@ -67,14 +67,22 @@ export class ToolBarComponent {
   }
 
   onFileSelected(event: any) : void {
+    // Récupération du fichier sélectionné dans l'événement
     const selectedFile: File = event.target.files[0];
+    // Instanciation d'un objet FileReader
     const reader = new FileReader();
+    // Lecture du contenu du fichier en tant que URL de données (data URL)
     reader.readAsDataURL(selectedFile);
+    // Attente que la lecture soit terminée
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     reader.onload = () => {
+      // Attente que la lecture soit terminée
       const image = reader.result as string;
+      // Attente que la lecture soit terminée
       const userId = this.user.id;
+      // Stockage de l'URL de données de l'image dans le localStorage
       localStorage.setItem(`user_${userId}_avatar`, image);
+      // Stockage de l'URL de données de l'image dans le localStorage
       this.user.avatarUrl = image;
     };
   }
