@@ -26,6 +26,16 @@ export class ListeBlogEnregistresService {
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
   }
 
+  duplicateBlog(id: number): void {
+    const blog = this.getBlogById(id);
+    if (blog) {
+      const newBlog = { id: this.blogs.length + 1, titre: blog.titre, description: blog.description, category: blog.category };
+      this.blogs.push(newBlog);
+    } else {
+      throw new Error('blog n\'existe pas');
+    }
+  }
+
   modifyBlog(id: number, titre: string, description: string, category: string): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const index = this.blogs.findIndex(blog => blog.id === id);
