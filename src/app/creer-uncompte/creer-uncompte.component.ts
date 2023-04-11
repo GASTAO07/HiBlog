@@ -66,7 +66,7 @@ export class CreerUncompteComponent implements OnInit {
         },
         id: Math.floor(Math.random() * 1000),
       });
-      this.router.navigateByUrl('auth/login');
+      this.router.navigateByUrl('/auth/login');
     }
   }
 
@@ -74,16 +74,16 @@ export class CreerUncompteComponent implements OnInit {
     if (this.newUser.motdepasse.pwd === this.newUser.motdepasse.confirmPwd) {
       this.controlecreation();
       this.userService.updateUser(this.newUser);
-      this.router.navigateByUrl('user');
+      this.router.navigateByUrl('/user/profile');
     }
   }
 
   cancelChangesNewUser(): void {
-    this.router.navigate(['user']);
+    this.router.navigate(['/user/profile']);
   }
 
   cancelCreateNewUser(): void {
-    this.router.navigate(['auth/login']);
+    this.router.navigate(['/auth/login']);
   }
 
 }

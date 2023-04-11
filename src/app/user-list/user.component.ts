@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
   }
 
   modifyUser(id: number): void {
-    this.router.navigate(['creeruncompte'], { queryParams: { id: id } });
+    this.router.navigate(['/auth/creeruncompte'], { queryParams: { id: id } });
   }
 
   deleteUser(id: number): void {
@@ -44,7 +44,7 @@ export class UserListComponent implements OnInit {
   }
 
   returnBlogList(): void {
-    this.router.navigate(['listedeblogs']);
+    this.router.navigate(['/blog/listedeblogs']);
   }
 
 }

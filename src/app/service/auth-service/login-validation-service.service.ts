@@ -29,7 +29,7 @@ export class LoginValidationService {
 
   logOut(): void {
     localStorage.setItem('currentUserId', null);
-    this.router.navigateByUrl('auth/login');
+    this.router.navigateByUrl('/auth/login');
   }
 
 }

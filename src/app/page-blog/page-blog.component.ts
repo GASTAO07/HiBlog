@@ -53,16 +53,16 @@ export class PageBlogComponent implements OnInit {
   creerUnblog(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description, this.blog.category);
-    this.router.navigate(['listedeblogs']);
+    this.router.navigate(['/blog/listedeblogs']);
   }
 
   submitBlogChanges(): void {
     this.validateBlog();
     this.listeBlogEnregistresService.modifyBlog(this.blog.id, this.blog.titre, this.blog.description, this.blog.category);
-    this.router.navigate(['listedeblogs']);
+    this.router.navigate(['/blog/listedeblogs']);
   }
 
   cancelCreroredit(): void {
-    this.router.navigate(['listedeblogs']);
+    this.router.navigate(['/blog/listedeblogs']);
   }
 }
