@@ -1,7 +1,6 @@
 import { LoginValidationService } from 'src/app/service/auth-service/login-validation-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TableauEmailPasswordService } from 'src/app/service/tableau-email-password/tableau-email-password.service';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../service/user-service/user.service';
 
@@ -23,7 +22,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public route: ActivatedRoute,
     private loginValidationService: LoginValidationService,
-    private tableauEmailPasswordService: TableauEmailPasswordService,
     private userService: UserService
   ) { }
 
@@ -54,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   creerUncompte(): void {
-    if (this.tableauEmailPasswordService.hasUser(this.user.email)) {
+    if (this.userService.checkUser(this.user)) {
       alert('Désolé, cet e-mail existe déjà !');
       return;
     }
