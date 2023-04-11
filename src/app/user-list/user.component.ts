@@ -10,6 +10,7 @@ import { UserService } from '../service/user-service/user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserListComponent implements OnInit {
+  titrePage: string = 'Informations du compte';
   user: User;
   newNom: string;
   newPrenom: string;
