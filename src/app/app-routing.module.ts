@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'auth',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/login.module').then(m => m.AuthModule)
   },
 
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'blog',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+    loadChildren: () => import('./blog/blog-list.module').then(m => m.BlogModule)
   },
 
   {
