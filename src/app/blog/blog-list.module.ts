@@ -6,6 +6,7 @@ import { PageBlogComponent } from './components/blog-creation-edit/page-blog.com
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/blog/listedeblogs'},
   { path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard], },
   { path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],  },
   { path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard], },
