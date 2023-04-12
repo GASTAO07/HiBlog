@@ -3,15 +3,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { PageBlogComponent } from './page-blog/page-blog.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { PageBlogComponent } from './blog/components/blog-creation-edit/page-blog.component';
 import { CommonModule } from '@angular/common';
-import { CreerUncompteComponent } from './creer-uncompte/creer-uncompte.component';
-import { AuthRoutingModule } from './auth/auth-routing.module';
-import { BlogListComponent } from './blog-list/blog-list.component';
+import { CreerUncompteComponent } from './auth/components/creer-uncompte/creer-uncompte.component';
+import { BlogListComponent } from './blog/components/blog-list/blog-list.component';
 import { RouterModule } from '@angular/router';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
-import { UserListComponent } from './user-list/user.component';
+import { UserListComponent } from './user/components/user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,7 @@ import { UserListComponent } from './user-list/user.component';
     AppRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    AuthRoutingModule,
+    AppRoutingModule,
     FormsModule,
     RouterModule
   ],

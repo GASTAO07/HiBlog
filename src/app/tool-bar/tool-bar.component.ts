@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
-import { UserService } from '../service/user-service/user.service';
-import { User } from '../interfaces/user.interface';
+import { LoginValidationService } from '../auth/services/login-validation-service.service';
+import { UserService } from '../user/services/user.service';
+import { User } from '../user/interfaces/user.interface';
 
 @Component({
   selector: 'app-tool-bar',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListeBlogEnregistresService } from '../service/liste-blog/liste-blog-enregistres.service';
-import { Blog } from '../interfaces/blog.interface';
-import { LoginValidationService } from '../service/auth-service/login-validation-service.service';
-import { User } from '../interfaces/user.interface';
-import { UserService } from '../service/user-service/user.service';
+import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
+import { Blog } from '../../interfaces/blog.interface';
+import { LoginValidationService } from 'src/app/auth/services/login-validation-service.service';
+import { User } from 'src/app/user/interfaces/user.interface';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-blog-list',

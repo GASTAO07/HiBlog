@@ -5,19 +5,19 @@ const routes: Routes = [
   {
     path: 'auth',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/modules/auth.module').then(m => m.AuthModule)
   },
 
   {
     path: 'user',
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./user/modules/user.module').then(m => m.UserModule)
   },
 
   {
     path: 'blog',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+    loadChildren: () => import('./blog/modules/blog.module').then(m => m.BlogModule)
   },
 
   {
@@ -28,7 +28,8 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: '/auth/login'
-  }
+  },
+
 ];
 
 @NgModule({
