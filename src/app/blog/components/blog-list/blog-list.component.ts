@@ -11,12 +11,14 @@ import { UserService } from 'src/app/user/services/user.service';
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.scss']
 })
+
 export class BlogListComponent implements OnInit {
   blogs: Blog[] = [];
   isValidBlog: boolean = true;
   user: User;
   searchQuery: string = '';
   titrePage: string = 'Liste de blogs';
+
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
@@ -84,5 +86,4 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
-
 }

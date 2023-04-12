@@ -46,6 +46,5 @@ export class UserListComponent implements OnInit {
   returnBlogList(): void {
     this.router.navigate(['/blog/listedeblogs']);
   }
-
 }
 

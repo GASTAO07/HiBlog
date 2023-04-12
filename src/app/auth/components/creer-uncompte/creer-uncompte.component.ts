@@ -85,7 +85,6 @@ export class CreerUncompteComponent implements OnInit {
   cancelCreateNewUser(): void {
     this.router.navigate(['/auth/login']);
   }
-
 }
 
 

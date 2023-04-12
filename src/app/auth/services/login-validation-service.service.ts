@@ -31,5 +31,4 @@ export class LoginValidationService {
     localStorage.setItem('currentUserId', null);
     this.router.navigateByUrl('/auth/login');
   }
-
 }
