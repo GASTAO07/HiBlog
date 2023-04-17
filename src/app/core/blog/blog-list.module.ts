@@ -7,9 +7,9 @@ import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/blog/listedeblogs'},
-  { path: 'listedeblogs', component: BlogListComponent, canActivate: [AuthGuard], },
-  { path: 'pageblog', component: PageBlogComponent, canActivate: [AuthGuard],  },
-  { path: 'pageblog/:id', component: PageBlogComponent, canActivate: [AuthGuard], },
+  { path: 'listedeblogs', component: BlogListComponent },
+  { path: 'pageblog', component: PageBlogComponent },
+  { path: 'pageblog/:id', component: PageBlogComponent},
 ];
 
 @NgModule({
