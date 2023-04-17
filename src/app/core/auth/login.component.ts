@@ -1,8 +1,8 @@
-import { LoginValidationService } from 'src/app/auth/services/login-validation-service.service';
+import { LoginValidationService } from './services/login-validation-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/user/interfaces/user.interface';
-import { UserService } from 'src/app/user/services/user.service';
+import { User } from '../user/interfaces/user.interface';
+import { UserService } from '../user/services/user.service';
 
 @Component({
   selector: 'app-login',

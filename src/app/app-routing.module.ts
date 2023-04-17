@@ -5,19 +5,19 @@ const routes: Routes = [
   {
     path: 'auth',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./auth/login.module').then(m => m.AuthModule)
+    loadChildren: () => import('./core/auth/login.module').then(m => m.AuthModule)
   },
 
   {
     path: 'user',
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./core/user/user.module').then(m => m.UserModule)
   },
 
   {
     path: 'blog',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./blog/blog-list.module').then(m => m.BlogModule)
+    loadChildren: () => import('./core/blog/blog-list.module').then(m => m.BlogModule)
   },
 
   {

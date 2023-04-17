@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/user/interfaces/user.interface';
-import { UserService } from 'src/app/user/services/user.service';
+import { User } from 'src/app/core/user/interfaces/user.interface';
+import { UserService } from 'src/app/core/user/services/user.service';
 
 @Component({
   selector: 'app-creer-uncompte',
