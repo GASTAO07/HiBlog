@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
-import { LoginValidationService } from 'src/app/core/auth/services/login-validation-service.service';
+import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
 
 @Component({
   selector: 'app-page-blog',
