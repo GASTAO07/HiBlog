@@ -1,8 +1,6 @@
 
 <app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar><br>
 <div>
-
-
   
   <div class="blog-list">
     <div class="search-container">
@@ -13,6 +11,17 @@
       <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
     </div><br>
     <ul>
+      
+      <div>
+        <div class="search-container">
+          <!-- Autres éléments de recherche... -->
+          <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+            <option value="">Toutes les catégories</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+        </div>
+        <!-- Autres éléments de liste de blogs... -->
+      </div>
 
       <div class="blogbox1">
         <div *ngFor="let blog of blogs">
