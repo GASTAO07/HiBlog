@@ -86,6 +86,14 @@ export class BlogListComponent implements OnInit {
     // Méthode pour obtenir les catégories uniques
   }
 
+  filterByCategory() : void {
+    if (this.selectedCategory === '') {
+      this.loadBlogs(); // Si aucune catégorie sélectionnée, charger tous les blogs
+    } else {
+      this.blogs = this.listeBlogEnregistresService.getBlogsByCategory(this.selectedCategory); // Filtrer les blogs par catégorie
+    }
+  }
+
   addNewBlog(): void {
     this.router.navigate(['/blog/pageblog']);
   }
@@ -101,7 +109,6 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
-
 
   search(): void {
     if (this.searchQuery) {
