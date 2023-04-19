@@ -59,5 +59,11 @@ export class ListeBlogEnregistresService {
     return this.blogs.filter(blog => blog.category === category);
   }
 
+  getUniqueCategories() : void {
+    // Utilisez la méthode map pour extraire uniquement les catégories de chaque blog
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const allCategories = this.blogs.map(blog => blog.category);
+  }
+
 }
 
