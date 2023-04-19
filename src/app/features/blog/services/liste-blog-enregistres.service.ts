@@ -63,6 +63,12 @@ export class ListeBlogEnregistresService {
     // Utilisez la méthode map pour extraire uniquement les catégories de chaque blog
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const allCategories = this.blogs.map(blog => blog.category);
+    // Utilisez la méthode filter pour obtenir les catégories uniques
+    // allCategories qui contient uniquement les propriétés category de chaque élément du tableau this.blogs
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
+    const uniqueCategories = allCategories.filter((category, index, self) => self.indexOf(category) === index);
+    // pour comparer chaque élément du tableau avec les éléments précédents et extraire uniquement les éléments uniques
+    return uniqueCategories;
   }
 
 }
