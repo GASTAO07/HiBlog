@@ -53,5 +53,11 @@ export class ListeBlogEnregistresService {
       this.blogs.splice(index, 1);
     }
   }
+
+  getBlogsByCategory(category: string): Blog[] {
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    return this.blogs.filter(blog => blog.category === category);
+  }
+
 }
 
