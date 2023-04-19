@@ -45,6 +45,8 @@ export class BlogListComponent implements OnInit {
       this.filteredBlogsByCategory[blog.category].push(blog);
     });
 
+    this.loadBlogs();
+
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
@@ -75,6 +77,13 @@ export class BlogListComponent implements OnInit {
 
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
+  }
+
+  loadBlogs() : void {
+    // initialiser la variable à un tableau vide si "getBlogList()" retourne une valeur false
+    this.blogs = this.listeBlogEnregistresService.getBlogList() || [];
+    this.categories = this.listeBlogEnregistresService.getUniqueCategories();
+    // Méthode pour obtenir les catégories uniques
   }
 
   addNewBlog(): void {
