@@ -34,6 +34,11 @@ export class BlogListComponent implements OnInit {
     // Récupérer les blog posts avec le service
     this.blogs = this.listeBlogEnregistresService.getBlogList();
 
+    // Filtrer les blog posts par catégorie et les stocker dans les sections respectives
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    this.blogs.forEach(bloggit  => {
+
+    });
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
