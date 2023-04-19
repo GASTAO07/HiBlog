@@ -21,7 +21,6 @@ export class ListeBlogEnregistresService {
     }
   }
 
-
   addBlog(titre: string, description: string, category: string): void {
     const id = this.blogs.length + 1;
     this.blogs.push({ id: id, titre: titre, description: description, category: category });

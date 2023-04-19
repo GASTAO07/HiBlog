@@ -144,4 +144,25 @@ app-tool-bar.titre {
   margin-bottom: 10px;
 }
 
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; // Add margin bottom as needed
+  // Add any other styles for the container
 
+  select {
+    // Style the select element
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+    // Add any other styles for the select element
+
+    // Style the options
+    option {
+      padding: 0.5rem;
+      // Add any other styles for the options
+    }
+  }
+}

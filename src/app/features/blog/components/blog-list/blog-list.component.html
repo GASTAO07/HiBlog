@@ -1,5 +1,9 @@
+
 <app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar><br>
 <div>
+
+
+  
   <div class="blog-list">
     <div class="search-container">
       <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
@@ -9,6 +13,7 @@
       <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
     </div><br>
     <ul>
+
       <div class="blogbox1">
         <div *ngFor="let blog of blogs">
           <div class="blogbox0">
@@ -43,3 +48,5 @@
   </div>
   <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
 </div>
+
+
