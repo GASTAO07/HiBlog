@@ -79,20 +79,26 @@ export class BlogListComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
   }
 
-  loadBlogs() : void {
+  loadBlogs(): void {
     // initialiser la variable à un tableau vide si "getBlogList()" retourne une valeur false
     this.blogs = this.listeBlogEnregistresService.getBlogList() || [];
     this.categories = this.listeBlogEnregistresService.getUniqueCategories();
     // Méthode pour obtenir les catégories uniques
   }
 
-  filterByCategory() : void {
+  filterByCategory(): void {
     if (this.selectedCategory === '') {
       this.loadBlogs(); // Si aucune catégorie sélectionnée, charger tous les blogs
     } else {
       this.blogs = this.listeBlogEnregistresService.getBlogsByCategory(this.selectedCategory); // Filtrer les blogs par catégorie
     }
   }
+
+  // Méthode pour récupérer les blog posts filtrés par catégorie
+  getBlogsByCategory(category: string): Blog[] {
+    return this.filteredBlogsByCategory[category];
+  }
+
 
   addNewBlog(): void {
     this.router.navigate(['/blog/pageblog']);
