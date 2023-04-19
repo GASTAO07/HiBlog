@@ -36,8 +36,11 @@ export class BlogListComponent implements OnInit {
 
     // Filtrer les blog posts par catégorie et les stocker dans les sections respectives
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    this.blogs.forEach(bloggit  => {
-
+    this.blogs.forEach(blog => {
+      // Si la catégorie du blog post n'existe pas encore comme clé dans this.filteredBlogsByCategory, j'ajoute une nouvelle clé correspondante avec une valeur vide (un tableau vide)
+      if (!this.filteredBlogsByCategory[blog.category]) {
+        this.filteredBlogsByCategory[blog.category] = [];
+      }
     });
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
