@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'blog',
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./features/blog/components/blog-list/blog-list.module').then(m => m.BlogModule),
+    loadChildren: () => import('./features/blog/blog-list.module').then(m => m.BlogModule),
     canActivate: [AuthGuard]
 
   },

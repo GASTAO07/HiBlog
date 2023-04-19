@@ -72,5 +72,12 @@ export class ListeBlogEnregistresService {
     return uniqueCategories;
   }
 
-}
+  // getBlogsByCategoryID(id: number): void {
+  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+  //   return this.blogs.filter(blog => blog.id === id);
+  //   const index = this.blogs.findIndex(blog => blog.id === id);
+  //   if (index !== -1) {
+  //   }
+  // }
 
+}
