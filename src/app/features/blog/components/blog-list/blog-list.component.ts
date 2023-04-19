@@ -31,6 +31,8 @@ export class BlogListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Récupérer les blog posts avec le service
+    this.blogs = this.listeBlogEnregistresService.getBlogList();
 
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
