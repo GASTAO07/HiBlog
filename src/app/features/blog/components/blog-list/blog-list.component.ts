@@ -41,7 +41,10 @@ export class BlogListComponent implements OnInit {
       if (!this.filteredBlogsByCategory[blog.category]) {
         this.filteredBlogsByCategory[blog.category] = [];
       }
+      // le blog post dans le tableau correspondant à sa catégorie
+      this.filteredBlogsByCategory[blog.category].push(blog);
     });
+
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       this.user = JSON.parse(storedUser);
