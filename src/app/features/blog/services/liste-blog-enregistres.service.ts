@@ -1,15 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Blog } from '../interfaces/blog.interface';
+import { Categorie } from '../interfaces/categorie.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
+  private categories: Categorie[] = [];
 
   constructor() { }
+  addCategories(categorie: string): void {
+    const id = (Math.random() * 100);
+    this.categories.push({ idCategory: id, category: categorie });
+    console.log('idcateg', id);
+  }
 
-  getBlogList(): Blog[] | undefined {
+  getCategorieList(): Categorie[] {
+    return this.categories;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  getUniqueCategories() {
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const allCategories = this.categories.map(categories => categories.category);
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
+    const uniqueCategories = allCategories.filter((category, index, self) => self.indexOf(category) === index);
+    return uniqueCategories;
+  }
+
+  getBlogsByCategory(category: Categorie): Blog[] {
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    return this.blogs.filter(blog => blog.category === category);
+  }
+
+  getCategoryById(id: number): Categorie {
+    for (const categorie of this.categories) {
+      if (categorie.idCategory === id) {
+        return categorie;
+      }
+    }
+  }
+
+  getBlogList(): Blog[] {
     return this.blogs;
   }
 
@@ -21,9 +54,10 @@ export class ListeBlogEnregistresService {
     }
   }
 
-  addBlog(titre: string, description: string, category: string): void {
-    const id = this.blogs.length + 1;
+  addBlog(titre: string, description: string, category: Categorie): void {
+    const id = (Math.random() * 100);
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
+    console.log('idblog', id);
   }
 
   duplicateBlog(id: number): void {
@@ -36,7 +70,7 @@ export class ListeBlogEnregistresService {
     }
   }
 
-  modifyBlog(id: number, titre: string, description: string, category: string): void {
+  modifyBlog(id: number, titre: string, description: string, category: Categorie): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const index = this.blogs.findIndex(blog => blog.id === id);
     if (index !== -1) {
@@ -53,31 +87,4 @@ export class ListeBlogEnregistresService {
       this.blogs.splice(index, 1);
     }
   }
-
-  getBlogsByCategory(category: string): Blog[] {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    return this.blogs.filter(blog => blog.category === category);
-  }
-
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  getUniqueCategories() {
-    // Utilisez la méthode map pour extraire uniquement les catégories de chaque blog
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    const allCategories = this.blogs.map(blog => blog.category);
-    // Utilisez la méthode filter pour obtenir les catégories uniques
-    // allCategories qui contient uniquement les propriétés category de chaque élément du tableau this.blogs
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
-    const uniqueCategories = allCategories.filter((category, index, self) => self.indexOf(category) === index);
-    // pour comparer chaque élément du tableau avec les éléments précédents et extraire uniquement les éléments uniques
-    return uniqueCategories;
-  }
-
-  // getBlogsByCategoryID(id: number): void {
-  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-  //   return this.blogs.filter(blog => blog.id === id);
-  //   const index = this.blogs.findIndex(blog => blog.id === id);
-  //   if (index !== -1) {
-  //   }
-  // }
-
 }
