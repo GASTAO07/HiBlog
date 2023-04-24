@@ -11,13 +11,13 @@ export class ListeBlogEnregistresService {
 
   constructor() { }
 
-  addCategories(categorie: string): void {
+  addCategories(category: string): void {
     let id = ((Math.random() * 100) + 1);
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     while (this.categories.some(category => category.id === id)) {
       id = ((Math.random() * 100) + 1);
     }
-    this.categories.push({ id: id, label: categorie });
+    this.categories.push({ id: id, label: category });
     console.log('idcateg', id);
   }
 
@@ -40,9 +40,9 @@ export class ListeBlogEnregistresService {
   }
 
   getCategoryById(id: number): Category {
-    for (const categorie of this.categories) {
-      if (categorie.id === id) {
-        return categorie;
+    for (const category of this.categories) {
+      if (category.id === id) {
+        return category;
       }
     }
   }

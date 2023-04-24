@@ -13,7 +13,7 @@ import { Category } from '../../interfaces/category.interface';
 export class PageBlogComponent implements OnInit {
   blog: Blog;
   blogs: Blog[] = [];
-  categorie: Category;
+  category: Category;
   categories: Category[] = [];
   isValidBlog: boolean = true;
   titrePage: string;
@@ -32,7 +32,7 @@ export class PageBlogComponent implements OnInit {
 
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.listeBlogEnregistresService.getCategorieList();
-    this.listeBlogEnregistresService.getBlogsByCategory(this.categorie);
+    this.listeBlogEnregistresService.getBlogsByCategory(this.category);
 
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
@@ -48,7 +48,7 @@ export class PageBlogComponent implements OnInit {
     } else {
       this.titrePage = 'Ajouter un blog';
       this.textButton = 'Créer un blog';
-      this.blog = { titre: '', description: '', category: this.categorie };
+      this.blog = { titre: '', description: '', category: this.category };
     }
   }
 
