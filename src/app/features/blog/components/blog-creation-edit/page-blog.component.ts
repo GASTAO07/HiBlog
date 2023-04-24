@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
+import { Categorie } from '../../interfaces/categorie.interface';
 
 @Component({
   selector: 'app-page-blog',
@@ -10,20 +11,29 @@ import { LoginValidationService } from 'src/app/core/auth/services/login-validat
   styleUrls: ['./page-blog.component.scss']
 })
 export class PageBlogComponent implements OnInit {
-
   blog: Blog;
+  blogs: Blog[] = [];
+  categorie: Categorie;
+  categories: Categorie[] = [];
   isValidBlog: boolean = true;
   titrePage: string;
   textButton: string;
+  selectedCategory: Categorie | null = null ;
+  filteredBlogsByCategory: { [category: string]: Blog[] } = {};
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private listeBlogEnregistresService: ListeBlogEnregistresService,
+    public listeBlogEnregistresService: ListeBlogEnregistresService,
     private loginValidationService: LoginValidationService,
   ) { }
 
   ngOnInit(): void {
+
+    this.blogs = this.listeBlogEnregistresService.getBlogList();
+    this.categories = this.listeBlogEnregistresService.getCategorieList();
+    this.listeBlogEnregistresService.getBlogsByCategory(this.categorie);
+
     // eslint-disable-next-line dot-notation
     const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     if (!!id) {
@@ -38,12 +48,20 @@ export class PageBlogComponent implements OnInit {
     } else {
       this.titrePage = 'Ajouter un blog';
       this.textButton = 'Créer un blog';
-      this.blog = { titre: '', description: '', category: '' }; // Initialise s'il n'y pas d'id
+      this.blog = { titre: '', description: '', category: this.categorie };
+    }
+  }
+
+  filterByCategory(): void {
+    if (!this.selectedCategory) {
+      this.blogs = this.listeBlogEnregistresService.getBlogList() || [];
+    } else {
+      this.blogs = this.listeBlogEnregistresService.getBlogsByCategory(this.selectedCategory);
     }
   }
 
   validateBlog(): void {
-    if (!(this.blog.titre || this.blog.description || this.blog.id)) {
+    if (!(this.blog?.titre || this.blog?.description || this.blog?.id || this.selectedCategory)) {
       this.isValidBlog = true;
     } else {
       this.isValidBlog = false;
@@ -52,13 +70,13 @@ export class PageBlogComponent implements OnInit {
 
   creerUnblog(): void {
     this.validateBlog();
-    this.listeBlogEnregistresService.addBlog(this.blog.titre, this.blog.description, this.blog.category);
+    this.listeBlogEnregistresService.addBlog(this.blog?.titre, this.blog?.description, this?.selectedCategory);
     this.router.navigate(['/blog/listedeblogs']);
   }
 
   submitBlogChanges(): void {
     this.validateBlog();
-    this.listeBlogEnregistresService.modifyBlog(this.blog.id, this.blog.titre, this.blog.description, this.blog.category);
+    this.listeBlogEnregistresService.modifyBlog(this.blog?.id, this.blog?.titre, this.blog?.description, this.selectedCategory);
     this.router.navigate(['/blog/listedeblogs']);
   }
 
