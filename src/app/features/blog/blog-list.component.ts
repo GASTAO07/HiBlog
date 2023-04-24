@@ -20,7 +20,7 @@ export class BlogListComponent implements OnInit {
   selectedCategory: Category;
   isValidBlog: boolean = true;
   searchQuery: string = '';
-  titrePage: string = 'Liste de blogs';
+  titlePage: string = 'Liste de blogs';
   // blogsByCategory: Map<Categorie, Blog[]> = new Map();
   // displayedBlogs: Blog[] = [];
 

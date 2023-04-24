@@ -16,7 +16,7 @@ export class CreateCategoriesComponent {
   blogs: Blog[] = [];
   categories: Category[] = [];
   category: Category;
-  titrePage: string;
+  titlePage: string;
 
   constructor(
     private listeBlogEnregistresService: ListeBlogEnregistresService,
@@ -38,8 +38,8 @@ export class CreateCategoriesComponent {
         console.error('id invalide');
       }
     } else {
-      this.titrePage = 'Ajouter une categorie';
-      this.category = { id: 0, label: '' };
+      this.titlePage = 'Ajouter une categorie';
+      this.category = {  label: '' };
     }
   }
 

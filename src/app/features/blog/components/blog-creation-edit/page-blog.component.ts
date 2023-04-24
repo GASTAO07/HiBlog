@@ -16,7 +16,7 @@ export class PageBlogComponent implements OnInit {
   category: Category;
   categories: Category[] = [];
   isValidBlog: boolean = true;
-  titrePage: string;
+  titlePage: string;
   textButton: string;
   selectedCategory: Category | null = null ;
   filteredBlogsByCategory: { [category: string]: Blog[] } = {};
@@ -40,13 +40,13 @@ export class PageBlogComponent implements OnInit {
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {
         this.blog = blogFound;
-        this.titrePage = 'Modifier un blog';
+        this.titlePage = 'Modifier un blog';
         this.textButton = 'Enregistrer';
       } else {
         console.error('id invalide');
       }
     } else {
-      this.titrePage = 'Ajouter un blog';
+      this.titlePage = 'Ajouter un blog';
       this.textButton = 'Créer un blog';
       this.blog = { titre: '', description: '', category: this.category };
     }

@@ -9,7 +9,7 @@ import { UserService } from 'src/app/core/user/services/user.service';
   styleUrls: ['./creer-uncompte.component.scss']
 })
 export class CreerUncompteComponent implements OnInit {
-  titrePage: string;
+  titlePage: string;
   textButton: string;
   newUser: User = {
     id: 0,
@@ -31,13 +31,13 @@ export class CreerUncompteComponent implements OnInit {
       const userFound = this.userService.getUserById(id);
       if (!!userFound) {
         this.newUser = userFound;
-        this.titrePage = 'Modifier mon compte';
+        this.titlePage = 'Modifier mon compte';
         this.textButton = 'Enregistrer';
       } else {
         console.error('id invalide');
       }
     } else {
-      this.titrePage = 'Créer mon compte';
+      this.titlePage = 'Créer mon compte';
       this.textButton = 'Créer un compte';
       this.newUser = { nom: '', prenom: '', email: '', motdepasse : { pwd : ''} };
     }

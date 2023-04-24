@@ -8,16 +8,29 @@ import { Category } from '../interfaces/category.interface';
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
   private categories: Category[] = [];
-
+  private count: number = (Math.floor(Math.random() * 100));
   constructor() { }
 
-  addCategories(category: string): void {
-    let id = ((Math.random() * 100) + 1);
+  // addCategories(category: string): void {
+  //   this.count++;
+  //   let id = (Math.floor(Math.random() * 100) + 1);
+  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+  //   while (this.categories.some(category => category.id === id)) {
+  //     id = (Math.floor(Math.random() * 100) + 1);
+  //   }
+  //   this.categories.push({ id: id, label: category });
+  //   console.log('idcateg', id);
+  // }
+
+  addCategories(label: string): void {
+    let id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
+
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     while (this.categories.some(category => category.id === id)) {
-      id = ((Math.random() * 100) + 1);
+      id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
     }
-    this.categories.push({ id: id, label: category });
+
+    this.categories.push({ id: id, label: label });
     console.log('idcateg', id);
   }
 
@@ -60,11 +73,13 @@ export class ListeBlogEnregistresService {
   }
 
   addBlog(titre: string, description: string, category: Category): void {
-    let id = ((Math.random() * 100) + 1);
+    let id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
+
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     while (this.blogs.some(blog => blog.id === id)) {
-      id = ((Math.random() * 100) + 1);
+      id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
     }
+
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
     console.log('idblog', id);
   }
