@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { CreerUncompteComponent } from './components/creer-uncompte/creer-uncompte.component';
 
-
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/auth/login'},
   { path: 'login', component: LoginComponent },
@@ -17,6 +16,5 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-
 })
 export class AuthModule { }

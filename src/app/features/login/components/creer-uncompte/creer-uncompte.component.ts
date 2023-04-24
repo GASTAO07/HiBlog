@@ -39,7 +39,7 @@ export class CreerUncompteComponent implements OnInit {
     } else {
       this.titrePage = 'Créer mon compte';
       this.textButton = 'Créer un compte';
-      this.newUser = { nom: '', prenom: '', email: '', motdepasse : { pwd : ''} }; // Initialise s'il n'y pas d'id
+      this.newUser = { nom: '', prenom: '', email: '', motdepasse : { pwd : ''} };
     }
   }
 
