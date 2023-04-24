@@ -11,6 +11,7 @@ import { BlogListComponent } from './features/blog/blog-list.component';
 import { RouterModule } from '@angular/router';
 import { ToolBarComponent } from './shared/components/header/tool-bar/tool-bar.component';
 import { UserListComponent } from './features/user/user.component';
+import { CreateCategoriesComponent } from './features/blog/components/categories/create-categories.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserListComponent } from './features/user/user.component';
     BlogListComponent,
     ToolBarComponent,
     UserListComponent,
+    CreateCategoriesComponent,
   ],
   imports: [
     BrowserModule,
