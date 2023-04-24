@@ -1,61 +1,88 @@
-
 <app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar><br>
 <div>
-  
-  <div class="blog-list">
-    <div class="search-container">
-      <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
-      <div *ngIf="blogs.length === 0 && searchQuery">
-        <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
-      </div>
-      <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
-    </div><br>
-    <ul>
-      
-      <div>
-        <div class="search-container">
-          <!-- Autres éléments de recherche... -->
-          <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-            <option value="">Toutes les catégories</option>
-            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-          </select>
-        </div>
-        <!-- Autres éléments de liste de blogs... -->
-      </div>
-
-      <div class="blogbox1">
-        <div *ngFor="let blog of blogs">
-          <div class="blogbox0">
-            <div class="blogbox">
-              <label for="blog.category">Categorie:</label>
-              <div class="blogboxElement">
-                <td>{{ blog.category }}</td>
-              </div>
-            </div>
-            <div class="blogbox">
-              <label for="inputblog">Titre du Blog: </label>
-              <div class="blogboxElement">
-                <td>{{ blog.titre }}</td>
-              </div>
-            </div>
-            <div class="blogbox">
-              <label for="blog.description">Description :</label>
-              <div class="blogboxElement">
-                <p>{{ blog.description }}</p>
-              </div>
-            </div>
-          </div>
-          <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
-          <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
-          <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
-        </div>
-      </div>
-    </ul>
-    <div *ngIf="blogs.length === 0">
-      Il n'y pas de blog.
-    </div>
-  </div>
   <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
+  <button class="button-success" (click)="addCategorie()">Ajouter une categorie</button><br>
 </div>
 
+<div class="search-container">
+  <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
+  <div *ngIf="blogs.length === 0 && searchQuery">
+    <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
+  </div>
+  <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
+</div><br>
 
+<div class="blogbox0">
+  <div class="blogbox">
+    <div class="blogboxElement">
+      <div class="blog-list">
+
+        <div class="search-container">
+          <label for="categoryFilter">Filtrer par catégorie :</label>
+          <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+            <option value="">Toutes les catégories</option>
+            <option *ngFor="let categorie of categories" [value]="categorie.category">{{ categorie.category }}</option>
+          </select>
+        </div>
+
+        <ul>
+          <div class="blogbox1">
+            <div *ngFor="let blog of blogs">
+              <div class="blogbox0">
+
+                <div class="blogbox">
+                  <label for="blog.description">categorie</label>
+                  <div class="blogboxElement">
+                    <p>{{ blog.category }}</p>
+                  </div>
+                </div>
+
+                <div class="blogbox">
+                  <label for="inputblog">Titre du Blog: </label>
+                  <div class="blogboxElement">
+                    <td>{{ blog.titre }}</td>
+                  </div>
+                </div>
+
+                <div class="blogbox">
+                  <label for="blog.description">Description :</label>
+                  <div class="blogboxElement">
+                    <p>{{ blog.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
+              <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
+              <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
+            </div>
+          </div>
+        </ul>
+        <div *ngIf="blogs.length === 0">
+          Il n'y pas de blog.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="displayedBlogs.length === 0">
+  Il n'y pas de blog.
+</div>
+<div *ngIf="displayedBlogs.length > 0">
+  <div *ngFor="let category of categories">
+    <h3>{{ category.category }}</h3>
+    <ul>
+      <ng-container *ngFor="let blog of blogsByCategory.get(category)">
+        <li>
+          <div>
+            <h4>{{ blog.titre }}</h4>
+            <p>{{ blog.description }}</p>
+            <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button>
+            <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button>
+            <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div> -->

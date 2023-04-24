@@ -5,6 +5,7 @@ import { Blog } from './interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
 import { User } from 'src/app/features/user/interfaces/user.interface';
 import { UserService } from 'src/app/core/user/services/user.service';
+import { Categorie } from './interfaces/categorie.interface';
 
 @Component({
   selector: 'app-blog-list',
@@ -13,15 +14,15 @@ import { UserService } from 'src/app/core/user/services/user.service';
 })
 
 export class BlogListComponent implements OnInit {
-  blogs: Blog[] = [];
-  isValidBlog: boolean = true;
   user: User;
+  blogs: Blog[] = [];
+  categories: Categorie[] = [];
+  selectedCategory: Categorie;
+  isValidBlog: boolean = true;
   searchQuery: string = '';
   titrePage: string = 'Liste de blogs';
-  filteredBlogsByCategory: { [category: string]: Blog[] } = {};
-  categories: string[] = []; // Liste des catégories uniques des blogs
-  selectedCategory: string = ''; // Catégorie sélectionnée dans le sélecteur
-  fullDescription: string = '';
+  // blogsByCategory: Map<Categorie, Blog[]> = new Map();
+  // displayedBlogs: Blog[] = [];
 
   constructor(
     private router: Router,
@@ -31,21 +32,6 @@ export class BlogListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Récupérer les blog posts avec le service
-    this.blogs = this.listeBlogEnregistresService.getBlogList();
-
-    // Filtrer les blog posts par catégorie et les stocker dans les sections respectives
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    this.blogs.forEach(blog => {
-      // Si la catégorie du blog post n'existe pas encore comme clé dans this.filteredBlogsByCategory, j'ajoute une nouvelle clé correspondante avec une valeur vide (un tableau vide)
-      if (!this.filteredBlogsByCategory[blog.category]) {
-        this.filteredBlogsByCategory[blog.category] = [];
-      }
-      // le blog post dans le tableau correspondant à sa catégorie
-      this.filteredBlogsByCategory[blog.category].push(blog);
-    });
-
-    this.loadBlogs();
 
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -62,13 +48,25 @@ export class BlogListComponent implements OnInit {
 
     const currentUserId = Number(localStorage.getItem('currentUserId'));
     const currentUser: User = this.userService.getUserById(currentUserId);
-    // Si currentUser est undefined, renvoyer une erreur
     if (currentUser === undefined) {
       return;
     } else {
       this.user = currentUser;
     }
     this.refreshBlogs();
+
+    this.blogs = this.listeBlogEnregistresService.getBlogList();
+    this.categories = this.listeBlogEnregistresService.getCategorieList();
+
+    // this.createBlogsByCategory();
+    // this.displayedBlogs = this.blogs;
+
+  }
+
+
+
+  addCategorie(): void {
+    this.router.navigate(['/blog/create-categories']);
   }
 
   modifyTheBlog(id: number): void {
@@ -77,28 +75,8 @@ export class BlogListComponent implements OnInit {
 
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
+    this.categories = this.listeBlogEnregistresService.getCategorieList();
   }
-
-  loadBlogs(): void {
-    // initialiser la variable à un tableau vide si "getBlogList()" retourne une valeur false
-    this.blogs = this.listeBlogEnregistresService.getBlogList() || [];
-    this.categories = this.listeBlogEnregistresService.getUniqueCategories();
-    // Méthode pour obtenir les catégories uniques
-  }
-
-  filterByCategory(): void {
-    if (this.selectedCategory === '') {
-      this.loadBlogs(); // Si aucune catégorie sélectionnée, charger tous les blogs
-    } else {
-      this.blogs = this.listeBlogEnregistresService.getBlogsByCategory(this.selectedCategory); // Filtrer les blogs par catégorie
-    }
-  }
-
-  // Méthode pour récupérer les blog posts filtrés par catégorie
-  getBlogsByCategory(category: string): Blog[] {
-    return this.filteredBlogsByCategory[category];
-  }
-
 
   addNewBlog(): void {
     this.router.navigate(['/blog/pageblog']);
@@ -127,4 +105,31 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
+
+  filterByCategory(): void {
+    if (this.selectedCategory) {
+      this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+        (blog: Blog) => blog.category === this.selectedCategory
+      );
+    } else {
+      this.refreshBlogs();
+    }
+  }
+
+  // groupBlogsByCategory(): Map<Categorie, Blog[]> {
+  //   const groupedBlogs = new Map<Categorie, Blog[]>();
+  //   for (const category of this.categories) {
+  //     const blogsInCategory = this.listeBlogEnregistresService.getBlogsByCategory(category);
+  //     groupedBlogs.set(category, blogsInCategory);
+  //   }
+  //   return groupedBlogs;
+  // }
+
+  // createBlogsByCategory(): void {
+  //   for (const category of this.categories) {
+  //     const blogsInCategory = this.listeBlogEnregistresService.getBlogsByCategory(category);
+  //     this.blogsByCategory.set(category, blogsInCategory);
+  //   }
+  // }
 }
