@@ -1,4 +1,4 @@
 export interface Categorie {
-    idCategory?: number,
-    category: string,
-  }
+  idCategory?: number,
+  category: string,
+}
