@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Categorie } from '../../interfaces/categorie.interface';
+import { Category } from '../../interfaces/category.interface';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/features/user/interfaces/user.interface';
@@ -14,8 +14,8 @@ export class CreateCategoriesComponent {
   user: User;
   blog: Blog;
   blogs: Blog[] = [];
-  categories: Categorie[] = [];
-  categorie: Categorie;
+  categories: Category[] = [];
+  category: Category;
   titrePage: string;
 
   constructor(
@@ -33,18 +33,18 @@ export class CreateCategoriesComponent {
     if (!!id) {
       const categoryFound = this.listeBlogEnregistresService.getCategoryById(id);
       if (!!categoryFound) {
-        this.categorie = categoryFound;
+        this.category = categoryFound;
       } else {
         console.error('id invalide');
       }
     } else {
       this.titrePage = 'Ajouter une categorie';
-      this.categorie = { category: '' };
+      this.category = { id: 0, label: '' };
     }
   }
 
   creerUneCategory(): void {
-    this.listeBlogEnregistresService.addCategories(this.categorie.category);
+    this.listeBlogEnregistresService.addCategories(this.category.label);
     this.router.navigate(['/blog/listedeblogs']);
   }
 }

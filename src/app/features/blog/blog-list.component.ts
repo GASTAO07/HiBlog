@@ -5,7 +5,7 @@ import { Blog } from './interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
 import { User } from 'src/app/features/user/interfaces/user.interface';
 import { UserService } from 'src/app/core/user/services/user.service';
-import { Categorie } from './interfaces/categorie.interface';
+import { Category } from './interfaces/category.interface';
 
 @Component({
   selector: 'app-blog-list',
@@ -16,8 +16,8 @@ import { Categorie } from './interfaces/categorie.interface';
 export class BlogListComponent implements OnInit {
   user: User;
   blogs: Blog[] = [];
-  categories: Categorie[] = [];
-  selectedCategory: Categorie;
+  categories: Category[] = [];
+  selectedCategory: Category;
   isValidBlog: boolean = true;
   searchQuery: string = '';
   titrePage: string = 'Liste de blogs';
@@ -63,10 +63,19 @@ export class BlogListComponent implements OnInit {
 
   }
 
-
-
   addCategorie(): void {
     this.router.navigate(['/blog/create-categories']);
+  }
+
+  filterByCategory(): void {
+    if (this.selectedCategory) {
+      this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+        (blog: Blog) => blog.category === this.selectedCategory
+      );
+    } else {
+      this.refreshBlogs();
+    }
   }
 
   modifyTheBlog(id: number): void {
@@ -106,16 +115,7 @@ export class BlogListComponent implements OnInit {
     }
   }
 
-  filterByCategory(): void {
-    if (this.selectedCategory) {
-      this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        (blog: Blog) => blog.category === this.selectedCategory
-      );
-    } else {
-      this.refreshBlogs();
-    }
-  }
+
 
   // groupBlogsByCategory(): Map<Categorie, Blog[]> {
   //   const groupedBlogs = new Map<Categorie, Blog[]>();

@@ -21,7 +21,7 @@
           <label for="categoryFilter">Filtrer par catégorie :</label>
           <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
             <option value="">Toutes les catégories</option>
-            <option *ngFor="let categorie of categories" [value]="categorie.category">{{ categorie.category }}</option>
+            <option *ngFor="let category of categories" [value]="category.label">{{ category.label }}</option>
           </select>
         </div>
 

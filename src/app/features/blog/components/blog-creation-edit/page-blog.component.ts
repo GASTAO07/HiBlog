@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
-import { Categorie } from '../../interfaces/categorie.interface';
+import { Category } from '../../interfaces/category.interface';
 
 @Component({
   selector: 'app-page-blog',
@@ -13,12 +13,12 @@ import { Categorie } from '../../interfaces/categorie.interface';
 export class PageBlogComponent implements OnInit {
   blog: Blog;
   blogs: Blog[] = [];
-  categorie: Categorie;
-  categories: Categorie[] = [];
+  categorie: Category;
+  categories: Category[] = [];
   isValidBlog: boolean = true;
   titrePage: string;
   textButton: string;
-  selectedCategory: Categorie | null = null ;
+  selectedCategory: Category | null = null ;
   filteredBlogsByCategory: { [category: string]: Blog[] } = {};
 
   constructor(

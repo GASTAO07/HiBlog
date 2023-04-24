@@ -1,8 +1,8 @@
-import { Categorie } from './categorie.interface';
+import { Category } from './category.interface';
 
 export interface Blog {
     id?: number,
     titre: string,
     description: string,
-    category: Categorie,
+    category: Category,
   }
