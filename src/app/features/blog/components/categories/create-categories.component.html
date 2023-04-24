@@ -1,0 +1,10 @@
+<app-tool-bar class="titre" [pageTitle]="titrePage"></app-tool-bar>
+<div class="Contenu-Blog">
+    <div class="form-group">
+        <label for="inputblog">Categorie :</label>
+
+        <input type="text" [(ngModel)]="categorie.category" id="inputblog" name="categorie"
+            placeholder="Entrez une categorie pour votre blog">
+    </div>
+    <button class="button-success" (click)="creerUneCategory()">Ajouter une Categorie</button><br>
+</div>
