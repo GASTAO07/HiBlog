@@ -8,6 +8,7 @@ import { Category } from '../interfaces/category.interface';
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
   private categories: Category[] = [];
+
   constructor() { }
 
   findIndexById(id: number, array: any[]): number {
@@ -65,7 +66,7 @@ export class ListeBlogEnregistresService {
 
   generateUniqueId(existingIds: number[]): number {
     if (existingIds.length >= Number.MAX_SAFE_INTEGER) {
-      throw new Error('impossible de generer un id');
+      throw new Error('impossible de génerer un id');
     }
     let id: number;
     do {
@@ -78,14 +79,12 @@ export class ListeBlogEnregistresService {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const id = this.generateUniqueId(this.categories.map(category => category.id));
     this.categories.push({ id: id, label: label });
-    console.log('idcateg', id);
   }
 
   addBlog(titre: string, description: string, category: Category): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const id = this.generateUniqueId(this.blogs.map(blog => blog.id));
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
-    console.log('idblog', id);
   }
 
   duplicateBlog(id: number): void {
@@ -95,7 +94,6 @@ export class ListeBlogEnregistresService {
       const newId = this.generateUniqueId(this.blogs.map(blog => blog.id));
       const newBlog = { id: newId, titre: blog.titre, description: blog.description, category: blog.category };
       this.blogs.push(newBlog);
-      console.log('idduplblog', newId);
     } else {
       throw new Error('blog n\'existe pas');
     }
