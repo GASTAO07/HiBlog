@@ -11,10 +11,6 @@ export class ListeBlogEnregistresService {
 
   constructor() { }
 
-  findIndexById(id: number, array: any[]): number {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    return array.findIndex(element => element.id === id);
-  }
 
   getCategoryById(id: number): Category {
     const index = this.findIndexById(id, this.categories);
@@ -46,18 +42,19 @@ export class ListeBlogEnregistresService {
     return this.categories;
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  getUniqueCategories() {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    const allCategories = this.categories.map(categories => categories.label);
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
-    const uniqueCategories = allCategories.filter((category, index, self) => self.indexOf(category) === index);
+
+  getUniqueCategories() : String[] {
+    const allCategories = this.categories.map((categories : Category): string  => categories.label);
+    const uniqueCategories = allCategories.filter((category: string, index: number, self: string[]) : boolean => self.indexOf(category) === index);
     return uniqueCategories;
   }
 
+  findIndexById(id: number, array: any[]): number {
+    return array.findIndex((element : any) : any => element.id === id);
+  }
+
   getBlogsByCategory(category: Category): Blog[] {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    return this.blogs.filter(blog => blog.category === category);
+    return this.blogs.filter((blog : Blog) : any => blog.category === category);
   }
 
   getBlogList(): Blog[] {
@@ -76,22 +73,19 @@ export class ListeBlogEnregistresService {
   }
 
   addCategories(label: string): void {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    const id = this.generateUniqueId(this.categories.map(category => category.id));
+    const id = this.generateUniqueId(this.categories.map((category : Category) : number  => category.id));
     this.categories.push({ id: id, label: label });
   }
 
   addBlog(titre: string, description: string, category: Category): void {
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    const id = this.generateUniqueId(this.blogs.map(blog => blog.id));
+    const id = this.generateUniqueId(this.blogs.map((blog: Blog) : number => blog.id));
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
   }
 
   duplicateBlog(id: number): void {
     const blog = this.getBlogById(id);
     if (blog) {
-      // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-      const newId = this.generateUniqueId(this.blogs.map(blog => blog.id));
+      const newId = this.generateUniqueId(this.blogs.map((blog: Blog) : number => blog.id));
       const newBlog = { id: newId, titre: blog.titre, description: blog.description, category: blog.category };
       this.blogs.push(newBlog);
     } else {

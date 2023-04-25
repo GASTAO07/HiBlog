@@ -25,8 +25,8 @@ export class CreerUncompteComponent implements OnInit {
     public route: ActivatedRoute, ) { }
 
   ngOnInit(): void {
-    // eslint-disable-next-line dot-notation
-    const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    const variable   = 'id';
+    const id = parseInt(this.route.snapshot.queryParams[variable], 10);
     if (!!id) {
       const userFound = this.userService.getUserById(id);
       if (!!userFound) {

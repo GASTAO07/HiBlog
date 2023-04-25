@@ -6,22 +6,19 @@ import { AuthLoginGuard } from './core/auth/guards/auth-login.guard/auth-login.g
 const routes: Routes = [
   {
     path: 'auth',
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./features/login/login.module').then(m => m.AuthModule),
+    loadChildren: () : any => import('./features/login/login.module').then((m : any) : any => m.AuthModule),
     canActivate: [AuthLoginGuard]
   },
 
   {
     path: 'user',
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/typedef
-    loadChildren: () => import('./features/user/user.module').then(m => m.UserModule),
+    loadChildren: () : any => import('./features/user/user.module').then((m : any) : any => m.UserModule),
     canActivate: [AuthGuard],
   },
 
   {
     path: 'blog',
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    loadChildren: () => import('./features/blog/blog-list.module').then(m => m.BlogModule),
+    loadChildren: () : any => import('./features/blog/blog-list.module').then((m : any) : any => m.BlogModule),
     canActivate: [AuthGuard]
 
   },

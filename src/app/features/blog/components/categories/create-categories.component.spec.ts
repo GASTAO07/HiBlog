@@ -6,7 +6,6 @@ describe('CategoriesComponent', () : void => {
   let component: CreateCategoriesComponent;
   let fixture: ComponentFixture<CreateCategoriesComponent>;
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   beforeEach(async () : Promise<void> => {
     await TestBed.configureTestingModule({
       declarations: [CreateCategoriesComponent]

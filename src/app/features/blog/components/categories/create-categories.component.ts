@@ -27,9 +27,8 @@ export class CreateCategoriesComponent {
   ngOnInit(): void {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.listeBlogEnregistresService.getCategorieList();
-
-    // eslint-disable-next-line dot-notation
-    const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    const variable   = 'id';
+    const id = parseInt(this.route.snapshot.queryParams[variable], 10);
     if (!!id) {
       const categoryFound = this.listeBlogEnregistresService.getCategoryById(id);
       if (!!categoryFound) {
@@ -39,7 +38,7 @@ export class CreateCategoriesComponent {
       }
     } else {
       this.titlePage = 'Ajouter une categorie';
-      this.category = {  label: '' };
+      this.category = { label: '' };
     }
   }
 

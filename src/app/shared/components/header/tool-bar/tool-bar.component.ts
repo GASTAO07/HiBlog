@@ -58,8 +58,7 @@ export class ToolBarComponent {
   }
 
   userInfo(): void {
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    this.router.navigateByUrl('/user/profile').then(() => {
+    this.router.navigateByUrl('/user/profile').then(() : any => {
       localStorage.setItem('user', JSON.stringify(this.user));
     });
   }
@@ -68,8 +67,8 @@ export class ToolBarComponent {
     const selectedFile: File = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    reader.onload = () => {
+
+    reader.onload = () : any => {
       const image = reader.result as string;
       const userId = this.user.id;
       localStorage.setItem(`user_${userId}_avatar`, image);

@@ -33,9 +33,9 @@ export class PageBlogComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.listeBlogEnregistresService.getCategorieList();
     this.listeBlogEnregistresService.getBlogsByCategory(this.category);
-
-    // eslint-disable-next-line dot-notation
-    const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    // const id = parseInt(this.route.snapshot.queryParams['id'], 10);
+    const variable   = 'id';
+    const id = parseInt(this.route.snapshot.queryParams[variable], 10);
     if (!!id) {
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
       if (!!blogFound) {

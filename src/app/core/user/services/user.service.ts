@@ -54,7 +54,6 @@ export class UserService {
 
   deleteUser(id: number): void {
     const users: User[] = this.getUsers();
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     const index = users.findIndex((user: User): boolean => user.id === id);
     if (index !== -1) {
       users.splice(index, 1);

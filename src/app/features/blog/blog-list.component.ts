@@ -64,8 +64,7 @@ export class BlogListComponent implements OnInit {
   filterByCategory(): void {
     if (this.selectedCategory) {
       this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        (blog: Blog) => blog.category === this.selectedCategory
+        (blog: Blog) : any => blog.category === this.selectedCategory
       );
     } else {
       this.refreshBlogs();
