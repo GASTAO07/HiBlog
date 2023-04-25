@@ -21,8 +21,6 @@ export class BlogListComponent implements OnInit {
   isValidBlog: boolean = true;
   searchQuery: string = '';
   titlePage: string = 'Liste de blogs';
-  // blogsByCategory: Map<Categorie, Blog[]> = new Map();
-  // displayedBlogs: Blog[] = [];
 
   constructor(
     private router: Router,
@@ -57,10 +55,6 @@ export class BlogListComponent implements OnInit {
 
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.listeBlogEnregistresService.getCategorieList();
-
-    // this.createBlogsByCategory();
-    // this.displayedBlogs = this.blogs;
-
   }
 
   addCategorie(): void {
@@ -114,22 +108,4 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
-
-
-
-  // groupBlogsByCategory(): Map<Categorie, Blog[]> {
-  //   const groupedBlogs = new Map<Categorie, Blog[]>();
-  //   for (const category of this.categories) {
-  //     const blogsInCategory = this.listeBlogEnregistresService.getBlogsByCategory(category);
-  //     groupedBlogs.set(category, blogsInCategory);
-  //   }
-  //   return groupedBlogs;
-  // }
-
-  // createBlogsByCategory(): void {
-  //   for (const category of this.categories) {
-  //     const blogsInCategory = this.listeBlogEnregistresService.getBlogsByCategory(category);
-  //     this.blogsByCategory.set(category, blogsInCategory);
-  //   }
-  // }
 }
