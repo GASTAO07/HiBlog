@@ -11,27 +11,6 @@ export class ListeBlogEnregistresService {
   private count: number = (Math.floor(Math.random() * 100));
   constructor() { }
 
-  // addCategories(category: string): void {
-  //   this.count++;
-  //   let id = (Math.floor(Math.random() * 100) + 1);
-  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-  //   while (this.categories.some(category => category.id === id)) {
-  //     id = (Math.floor(Math.random() * 100) + 1);
-  //   }
-  //   this.categories.push({ id: id, label: category });
-  //   console.log('idcateg', id);
-  // }
-
-  addCategories(label: string): void {
-    let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
-    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    while (this.categories.some(category => category.id === id)) {
-      id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
-    }
-    this.categories.push({ id: id, label: label });
-    console.log('idcateg', id);
-  }
-
   getCategorieList(): Category[] {
     return this.categories;
   }
@@ -70,25 +49,71 @@ export class ListeBlogEnregistresService {
     }
   }
 
-  addBlog(titre: string, description: string, category: Category): void {
-    let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
+  // addBlog(titre: string, description: string, category: Category): void {
+  //   let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1))+ 1;
+  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+  //   while (this.blogs.some(blog => blog.id === id)) {
+  //     id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1))+ 1;
+  //   }
+  //   this.blogs.push({ id: id, titre: titre, description: description, category: category });
+  //   console.log('idblog', id);
+  // }
+
+
+  // duplicateBlog(id: number): void {
+  //   const blog = this.getBlogById(id);
+  //   if (blog) {
+  //     let newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+  //     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+  //     while (this.blogs.some(existingBlog => existingBlog.id === newId)) {
+  //       newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+  //     }
+  //     const newBlog = { id: newId, titre: blog.titre, description: blog.description, category: blog.category };
+  //     this.blogs.push(newBlog);
+  //     console.log('idduplblog', newId);
+  //   } else {
+  //     throw new Error('blog n\'existe pas');
+  //   }
+  // }
+
+
+  // addCategories(label: string): void {
+  //   let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+  //   // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+  //   while (this.categories.some(category => category.id === id)) {
+  //     id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1))+ 1;
+  //   }
+  //   this.categories.push({ id: id, label: label });
+  //   console.log('idcateg', id);
+  // }
+
+  generateUniqueId(existingIds: number[]): number {
+    let id: number;
+    do {
+      id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+    } while (existingIds.includes(id));
+    return id;
+  }
+
+  addCategories(label: string): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-    while (this.blogs.some(blog => blog.id === id)) {
-      id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
-    }
+    const id = this.generateUniqueId(this.categories.map(category => category.id));
+    this.categories.push({ id: id, label: label });
+    console.log('idcateg', id);
+  }
+
+  addBlog(titre: string, description: string, category: Category): void {
+    // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+    const id = this.generateUniqueId(this.blogs.map(blog => blog.id));
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
     console.log('idblog', id);
   }
 
-
   duplicateBlog(id: number): void {
     const blog = this.getBlogById(id);
     if (blog) {
-      let newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
       // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
-      while (this.blogs.some(existingBlog => existingBlog.id === newId)) {
-        newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
-      }
+      const newId = this.generateUniqueId(this.blogs.map(blog => blog.id));
       const newBlog = { id: newId, titre: blog.titre, description: blog.description, category: blog.category };
       this.blogs.push(newBlog);
       console.log('idduplblog', newId);
@@ -96,7 +121,6 @@ export class ListeBlogEnregistresService {
       throw new Error('blog n\'existe pas');
     }
   }
-
 
   modifyBlog(id: number, titre: string, description: string, category: Category): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
