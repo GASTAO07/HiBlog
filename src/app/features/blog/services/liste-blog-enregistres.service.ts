@@ -23,13 +23,11 @@ export class ListeBlogEnregistresService {
   // }
 
   addCategories(label: string): void {
-    let id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
-
+    let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     while (this.categories.some(category => category.id === id)) {
-      id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
+      id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
     }
-
     this.categories.push({ id: id, label: label });
     console.log('idcateg', id);
   }
@@ -73,13 +71,11 @@ export class ListeBlogEnregistresService {
   }
 
   addBlog(titre: string, description: string, category: Category): void {
-    let id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
-
+    let id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
     while (this.blogs.some(blog => blog.id === id)) {
-      id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER) + 1;
+      id = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1) + 1);
     }
-
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
     console.log('idblog', id);
   }
@@ -88,12 +84,19 @@ export class ListeBlogEnregistresService {
   duplicateBlog(id: number): void {
     const blog = this.getBlogById(id);
     if (blog) {
-      const newBlog = { id: this.blogs.length + 1, titre: blog.titre, description: blog.description, category: blog.category };
+      let newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+      // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
+      while (this.blogs.some(existingBlog => existingBlog.id === newId)) {
+        newId = Math.floor(Math.random() * (Number.MAX_SAFE_INTEGER - 1)) + 1;
+      }
+      const newBlog = { id: newId, titre: blog.titre, description: blog.description, category: blog.category };
       this.blogs.push(newBlog);
+      console.log('idduplblog', newId);
     } else {
       throw new Error('blog n\'existe pas');
     }
   }
+
 
   modifyBlog(id: number, titre: string, description: string, category: Category): void {
     // eslint-disable-next-line @typescript-eslint/typedef, @typescript-eslint/explicit-function-return-type
