@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
 import { Category } from '../../interfaces/category.interface';
+import { CategoryService } from '../../services/category/category.service';
 
 @Component({
   selector: 'app-page-blog',
@@ -24,6 +25,7 @@ export class PageBlogComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    public categoryService: CategoryService,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
     private loginValidationService: LoginValidationService,
   ) { }
@@ -31,7 +33,7 @@ export class PageBlogComponent implements OnInit {
   ngOnInit(): void {
 
     this.blogs = this.listeBlogEnregistresService.getBlogList();
-    this.categories = this.listeBlogEnregistresService.getCategorieList();
+    this.categories = this.categoryService.getCategorieList();
     this.listeBlogEnregistresService.getBlogsByCategory(this.category);
     // const id = parseInt(this.route.snapshot.queryParams['id'], 10);
     const variable   = 'id';

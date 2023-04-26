@@ -3,7 +3,7 @@
 
   <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
     <option value="">Toutes les catégories</option>
-    <option *ngFor="let category of listeBlogEnregistresService.getUniqueCategories()" [value]="category">{{ category }}
+    <option *ngFor="let category of categoryService.getUniqueCategories()" [value]="category">{{ category }}
     </option>
   </select>
 

@@ -35,7 +35,7 @@ button.button-success {
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 12px 24px;
+  padding: 2px 2px;
   font-size: 1em;
   cursor: pointer;
   line-height: 0, 8;
@@ -50,37 +50,35 @@ button.button-success:hover {
 }
 
 .blogbox {
-  max-width: 600px;
   margin: 0 auto;
-  padding: 22px;
-  background-color: rgb(255, 255, 255);
+  padding: 220px;
+  background-color: rgb(230, 77, 77);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
   margin-bottom: 40px;
 
   .blogboxElement {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 22px;
-    margin-left: 10px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 50 0 8px rgba(0, 0, 0, 0.1);
+    max-width: 90000px;
+    margin: 5 auto;
+    padding: 220px;
+    background-color: rgb(31, 179, 109);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 }
 
 .blogbox0 {
-  max-width: 6000px;
+  max-width: 90000px;
   margin: 5 auto;
-  padding: 20px;
-  background-color: rgb(246, 247, 248);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 200px;
+  background-color: rgb(30, 129, 228);
+  box-shadow: 800 800 800px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: block;
-  margin-bottom: 80px;
+  margin-bottom: 5000px;
   flex: 0 0 100%;
   scroll-snap-align: start;
 }
@@ -99,7 +97,6 @@ app-tool-bar.titre {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
-  margin-bottom: 20px;
   margin-bottom: 20px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -126,7 +123,7 @@ app-tool-bar.titre {
   right: 0;
   height: 100%;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #fdfffd;
   color: white;
   border: none;
   cursor: pointer;
@@ -134,9 +131,9 @@ app-tool-bar.titre {
 
 
 .blogbox2 {
-  max-width: 3000px;
+  max-width: 9000px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 900px;
   background-color: rgb(246, 247, 248);
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;

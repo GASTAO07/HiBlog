@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListeBlogEnregistresService } from './services/liste-blog-enregistres.service';
+import { ListeBlogEnregistresService } from './services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { Blog } from './interfaces/blog.interface';
 import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
 import { User } from 'src/app/features/user/interfaces/user.interface';
 import { UserService } from 'src/app/core/user/services/user.service';
 import { Category } from './interfaces/category.interface';
+import { CategoryService } from './services/category/category.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -25,6 +26,7 @@ export class BlogListComponent implements OnInit {
   constructor(
     private router: Router,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
+    public categoryService: CategoryService,
     public loginValidationService: LoginValidationService,
     private userService: UserService
   ) { }
@@ -54,7 +56,7 @@ export class BlogListComponent implements OnInit {
     this.refreshBlogs();
 
     this.blogs = this.listeBlogEnregistresService.getBlogList();
-    this.categories = this.listeBlogEnregistresService.getCategorieList();
+    this.categories = this.categoryService.getCategorieList();
   }
 
   addCategorie(): void {
@@ -64,7 +66,7 @@ export class BlogListComponent implements OnInit {
   filterByCategory(): void {
     if (this.selectedCategory) {
       this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
-        (blog: Blog) : any => blog.category === this.selectedCategory
+        (blog: Blog): any => blog.category === this.selectedCategory
       );
     } else {
       this.refreshBlogs();
@@ -77,7 +79,7 @@ export class BlogListComponent implements OnInit {
 
   refreshBlogs(): void {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
-    this.categories = this.listeBlogEnregistresService.getCategorieList();
+    this.categories = this.categoryService.getCategorieList();
   }
 
   addNewBlog(): void {
