@@ -1,8 +1,3 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
 export class IdmanagerService {
 
   constructor() { }
@@ -20,5 +15,4 @@ export class IdmanagerService {
     } while (existingIds.includes(id));
     return id;
   }
-
 }

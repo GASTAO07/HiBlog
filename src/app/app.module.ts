@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { ToolBarComponent } from './shared/components/header/tool-bar/tool-bar.component';
 import { UserListComponent } from './features/user/user.component';
 import { CreateCategoriesComponent } from './features/blog/components/categories/create-categories.component';
+import { IdmanagerService } from './shared/services/idmanager.service';
+import { ListeBlogEnregistresService } from './features/blog/services/liste-blog-enregistres/liste-blog-enregistres.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { CreateCategoriesComponent } from './features/blog/components/categories
     FormsModule,
     RouterModule
   ],
-  providers: [BlogListComponent, LoginComponent, PageBlogComponent],
+  providers: [BlogListComponent, LoginComponent, PageBlogComponent, IdmanagerService, ListeBlogEnregistresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
