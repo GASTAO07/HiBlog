@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
-import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
+import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service/login-validation.service';
 import { Category } from '../../interfaces/category.interface';
 import { CategoryService } from '../../services/category/category.service';
 
@@ -11,6 +11,7 @@ import { CategoryService } from '../../services/category/category.service';
   templateUrl: './page-blog.component.html',
   styleUrls: ['./page-blog.component.scss']
 })
+
 export class PageBlogComponent implements OnInit {
   blog: Blog;
   blogs: Blog[] = [];
@@ -78,7 +79,7 @@ export class PageBlogComponent implements OnInit {
 
   submitBlogChanges(): void {
     this.validateBlog();
-    this.listeBlogEnregistresService.modifyBlog(this.blog?.id, this.blog?.titre, this.blog?.description, this.selectedCategory);
+    this.listeBlogEnregistresService.modifyBlog(this.blog?.id, this.blog?.titre, this.blog?.description, this?.selectedCategory);
     this.router.navigate(['/blog/listedeblogs']);
   }
 

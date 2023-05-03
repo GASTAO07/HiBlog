@@ -45,9 +45,25 @@
                 </div>
 
                 <div class="blogbox">
-                  <label for="blog.description">Description :</label>
+                  <label for="blog.description">Description</label>
                   <div class="blogboxElement">
-                    <p>{{ blog.description }}</p>
+                    <!-- Affiche la description complète si 'showFullDescription' est vrai ou si 'blog.description' est vide -->
+                    <p *ngIf="showFullDescription || !blog.description">{{ blog.description }}</p>
+                    <!-- Si 'showFullDescription' est faux et 'blog.description' n'est pas vide -->
+                    <div *ngIf="!showFullDescription && blog.description">
+                      <!-- Affiche les deux premiers paragraphes, limités aux cinq premiers mots de chaque paragraphe -->
+                      <p *ngFor="let paragraph of blog.description.split('\n\n') | slice:0:2">{{ paragraph.split('
+                        ').slice(0, 5).join(' ') }}</p>
+                      <!-- Bouton pour afficher la description complète en basculant 'showFullDescription' à vrai -->
+                      <button class="button-success" (click)="toggleFullDescription()">Lire plus</button>
+                    </div>
+                    <!-- Si 'showFullDescription' est vrai -->
+                    <div *ngIf="showFullDescription">
+                      <!-- Affiche la description complète -->
+                      <p>{{ blog.description }}</p>
+                      <!-- Bouton pour cacher la description complète en basculant 'showFullDescription' à faux -->
+                      <button class="button-success" (click)="toggleFullDescription()">Lire moins</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,4 +80,3 @@
     </div>
   </div>
 </div>
-

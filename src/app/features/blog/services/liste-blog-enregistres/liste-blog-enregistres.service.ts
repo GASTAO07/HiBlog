@@ -3,14 +3,13 @@ import { Blog } from '../../interfaces/blog.interface';
 import { Category } from '../../interfaces/category.interface';
 import { IdmanagerService } from 'src/app/shared/services/idmanager.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class ListeBlogEnregistresService {
   private blogs: Blog[] = [];
   private categories: Category[] = [];
 
-  constructor(private idmanagerService : IdmanagerService) { }
+  constructor(private idmanagerService : IdmanagerService) { console.log('Nouvelle instance de ListeBlogEnregistresService créée'); }
 
   getBlogById(id: number): Blog {
     const index = this.idmanagerService.findIndexById(id, this.blogs);
@@ -39,6 +38,7 @@ export class ListeBlogEnregistresService {
 
   addBlog(titre: string, description: string, category: Category): void {
     const id = this.idmanagerService.generateUniqueId(this.blogs.map((blog: Blog) : number => blog.id));
+
     this.blogs.push({ id: id, titre: titre, description: description, category: category });
   }
 

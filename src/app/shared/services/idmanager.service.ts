@@ -1,6 +1,10 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+
 export class IdmanagerService {
 
-  constructor() { }
+  constructor() { console.log('Nouvelle instance d\'IdmanagerService créée'); }
   findIndexById(id: number, array: any[]): number {
     return array.findIndex((element: any): any => element.id === id);
   }

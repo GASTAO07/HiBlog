@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Category } from '../../interfaces/category.interface';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/features/user/interfaces/user.interface';
 import { Blog } from '../../interfaces/blog.interface';
 import { CategoryService } from '../../services/category/category.service';
 
@@ -12,7 +11,6 @@ import { CategoryService } from '../../services/category/category.service';
   styleUrls: ['./create-categories.component.scss']
 })
 export class CreateCategoriesComponent {
-  user: User;
   blog: Blog;
   blogs: Blog[] = [];
   categories: Category[] = [];

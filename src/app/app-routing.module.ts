@@ -18,7 +18,7 @@ const routes: Routes = [
 
   {
     path: 'blog',
-    loadChildren: () : any => import('./features/blog/blog-list.module').then((m : any) : any => m.BlogModule),
+    loadChildren: () : any => import('./features/blog/blog.module').then((m : any) : any => m.BlogModule),
     canActivate: [AuthGuard]
 
   },

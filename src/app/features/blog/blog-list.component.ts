@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListeBlogEnregistresService } from './services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { Blog } from './interfaces/blog.interface';
-import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
+import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service/login-validation.service';
 import { User } from 'src/app/features/user/interfaces/user.interface';
-import { UserService } from 'src/app/core/user/services/user.service';
+import { UserService } from 'src/app/core/auth/services/user.service/user.service';
 import { Category } from './interfaces/category.interface';
 import { CategoryService } from './services/category/category.service';
 
@@ -22,6 +22,7 @@ export class BlogListComponent implements OnInit {
   isValidBlog: boolean = true;
   searchQuery: string = '';
   titlePage: string = 'Liste de blogs';
+  showFullDescription : boolean = false;
 
   constructor(
     private router: Router,
@@ -57,6 +58,10 @@ export class BlogListComponent implements OnInit {
 
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.categoryService.getCategorieList();
+  }
+
+  toggleFullDescription() : void {
+    this.showFullDescription = !this.showFullDescription;
   }
 
   addCategorie(): void {

@@ -3,14 +3,13 @@ import { Blog } from '../../interfaces/blog.interface';
 import { Category } from '../../interfaces/category.interface';
 import { IdmanagerService } from 'src/app/shared/services/idmanager.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class CategoryService {
   private blogs: Blog[] = [];
   private categories: Category[] = [];
 
-  constructor(private idmanagerService : IdmanagerService) { }
+  constructor(private idmanagerService : IdmanagerService) { console.log('Nouvelle instance de CategoryService créée'); }
 
   getCategorieList(): Category[] {
     return this.categories;

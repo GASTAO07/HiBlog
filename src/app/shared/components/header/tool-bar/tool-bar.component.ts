@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service';
-import { UserService } from 'src/app/core/user/services/user.service';
+import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service/login-validation.service';
+import { UserService } from 'src/app/core/auth/services/user.service/user.service';
 import { User } from 'src/app/features/user/interfaces/user.interface';
 
 @Component({
