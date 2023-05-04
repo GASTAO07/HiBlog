@@ -8,6 +8,7 @@ import { UserService } from 'src/app/core/auth/services/user.service/user.servic
 import { Category } from './interfaces/category.interface';
 import { CategoryService } from './services/category/category.service';
 
+
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html',
@@ -22,7 +23,8 @@ export class BlogListComponent implements OnInit {
   isValidBlog: boolean = true;
   searchQuery: string = '';
   titlePage: string = 'Liste de blogs';
-  showFullDescription : boolean = false;
+  showFullDescription: boolean = false;
+  searchHashtags: string = '';
 
   constructor(
     private router: Router,
@@ -60,7 +62,7 @@ export class BlogListComponent implements OnInit {
     this.categories = this.categoryService.getCategorieList();
   }
 
-  toggleFullDescription() : void {
+  toggleFullDescription(): void {
     this.showFullDescription = !this.showFullDescription;
   }
 
@@ -114,4 +116,29 @@ export class BlogListComponent implements OnInit {
       this.refreshBlogs();
     }
   }
+
+  searchByHashtag(): void {
+    if (this.searchHashtags) {
+      // searchHashtags le mot qui a été choisi,
+      // split pour séparer les mots-clés par des espaces
+      // this.searchHashtags.split(' ') crée un tableau de mots-clés en utilisant les espaces pour séparer
+      // map parcours chaque le tableu et avectolowercase met en miniscule et crée un nouveau tableau
+      const searchTags = this.searchHashtags.split(' ').map((tag: string): string => tag.toLowerCase());
+      this.blogs = this.listeBlogEnregistresService.getBlogList().filter(
+        // paramètre blog de type Blog et retourne un booléen (true ou false)
+        (blog: Blog): boolean =>
+          // si hashtags du blog est bien un tableau
+          Array.isArray(blog.hashtags) &&
+          // some() pour s'assurer qu'au moins un hashtag du blog est présent dans le tableau de mots-clés de recherche (searchTags).
+          blog.hashtags.some((tag: string): boolean => searchTags.includes(tag.toLowerCase()))
+        // tag est un des hashtags qui a été divisé au debut
+        // tag de type string (un hashtag individuel du blog) et retourne un booléen.
+        // avec includes si le hashtag est présent dans le tableau
+      );
+      // Et ces blogs sont inclus dans le tableu filtreée s'ils repondent à ces deux conditions
+    } else {
+      this.refreshBlogs();
+    }
+  }
+
 }

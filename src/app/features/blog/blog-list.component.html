@@ -1,4 +1,5 @@
 <app-tool-bar class="titre" [pageTitle]="titlePage"></app-tool-bar><br>
+
 <div>
   <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
   <button class="button-success" (click)="addCategorie()">Ajouter une categorie</button><br>
@@ -25,13 +26,20 @@
           </select>
         </div>
 
+        <div class="search-container">
+          <div class="hashtag-input-wrapper">
+            <input type="text" placeholder="Rechercher par hashtag" [(ngModel)]="searchHashtags">
+          </div>
+          <button type="button" (click)="searchByHashtag()">Rechercher<i class="fa fa-search"></i></button>
+        </div>
+        
         <ul>
           <div class="blogbox1">
             <div *ngFor="let blog of blogs">
               <div class="blogbox0">
 
                 <div class="blogbox">
-                  <label for="blog.description">categorie</label>
+                  <label for="blog.category">Categorie du Blog</label>
                   <div class="blogboxElement">
                     <p>{{ blog.category }}</p>
                   </div>
@@ -45,15 +53,15 @@
                 </div>
 
                 <div class="blogbox">
-                  <label for="blog.description">Description</label>
+                  <label for="blog.description">Description du Blog</label>
                   <div class="blogboxElement">
                     <!-- Affiche la description complète si 'showFullDescription' est vrai ou si 'blog.description' est vide -->
                     <p *ngIf="showFullDescription || !blog.description">{{ blog.description }}</p>
                     <!-- Si 'showFullDescription' est faux et 'blog.description' n'est pas vide -->
                     <div *ngIf="!showFullDescription && blog.description">
                       <!-- Affiche les deux premiers paragraphes, limités aux cinq premiers mots de chaque paragraphe -->
-                      <p *ngFor="let paragraph of blog.description.split('\n\n') | slice:0:2">{{ paragraph.split('
-                        ').slice(0, 5).join(' ') }}</p>
+                      <p *ngFor="let paragraph of blog.description.split('\n\n') | slice:0:2">{{
+                        paragraph.split(' ').slice(0, 5).join(' ') }}</p>
                       <!-- Bouton pour afficher la description complète en basculant 'showFullDescription' à vrai -->
                       <button class="button-success" (click)="toggleFullDescription()">Lire plus</button>
                     </div>
@@ -66,6 +74,14 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="blogbox">
+                  <label for="inputblog">Hashtags du Blog: </label>
+                  <div class="blogboxElement">
+                    <p>{{ blog.hashtags }}</p>                                                
+                  </div>
+                </div>
+
               </div>
               <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
               <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
