@@ -18,10 +18,15 @@
   </div>
 
   <div class="form-group">
-    <label for="blog.description">Description :</label>
+    <label for="blog.description">Description du Blog:</label>
     <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description" name="blogdescription "
       rows="10" placeholder="Donnez une description à votre blog"></textarea>
   </div>
+
+  <div>
+    <label for="hashtags">Hashtags du Blog:</label>
+    <input type="text" id="hashtags" [(ngModel)]="blog.hashtags" name="hashtags" />
+  </div>  
   
   <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()"
     [disabled]="isValidBlog">{{textButton}}</button><br>

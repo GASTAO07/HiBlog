@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListeBlogEnregistresService } from '../../services/liste-blog-enregistres/liste-blog-enregistres.service';
 import { Blog } from '../../interfaces/blog.interface';
-import { LoginValidationService } from 'src/app/core/auth/services/login-validation.service/login-validation.service';
 import { Category } from '../../interfaces/category.interface';
 import { CategoryService } from '../../services/category/category.service';
 
@@ -20,7 +19,7 @@ export class PageBlogComponent implements OnInit {
   isValidBlog: boolean = true;
   titlePage: string;
   textButton: string;
-  selectedCategory: Category | null = null ;
+  selectedCategory: Category | null = null;
   filteredBlogsByCategory: { [category: string]: Blog[] } = {};
 
   constructor(
@@ -28,7 +27,6 @@ export class PageBlogComponent implements OnInit {
     private route: ActivatedRoute,
     public categoryService: CategoryService,
     public listeBlogEnregistresService: ListeBlogEnregistresService,
-    private loginValidationService: LoginValidationService,
   ) { }
 
   ngOnInit(): void {
@@ -36,8 +34,7 @@ export class PageBlogComponent implements OnInit {
     this.blogs = this.listeBlogEnregistresService.getBlogList();
     this.categories = this.categoryService.getCategorieList();
     this.listeBlogEnregistresService.getBlogsByCategory(this.category);
-    // const id = parseInt(this.route.snapshot.queryParams['id'], 10);
-    const variable   = 'id';
+    const variable = 'id';
     const id = parseInt(this.route.snapshot.queryParams[variable], 10);
     if (!!id) {
       const blogFound = this.listeBlogEnregistresService.getBlogById(id);
@@ -51,7 +48,7 @@ export class PageBlogComponent implements OnInit {
     } else {
       this.titlePage = 'Ajouter un blog';
       this.textButton = 'Créer un blog';
-      this.blog = { titre: '', description: '', category: this.category };
+      this.blog = { titre: '', description: '', category: this.category, hashtags: [] };
     }
   }
 
@@ -64,7 +61,7 @@ export class PageBlogComponent implements OnInit {
   }
 
   validateBlog(): void {
-    if (!(this.blog?.titre || this.blog?.description || this.blog?.id || this.selectedCategory)) {
+    if (!(this.blog?.titre || this.blog?.description || this.blog?.id || this.selectedCategory || this.blog.hashtags)) {
       this.isValidBlog = true;
     } else {
       this.isValidBlog = false;
@@ -72,18 +69,33 @@ export class PageBlogComponent implements OnInit {
   }
 
   creerUnblog(): void {
+    this.validateHashtags();
     this.validateBlog();
-    this.listeBlogEnregistresService.addBlog(this.blog?.titre, this.blog?.description, this?.selectedCategory);
+    this.listeBlogEnregistresService.addBlog(this.blog?.titre, this.blog?.description, this?.selectedCategory, this.blog.hashtags);
     this.router.navigate(['/blog/listedeblogs']);
   }
 
   submitBlogChanges(): void {
+    this.validateHashtags();
     this.validateBlog();
-    this.listeBlogEnregistresService.modifyBlog(this.blog?.id, this.blog?.titre, this.blog?.description, this?.selectedCategory);
+    this.listeBlogEnregistresService.modifyBlog(this.blog?.id, this.blog?.titre, this.blog?.description, this?.selectedCategory, this.blog?.hashtags);
     this.router.navigate(['/blog/listedeblogs']);
   }
 
   cancelCreroredit(): void {
     this.router.navigate(['/blog/listedeblogs']);
   }
+
+  validateHashtags(): void {
+    if (this.blog.hashtags && typeof this.blog.hashtags === 'string') {
+      // verifie si existe et le type string
+      // forcer à any our éviter une erreur de compilation
+      const tags = (this.blog.hashtags as any).split(',').map((tag: string) : string => tag.trim());
+      //  divise la chaîne de caractères des hashtags
+      // map chaque element et trim() supprime les espaces
+      this.blog.hashtags = tags.slice(0, 5);
+      // limiter les hashtags à 5
+    }
+  }
+
 }
