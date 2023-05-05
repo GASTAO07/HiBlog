@@ -1,35 +1,48 @@
-<app-tool-bar class="titre" [pageTitle]="titlePage"></app-tool-bar><br>
+<head>
+    <app-tool-bar class="titre" [pageTitle]="titlePage"></app-tool-bar><br>
+</head>
 
-<div>
-    <div class="blog-list">
-        <div *ngIf="user">
-            <ul>
-                <div class="userbox0">
-                    <div class="userbox">
-                        <label for="blog.category">Nom :</label>
-                        <div class="userboxElement">
-                            <td> {{ user.nom }}</td>
+<body>
+    <div>
+        <div class="user-info">
+            <div *ngIf="user">
+                <ul>
+                    <div class="user-box-1">
+
+                        <div class="user-box-2">
+                            <label for="blog.category">Nom :</label>
+                            <div class="user-box-3">
+                                <td> {{ user.nom }}</td>
+                            </div>
+                        </div>
+
+                        <div class="user-box-2">
+                            <label for="inputblog">Prénom : </label>
+                            <div class="user-box-3">
+                                <td>{{ user.prenom }}</td>
+                            </div>
+                        </div>
+
+                        <div class="user-box-2">
+                            <label for="blog.description">Email :</label>
+                            <div class="user-box-3">
+                                <p> {{ user.email }}</p>
+                            </div>
+                        </div>
+
+                        <div class="user-box-2">
+                            <button class="button-success" (click)="modifyUser(user.id)">Modifier mon compte</button><br>
+                            <button class="button-success" (click)="deleteUser(user.id)">Effacer mon compte</button>
                         </div>
                     </div>
-                    <div class="userbox">
-                        <label for="inputblog">Prénom : </label>
-                        <div class="userboxElement">
-                            <td>{{ user.prenom }}</td>
-                        </div>
-                    </div>
-                    <div class="userbox">
-                        <label for="blog.description">Email :</label>
-                        <div class="userboxElement">
-                            <p> {{ user.email }}</p>
-                        </div>
-                    </div>
-                    <div class="userbox">
-                        <button class="button-success" (click)="modifyUser(user.id)">Modifier mon
-                            compte</button><br>
-                        <button class="button-success" (click)="deleteUser(user.id)">Effacer mon compte</button>
-                    </div>
-                </div>
-            </ul>
+
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+
+</body>
+
+<footer>
+    <small>Copyright © 2023 Tous droits réservés.</small>
+</footer>
