@@ -1,21 +1,52 @@
-<div *ngIf="isUserLoggedIn">
+
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <a style="margin-right: 10px;"></a>
+    <title>{{ pageTitle }}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet">
+
+    <style>
+        /* Styles from SCSS file */
+        /* ... */
+
+        /* Responsive styles */
+        @media (max-width: 576px) {
+
+            /* Hide toolbar when menu is open */
+            body.menu-open .toolbar {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
     <div class="toolbar" role="banner">
         <nav>
-            <div class="navicon">
-                <div></div>
-            </div>
-            <a (click)="logout()">Sortir</a>
+            <a style="margin-right: 10px;"></a>
+            <a style="margin-right: 10px;">Hiblog</a>
+            <a (click)="userInfo()" style="margin-right: 10px;">Compte</a>
             <a (click)="goToBloglist()">Blogs</a>
-            <a (click)="userInfo()">Compte</a>
         </nav>
-        <h2 class="Hiblog">Hiblog</h2><br>
-        <div *ngIf="user">
-            <img [src]="user.avatarUrl || '../../assets/images/avatar.png'" alt="Avatar" class="avatar"><br>
-            <input type="file" (change)="onFileSelected($event)" [hidden]="user.avatarUrl">
-            <h3 class="user">
-                Bienvenu(e), {{ user.nom }} {{user.prenom}}
-            </h3>
+
+        <div class="user-side">
+            <div class="user">
+                <span>Bienvenue, {{ user.nom }} {{ user.prenom }}</span>
+                <img [src]="user.avatarUrl || '../../assets/images/avatar.png'" alt="Avatar" class="avatar">
+                <input type="file" (change)="onFileSelected($event)" [hidden]="user.avatarUrl">
+                <a class="logout" (click)="logout()">Se déconnecter</a>
+                <a style="margin-right: 10px;"></a>
+            </div>
         </div>
-        <h1>{{ pageTitle }}</h1>
+
     </div>
-</div>
+    <h2 class="Hiblog">{{ pageTitle }}</h2>
+
+</body>
+
+</html>
