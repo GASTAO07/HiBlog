@@ -1,34 +1,51 @@
 <app-tool-bar class="titre" [pageTitle]="titlePage"></app-tool-bar>
-<div class="Contenu-Blog">
 
-  <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-    <option value="">Toutes les catégories</option>
-    <option *ngFor="let category of categoryService.getUniqueCategories()" [value]="category">{{ category }}
-    </option>
-  </select>
+<body>
 
-  <div *ngIf="selectedCategory !== this.blog.category">
-    <h2>Categorie : {{ selectedCategory }}</h2>
+  <div class="Contenu-Blog">
+
+    <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+      <option value="">Toutes les catégories</option>
+      <option *ngFor="let category of categoryService.getUniqueCategories()" [value]="category">{{ category }}
+      </option>
+    </select>
+
+    <div *ngIf="selectedCategory !== this.blog.category">
+      <h2>Categorie : {{ selectedCategory }}</h2>
+    </div>
+
+
+    <div class="form-group">
+      <input type="text" [(ngModel)]="category.label" id="inputblog" name="categorie"
+        placeholder="Si votre catégorie n'existe pas ajouter ici une categorie pour votre blog">
+    </div>
+    <button class="button-success" (click)="creerUneCategory()">Ajouter une Categorie</button><br>
+
+
+    <div class="form-group">
+      <label for="inputblog">Titre du Blog :</label>
+      <input type="text" [(ngModel)]="blog.titre" (change)="validateBlog()" id="inputblog" name="titre"
+        placeholder="Entrez le titre de votre blog">
+    </div>
+
+    <div class="form-group">
+      <label for="blog.description">Description du Blog:</label>
+      <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description" name="blogdescription "
+        rows="10" placeholder="Donnez une description à votre blog"></textarea>
+    </div>
+
+    <div>
+      <label for="hashtags">Hashtags du Blog:</label>
+      <input type="text" id="hashtags" [(ngModel)]="blog.hashtags" name="hashtags" />
+    </div><br>
+
+    <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()"
+      [disabled]="isValidBlog">{{textButton}}</button><br>
+    <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
   </div>
 
-  <div class="form-group">
-    <label for="inputblog">Titre du Blog :</label>
-    <input type="text" [(ngModel)]="blog.titre" (change)="validateBlog()" id="inputblog" name="titre"
-      placeholder="Entrez le titre de votre blog">
-  </div>
+</body>
 
-  <div class="form-group">
-    <label for="blog.description">Description du Blog:</label>
-    <textarea id="blog.description" (change)="validateBlog()" [(ngModel)]="blog.description" name="blogdescription "
-      rows="10" placeholder="Donnez une description à votre blog"></textarea>
-  </div>
-
-  <div>
-    <label for="hashtags">Hashtags du Blog:</label>
-    <input type="text" id="hashtags" [(ngModel)]="blog.hashtags" name="hashtags" />
-  </div>  
-  
-  <button class="button-success" (click)="blog.id ? submitBlogChanges() : creerUnblog()"
-    [disabled]="isValidBlog">{{textButton}}</button><br>
-  <br><button class="button-success" (click)="cancelCreroredit()">Annuler</button>
-</div>
+<footer>
+  <small>Copyright © 2023 Tous droits réservés.</small>
+</footer>

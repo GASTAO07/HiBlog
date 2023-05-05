@@ -1,98 +1,120 @@
 <app-tool-bar class="titre" [pageTitle]="titlePage"></app-tool-bar><br>
 
-<div>
-  <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br>
-  <button class="button-success" (click)="addCategorie()">Ajouter une categorie</button><br>
-</div>
+<body>
 
-<div class="search-container">
-  <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
-  <div *ngIf="blogs.length === 0 && searchQuery">
-    <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
+  <!-- <button class="button-success" (click)="addCategorie()">Ajouter une categorie</button><br>
+    <button class="button-success" (click)="addNewBlog()">Ajouter un Blog</button><br> -->
+
+  <div class="con">
+
+    <div class="con-tooltip top">
+      <p (click)="addNewBlog()"> Ajouter un blog</p>
+      <div class="tooltip ">
+        <p>Un titre et description</p>
+      </div>
+    </div>
+
+
+    <div class="con-tooltip top">
+      <p (click)="addCategorie()"> Ajouter une categorie </p>
+      <div class="tooltip ">
+        <p>Ex.: film, music.</p>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <input type="text" placeholder="Rechercher un blog" [(ngModel)]="searchQuery" (input)="search()">
+      <div *ngIf="blogs.length === 0 && searchQuery">
+        <p>Aucun résultat trouvé pour "{{ searchQuery }}"</p>
+      </div>
+      <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
+    </div><br>
+
+    <div>
+    </div>
   </div>
-  <button type="button" (click)="search()">Rechercher<i class="fa fa-search"></i></button>
-</div><br>
 
-<div class="blogbox0">
-  <div class="blogbox">
-    <div class="blogboxElement">
-      <div class="blog-list">
+  <div class="search-container">
+    <input type="text" placeholder="Rechercher par hashtag" [(ngModel)]="searchHashtags">
+    <button type="button" (click)="searchByHashtag()">Rechercher<i class="fa fa-search"></i></button>
+  </div><br>
 
-        <div class="search-container">
-          <label for="categoryFilter">Filtrer par catégorie :</label>
-          <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-            <option value="">Toutes les catégories</option>
-            <option *ngFor="let category of categories" [value]="category.label">{{ category.label }}</option>
-          </select>
-        </div>
 
-        <div class="search-container">
-          <div class="hashtag-input-wrapper">
-            <input type="text" placeholder="Rechercher par hashtag" [(ngModel)]="searchHashtags">
-          </div>
-          <button type="button" (click)="searchByHashtag()">Rechercher<i class="fa fa-search"></i></button>
-        </div>
-        
-        <ul>
-          <div class="blogbox1">
-            <div *ngFor="let blog of blogs">
-              <div class="blogbox0">
+  <div class="blog-list">
 
-                <div class="blogbox">
-                  <label for="blog.category">Categorie du Blog</label>
-                  <div class="blogboxElement">
-                    <p>{{ blog.category }}</p>
-                  </div>
-                </div>
+    <div class="search-container">
+      <label for="categoryFilter">Filtrer par catégorie :</label>
+      <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+        <option value="">Toutes les catégories</option>
+        <option *ngFor="let category of categories" [value]="category.label">{{ category.label }}</option>
+      </select>
+    </div><br>
 
-                <div class="blogbox">
-                  <label for="inputblog">Titre du Blog: </label>
-                  <div class="blogboxElement">
-                    <td>{{ blog.titre }}</td>
-                  </div>
-                </div>
 
-                <div class="blogbox">
-                  <label for="blog.description">Description du Blog</label>
-                  <div class="blogboxElement">
-                    <!-- Affiche la description complète si 'showFullDescription' est vrai ou si 'blog.description' est vide -->
-                    <p *ngIf="showFullDescription || !blog.description">{{ blog.description }}</p>
-                    <!-- Si 'showFullDescription' est faux et 'blog.description' n'est pas vide -->
-                    <div *ngIf="!showFullDescription && blog.description">
-                      <!-- Affiche les deux premiers paragraphes, limités aux cinq premiers mots de chaque paragraphe -->
-                      <p *ngFor="let paragraph of blog.description.split('\n\n') | slice:0:2">{{
-                        paragraph.split(' ').slice(0, 5).join(' ') }}</p>
-                      <!-- Bouton pour afficher la description complète en basculant 'showFullDescription' à vrai -->
-                      <button class="button-success" (click)="toggleFullDescription()">Lire plus</button>
-                    </div>
-                    <!-- Si 'showFullDescription' est vrai -->
-                    <div *ngIf="showFullDescription">
-                      <!-- Affiche la description complète -->
-                      <p>{{ blog.description }}</p>
-                      <!-- Bouton pour cacher la description complète en basculant 'showFullDescription' à faux -->
-                      <button class="button-success" (click)="toggleFullDescription()">Lire moins</button>
-                    </div>
-                  </div>
-                </div>
+    <ul>
+      <div class="blog-list-box-2">
+        <div *ngFor="let blog of blogs">
 
-                <div class="blogbox">
-                  <label for="inputblog">Hashtags du Blog: </label>
-                  <div class="blogboxElement">
-                    <p>{{ blog.hashtags }}</p>                                                
-                  </div>
-                </div>
+          <div class="blog-list-box-3">
 
-              </div>
-              <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
-              <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
-              <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
+            <div class="blog-list-box-4">
+              <label for="blog.category">Categorie du Blog</label>
             </div>
-          </div>
-        </ul>
+            <div class="blog-list-box-5">
+              <p>{{ blog.category }}</p>
+            </div>
+
+            <div class="blog-list-box-4">
+              <label for="blog.titre">Titre du Blog:</label>
+            </div>
+            <div class="blog-list-box-5">
+              <td>{{ blog.titre }}</td>
+            </div>
+
+            <div class="blog-list-box-4">
+              <label for="blog.description">Description du Blog</label>
+            </div>
+            <div class="blog-list-box-5">
+              <!-- Affiche la description complète si 'showFullDescription' est vrai ou si 'blog.description' est vide -->
+              <p *ngIf="showFullDescription || !blog.description">{{ blog.description }}</p>
+              <!-- Si 'showFullDescription' est faux et 'blog.description' n'est pas vide -->
+              <div *ngIf="!showFullDescription && blog.description">
+                <!-- Affiche les deux premiers paragraphes, limités aux cinq premiers mots de chaque paragraphe -->
+                <p *ngFor="let paragraph of blog.description.split('\n\n') | slice:0:2">{{
+                  paragraph.split(' ').slice(0, 10).join(' ') }}</p>
+                <!-- Bouton pour afficher la description complète en basculant 'showFullDescription' à vrai -->
+                <button class="button-success" (click)="toggleFullDescription()">Lire plus</button>
+              </div>
+              <!-- Si 'showFullDescription' est vrai -->
+              <div *ngIf="showFullDescription">
+                <!-- Affiche la description complète -->
+                <p>{{ blog.description }}</p>
+                <!-- Bouton pour cacher la description complète en basculant 'showFullDescription' à faux  -->
+                <button class="button-success" (click)="toggleFullDescription()">Lire moins</button>
+              </div>
+            </div>
+
+            <div class="blog-list-box-4">
+              <label for="blog.hashtags">Hashtags du Blog: </label>
+            </div>
+            <div class="blog-list-box-5">
+              <p>{{ blog.hashtags }}</p>
+            </div>
+          </div><br>
+
+          <button class="button-success" (click)="modifyTheBlog(blog.id)">Modifier</button><br>
+          <button class="button-success" (click)="deleteBlog(blog.id)">Effacer</button><br>
+          <button class="button-success" (click)="duplicateBlog(blog.id)">Dupliquer</button><br>
+        </div><br>
         <div *ngIf="blogs.length === 0">
           Il n'y pas de blog.
         </div>
-      </div>
-    </div>
+      </div><br>
+    </ul>
+
   </div>
-</div>
+</body>
+
+<footer>
+  <small>Copyright © 2023 Tous droits réservés.</small>
+</footer>

@@ -50,7 +50,30 @@ export class PageBlogComponent implements OnInit {
       this.textButton = 'Créer un blog';
       this.blog = { titre: '', description: '', category: this.category, hashtags: [] };
     }
+    this.blogs = this.listeBlogEnregistresService.getBlogList();
+    this.categories = this.categoryService.getCategorieList();
+
+    if (!!id) {
+      const categoryFound = this.categoryService.getCategoryById(id);
+      if (!!categoryFound) {
+        this.category = categoryFound;
+      } else {
+        console.error('id invalide');
+      }
+    } else {
+      this.titlePage = 'Ajouter une categorie';
+      this.category = { label: '' };
+    }
   }
+
+
+
+
+  creerUneCategory(): void {
+    this.categoryService.addCategories(this.category.label);
+  }
+
+
 
   filterByCategory(): void {
     if (!this.selectedCategory) {
@@ -90,7 +113,7 @@ export class PageBlogComponent implements OnInit {
     if (this.blog.hashtags && typeof this.blog.hashtags === 'string') {
       // verifie si existe et le type string
       // forcer à any our éviter une erreur de compilation
-      const tags = (this.blog.hashtags as any).split(',').map((tag: string) : string => tag.trim());
+      const tags = (this.blog.hashtags as any).split(',').map((tag: string): string => tag.trim());
       //  divise la chaîne de caractères des hashtags
       // map chaque element et trim() supprime les espaces
       this.blog.hashtags = tags.slice(0, 5);
