@@ -1,19 +1,35 @@
-<div class="Contenu-login">
+<head>
     <h2 class="Hiblog">Hiblog</h2>
-    <div class="form-horizontal">
-        <div class="emailpasswordbox">
-            <div class="form-group">
-                <label for="inputemail">Email : </label>
-                <input type="email" (change)="controle()" [(ngModel)]="user.email" id="inputemail" name="email"
-                    placeholder="Entrez votre mail" pattern=".+@capgemini\.com" required size="30" />
+</head>
+
+<body>
+    <div class="Contenu-login">
+
+        <div class="form-horizontal">
+
+            <div class="email-password-box">
+
+                <div class="email-box">
+                    <label for="inputemail">Email : </label>
+                    <input type="email" (change)="controle()" [(ngModel)]="user.email" id="inputemail" name="email"
+                        placeholder="Entrez votre mail" pattern=".+@capgemini\.com" required size="30" />
+                </div><br>
+                <div class="password-box">
+                    <label for="inputmotdepasse">Mot de passe : </label>
+                    <input type="password" (keyup)="controle()" [(ngModel)]="user.motdepasse.pwd" id="inputmotdepasse"
+                        name="password" placeholder="Entrez un mot de passe">
+                </div><br>
+
             </div><br>
-            <div class="form-group">
-                <label for="inputmotdepasse">Mot de passe : </label>
-                <input type="password" (keyup)="controle()" [(ngModel)]="user.motdepasse.pwd" id="inputmotdepasse"
-                    name="password" placeholder="Entrez un mot de passe">
-            </div><br>
-        </div><br>
-        <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer</button>
-        <button class="button-success" (click)="creerUncompte()">Créer un compte</button>
+            <button class="button-success" (click)="onContinue()" [disabled]="isDisabled">Continuer</button>
+            <button class="button-success" (click)="creerUncompte()">Créer un compte</button>
+
+        </div>
+
     </div>
-</div>
+
+</body>
+
+<footer>
+    <small>Copyright © 2023 Tous droits réservés.</small>
+</footer>
